@@ -5,9 +5,10 @@ import Debug from 'debug';
 const debugMain = Debug("app:server");
 const debugError = Debug("app:error");
 import * as path from 'path';
+import config from 'config';
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import database from './database';
+import * as database from './database.js';
 import { bugRouter } from './routes/api/bug.js';
 import { userRouter } from './routes/api/user.js';
 
@@ -25,7 +26,7 @@ app.use('/', express.static('public', { index: 'index.html'}));
 app.get('/', (req, res, next) => {
   debugMain('Home Page');
   res.type("text/plain").send('Home Page');
-})
+});
 
 // register error handlers
 app.use((req, res, next) => {

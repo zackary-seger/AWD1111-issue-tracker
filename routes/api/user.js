@@ -1,10 +1,12 @@
 import Debug from 'debug';
 const debugMain = Debug('app:routes:user');
+import * as dbModule from '../../database.js';
 
 import express from 'express';
 import moment from 'moment';
 import _ from 'lodash';
 import { nanoid } from 'nanoid';
+import { ObjectID } from 'bson';
 
 // FIXME: use this array to store user data in for now
 //        we will replace this with a database in a later assignment
@@ -30,61 +32,101 @@ import { nanoid } from 'nanoid';
 // Create & Export Router
 const router = express.Router();
 
-//define routes
-router.get('/api/pet/list', async (req, res, next) => {
+// Define Routes
+
+// Find all Users
+router.get('/list', async (req, res, next) => {
   try {
-    const pets = await dbModule.findAllPets();
-    res.json(pets);
+    const users = await dbModule.findAllUsers();
+    res.json(users);
   } catch (err) {
     next(err);
   }
 });
 
-router.get('/api/pet/:petId', async (req, res, next) => {
+// Find User
+router.get('/:userId', async (req, res, next) => {
   try {
-    const petId = dbModule.newId(req.params.petId);
-    const pet = await dbModule.findPetById(petId);
-    if (!pet) {
-      res.status(404).json({ error: ` ${petId} Pet not found` });
+    const userId = dbModule.newId(req.params.userId);
+    const user = await dbModule.findUserById(userId);
+    if (!user) {
+      res.status(404).json({ error: ` ${userId} User not found` });
     } else {
-      res.json(pet);
+      res.json(user);
     }
   } catch (err) {
     next(err);
   }
 });
 
-//create
-router.put('/api/pet/new', async (req, res, next) => {
+// Create User
+router.put('/register', async (req, res, next) => {
+  
   try {
-    const pet = {
-      _id: dbModule.newId(),
-      species: req.body.species,
-      name: req.body.name,
-      age: parseInt(req.body.age),
-      gender: req.body.gender,
-    };
 
-  //validation
-  if (!pet.species) {
-    res.status(400).json({ error: 'Species required' });
-  } else if (!pet.name) {
-    res.status(400).json({ error: 'Name required' });
-  } else if (!pet.age) {
-    res.status(400).json({ error: 'Age required' });
-  } else if (!pet.gender) {
-    res.status(400).json({ error: 'Gender required' });
-  } else {
-    await dbModule.insertOnePet(pet);
-    res.json({ message: 'Pet created' });
+    const foundUser = await dbModule.findUserByEmail(req.body.email);
+
+    if (foundUser == false) {
+      
+      try {
+        const user = {
+          _id: new ObjectID(),
+          email: req.body.email,
+          password: req.body.password,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          fullName: req.body.firstName + " " + req.body.lastName,
+          role: req.body.role,
+          createdDateTime: new Date()
+        };
+    
+      // Validation
+      if (!user.email) {
+        res.status(400).json({ error: 'Email required..' });
+      } else if (!user.password) {
+        res.status(400).json({ error: 'Password required..' });
+      } else if (!user.firstName) {
+        res.status(400).json({ error: 'First Name required..' });
+      } else if (!user.lastName) {
+        res.status(400).json({ error: 'Last Name required..' });
+      } else {
+        await dbModule.insertOneUser(user);
+        res.status(200).json({ message: 'New User Registered!' });
+      }
+      } catch (err) {
+        next(err);
+      }
+
+    } else {
+        res.status(400).json({ error: 'Email already in use..' });
+    }
+    
+  } catch (err) {
+    next(err);
   }
+  
+ 
+});
+
+// Login User
+router.get('/login', async (req, res, next) => {
+  try {
+
+    const email = await dbModule.newId(req.body.email);
+    const password = await dbModule.findUserById(req.body.password);
+
+    if (!user) {
+      res.status(404).json({ error: ` ${userId} User not found` });
+    } else {
+      res.json(user);
+    }
   } catch (err) {
     next(err);
   }
 });
 
-//update
-router.put('/api/pet/:petId', async (req, res, next) => {
+// Update User
+router.put('/:userId', async (req, res, next) => {
   try{
     const petId = dbModule.newId(req.params.petId);
     const update = req.body;
@@ -102,8 +144,8 @@ router.put('/api/pet/:petId', async (req, res, next) => {
   }
 });
 
-//delete
-router.delete('/api/pet/:petId', async (req, res, next) => {
+//Delete User
+router.delete('/:userId', async (req, res, next) => {
  try{
     const petId = dbModule.newId(req.params.petId);
     debug(`delete pet ${petId}`);

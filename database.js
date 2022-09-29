@@ -1,6 +1,7 @@
-const debug = require('debug')('app:database');
-const { MongoClient, ObjectId, Db } = require('mongodb');
-const config = require('config');
+import Debug from 'debug';
+const debug = Debug('app:database');
+import { MongoClient, ObjectId, Db } from 'mongodb';
+import config from 'config';
 
 const newId = (str) => new ObjectId(str);
 
@@ -30,23 +31,33 @@ async function ping() {
   debug('Ping successful');
 }
 
-async function findAllPets() {
+async function findAllUsers() {
   //throw new Error('Test Error');
   const db = await connect();
-  const pets = await db.collection('pets').find({}).toArray();
-  return pets;
+  const users = await db.collection('Users').find({}).toArray();
+  return users;
 }
 
-async function findPetById(petId) {
+async function findUserById(userId) {
   const db = await connect();
-  const pet = await db.collection('pets').findOne({ _id: { $eq: petId } });
-  return pet;
+  const user = await db.collection('Users').findOne({ _id: { $eq: userId } });
+  return user;
 }
 
-async function insertOnePet(pet) {
+async function findUserByEmail(email) {
   const db = await connect();
-  await db.collection('pets').insertOne({
-    ...pet,
+  const user = await db.collection('Users').findOne({ email:{ $eq: email } });
+  if (user) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+async function insertOneUser(user) {
+  const db = await connect();
+  await db.collection('Users').insertOne({
+    ...user,
     createdDate: new Date(),
   });
 }
@@ -71,4 +82,4 @@ async function deleteOnePet(petId) {
 
 ping();
 
-module.exports = { newId, connect, ping };
+export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, insertOneUser };
