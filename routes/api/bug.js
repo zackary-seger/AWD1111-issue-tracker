@@ -202,6 +202,9 @@ router.put('/:bugId/close', (req, res, next) => {
     foundBug.closedOn = new Date();
     foundBug.lastUpdated = new Date();
   }
+
+  res.status(200).type("text/plain").send("Bug Closed!");
+  res.json(foundBug);
 });
  
 // Export Router
