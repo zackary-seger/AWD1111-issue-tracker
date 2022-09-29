@@ -7,6 +7,7 @@ const debugError = Debug("app:error");
 import * as path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import database from './database';
 import { bugRouter } from './routes/api/bug.js';
 import { userRouter } from './routes/api/user.js';
 
@@ -40,8 +41,8 @@ app.use((err, req, res, next) => {
 });
 
 // Listen for Requests
-const hostname = process.env.HOSTNAME || 'localhost';
-const port = process.env.PORT || 5000;
+const hostname = config.get('http.host');
+const port = config.get('http.port');
 app.listen(port, () => {
   debugMain(`Server running at http://${hostname}:${port}`);
 });
