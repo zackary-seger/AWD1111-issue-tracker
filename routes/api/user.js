@@ -8,27 +8,6 @@ import _ from 'lodash';
 import { nanoid } from 'nanoid';
 import { ObjectID } from 'bson';
 
-// FIXME: use this array to store user data in for now
-//        we will replace this with a database in a later assignment
-// const usersArray = [
-//                     { 
-//                       _id:"QI7lUo5YfZYtCHNSU43Ws", 
-//                       email: "zackary@seger.us", 
-//                       password: "123456", 
-//                       firstName: "Zackary", 
-//                       lastName: "Seger", 
-//                       role:"Developer"
-//                     },
-//                     { 
-//                       _id:"QI7lUo5YfZYtCHNSU43W7", 
-//                       email: "robert@seger.us", 
-//                       password: "123456", 
-//                       firstName: "Robert", 
-//                       lastName: "Seger", 
-//                       role:"Project Manager"
-//                     }
-//                    ];
-
 // Create & Export Router
 const router = express.Router();
 
@@ -109,35 +88,47 @@ router.put('/register', async (req, res, next) => {
 });
 
 // Login User
-router.get('/login', async (req, res, next) => {
+router.put('/login', async (req, res, next) => {
+  
   try {
 
-    const email = await dbModule.newId(req.body.email);
-    const password = await dbModule.findUserById(req.body.password);
+    const foundUser = await dbModule.findUserByEmail(req.body.email);
+    const email = req.body.email;
+    const password = req.body.password;
 
-    if (!user) {
-      res.status(404).json({ error: ` ${userId} User not found` });
+    const user = await dbModule.readUserByEmail(email);
+    const userPassword = user.password;
+
+    if (!email) {
+      res.status(404).json({ error: ` You must enter an email address ` });
+    } else if (!password) {
+      res.status(404).json({ error: ` You must enter a password ` });
+    } else if (!foundUser) {
+      res.status(404).json({ error: ` ${user.userId} User not found` });  
+    } else if (password != userPassword) {
+        res.status(404).json({ error: ` Invalid password. Please try again..` });  
     } else {
-      res.json(user);
+      res.status(200).json( `Welcome back ${user.fullName}!` );
     }
   } catch (err) {
     next(err);
   }
+
 });
 
 // Update User
 router.put('/:userId', async (req, res, next) => {
   try{
-    const petId = dbModule.newId(req.params.petId);
+    const userId = dbModule.newId(req.params.userId);
     const update = req.body;
-    debug(`update pet ${petId}`, update);
+    debug(`Update User ${userId}`, update);
 
-    const pet = await dbModule.findPetById(petId);
-    if (!pet) {
-      res.status(404).json({ error: ` ${petId} Pet not found` });
+    const userFound = await dbModule.findUserById(userId);
+    if (!userFound) {
+      res.status(404).json({ error: `User ${userId} not found` });
     } else {
-      await dbModule.updateOnePet(petId, update);
-      res.json({ message: ` ${petId} Pet updated` });
+      await dbModule.updateOneUser(dbModule.newId(userId), update);
+      res.json({ message: `User ${userId} updated` });
     }
   } catch (err) {
     next(err);
@@ -147,15 +138,15 @@ router.put('/:userId', async (req, res, next) => {
 //Delete User
 router.delete('/:userId', async (req, res, next) => {
  try{
-    const petId = dbModule.newId(req.params.petId);
-    debug(`delete pet ${petId}`);
+    const userId = req.params.userId;
+    debugMain(`Delete user ${userId}`);
 
-    const pet = await dbModule.findPetById(petId);
-    if (!pet) {
-      res.status(404).json({ error: ` ${petId} Pet not found` });
+    const userFound = await dbModule.findUserById(dbModule.newId(userId));
+    if (!userFound) {
+      res.status(404).json({ error: `User ${userId} not found` });
     } else {
-      await dbModule.deleteOnePet(petId);
-      res.json({ message: ` ${petId} Pet deleted` });
+      await dbModule.deleteOneUser(dbModule.newId(userId));
+      res.json({ message: `User ${userId} deleted` });
     }
   } catch (err) {
     next(err);

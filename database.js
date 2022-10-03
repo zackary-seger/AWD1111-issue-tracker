@@ -38,10 +38,22 @@ async function findAllUsers() {
   return users;
 }
 
+async function findAllBugs() {
+  const db = await connect();
+  const bugs = await db.collection('Bugs').find({}).toArray();
+  return bugs;
+}
+
 async function findUserById(userId) {
   const db = await connect();
   const user = await db.collection('Users').findOne({ _id: { $eq: userId } });
   return user;
+}
+
+async function findBugById(bugId) {
+  const db = await connect();
+  const bug = await db.collection('Bugs').findOne({ _id: { $eq: bugId } });
+  return bug;
 }
 
 async function findUserByEmail(email) {
@@ -54,7 +66,17 @@ async function findUserByEmail(email) {
   }
 }
 
-async function insertOneUser(user) {
+async function readUserByEmail(email) {
+  const db = await connect();
+  const user = await db.collection('Users').findOne({ email:{ $eq: email } });
+  if (user) {
+    return user;
+  } else {
+    return false;
+  }
+}
+
+async function insertOneUser(user) {es
   const db = await connect();
   await db.collection('Users').insertOne({
     ...user,
@@ -62,10 +84,10 @@ async function insertOneUser(user) {
   });
 }
 
-async function updateOnePet(petId, update) {
+async function updateOneUser(userId, update) {
   const db = await connect();
-  await db.collection('pets').updateOne(
-    { _id: { $eq: petId } },
+  await db.collection('Users').updateOne(
+    { _id: { $eq: userId } },
     {
       $set: {
         ...update,
@@ -75,11 +97,11 @@ async function updateOnePet(petId, update) {
   );
 }
 
-async function deleteOnePet(petId) {
+async function deleteOneUser(userId) {
     const db = await connect();
-    await db.collection('pets').deleteOne({ _id: { $eq: petId } });
+    await db.collection('Users').deleteOne({ _id: { $eq: userId } });
 }
 
 ping();
 
-export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, insertOneUser };
+export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, readUserByEmail, insertOneUser, updateOneUser, deleteOneUser, findAllBugs, findBugById };
