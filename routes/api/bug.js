@@ -1,14 +1,42 @@
 import Debug from 'debug';
 const debugMain = Debug('app:routes:user');
 import * as dbModule from '../../database.js';
-
 import express from 'express';
-import moment from 'moment';
 import _ from 'lodash';
-import { nanoid } from 'nanoid';
+import Joi from 'joi';
+import JoiObjectId from "joi-objectid";
+const myJoiObjectId = JoiObjectId(Joi);
+import { ObjectID } from 'bson';
+import { validId } from '../../middleware/validId.js';
+import { validBody } from '../../middleware/validBody.js';
 
 // Create Router
-const router = express.Router()
+const router = express.Router();
+
+// Define joi validation schemas
+const newBugSchema = Joi.object({
+  title: Joi.string().trim().required(),
+  description: Joi.string().trim().required(),
+  reproductionSteps: Joi.string().min(1).trim().required(),
+  classification: Joi.string().min(1).trim().required(),
+  closed: Joi.bool().required(),
+});
+
+const updateBugSchema = Joi.object({
+  title: Joi.string().trim(),
+  description: Joi.string().trim(),
+  reproductionSteps: Joi.string().min(1).trim(),
+  classification: Joi.string().min(1).trim(),
+  closed: Joi.bool(),
+}).min(1);
+
+const classifySchema = Joi.object({
+  classification: Joi.string().trim().required(),
+});
+
+const assignSchema = Joi.object({
+  assignedToUserId: Joi.string().trim(),
+});
 
 // Register Routes
 router.get('/list', async (req, res, next) => {
@@ -20,9 +48,9 @@ router.get('/list', async (req, res, next) => {
   }
 });
 
-router.get('/:bugId', async (req, res, next) => {
- // FIXME: get bugs from bugs array and send response as JSON;
- const bugId = req.params.bugId;
+router.get('/:bugId', validId('bugId'), async (req, res, next) => {
+ // Get bugs from bugs array and send response as JSON;
+ const bugId = req.bugId;
  const foundBug = await dbModule.findBugById(dbModule.newId(bugId));
  if (!foundBug){
   res.status(404).json({ error: 'Bug not found..'})
@@ -31,9 +59,9 @@ router.get('/:bugId', async (req, res, next) => {
  }
 });
 
-router.put('/new', async (req, res, next) => {
-  // FIXME: create new bug and send response as JSON
-  const _id = nanoid();
+router.put('/new', validBody(newBugSchema), async (req, res, next) => {
+  // Create new bug and send response as JSON
+
   const { createdById,
           assignedToId,
           title,
@@ -43,7 +71,6 @@ router.put('/new', async (req, res, next) => {
           closed } = req.body;
 
   const newBug =  {
-    _id,
     createdById,
     assignedToId,
     title,
@@ -53,74 +80,34 @@ router.put('/new', async (req, res, next) => {
     closed
   }
 
-  if(!createdById){
-    res.status(400).json({error: "Created by ID Required"});
-  } else if (!assignedToId){
-    res.status(400).json({error: "Assigned to ID Required"});
-  } else if (!title){
-    res.status(400).json({error: "Title Required"});
-  } else if (!description){
-    res.status(400).json({error: "Description Required"});
-  } else if (!reproductionSteps){
-    res.status(400).json({error: "Reproduction Steps Required"});
-  } else if (!classification){
-    res.status(400).json({error: "Classification Required"});
-  } else if (!closed){
-    res.status(400).json({error: "Closed Required"});
-  } else {
-    bugsArray.push(newBug);
-    res.type("text/plain").send("New Bug Reported!");
-    res.json(newBug);
-  }
+  await dbModule.insertOneBug(newBug);
+  
+  res.status(200).json(newBug);
+
 });
 
-router.put('/:bugId', async (req, res, next) => {
-  // FIXME: update existing bug and send response as JSON;
-  const bugId = req.params.bugId;
-  const { createdById,
-          assignedToId,
-          title,
-          description,
-          reproductionSteps,
-          classification,
-          closed } = req.body;
+router.put('/:bugId', validId('bugId'), validBody(updateBugSchema), async (req, res, next) => {
+  // Update existing bug and send response as JSON;
+  const bugId = req.bugId;
+  const updateBug = req.body;
 
-  const foundBug = dbModule.findBugById(dbModule.newId(bugId))
-
-  if (!foundBug) {
+  if (!updateBug) {
     res.status(404).json({ error: 'Bug Not Found'});
   } else {
-    if (createdById != undefined) {
-      foundBug.createdById = createdById;
-    }
-    if (assignedToId != undefined) {
-      foundBug.assignedToId = assignedToId;
-    }
-    if (title != undefined) {
-      foundBug.title = title;
-    }
-    if (description != undefined) {
-      foundBug.description = description;
-    }
-    if (reproductionSteps != undefined) {
-      foundBug.reproductionSteps = reproductionSteps;
-    }
-    if (classification != undefined) {
-      foundBug.classification = classification;
-    }
-    if (closed != undefined) {
-      foundBug.closed = closed;
-    }
-    res.type("text/plain").send("Bug Updated!");
-    res.json(foundBug);
+    debugMain(updateBug);
+    await dbModule.updateOneBug(bugId, updateBug);
+    res.status(200).json({message: `Bug ${bugId} updated!`});
   } 
 });
 
-router.put('/:bugId/classify', async (req, res, next) => {
-  // FIXME: classify bug and send response as JSON;
-  const bugId = req.params.bugId;
-  const {classification} = req.body;
-  const foundBug = dbModule.findBugById(dbModule.newId(bugId));
+router.put('/:bugId/classify', validId('bugId'), validBody(classifySchema), async (req, res, next) => {
+  // Classify bug and send response as JSON;
+  const bugId = req.bugId;
+  const classification = req.body;
+  const foundBug = req.body;
+  debugMain(foundBug);
+
+  console.log(bugId);
 
   if (!foundBug) {
     res.status(404).json({ error: 'Bug Not Found'});
@@ -130,26 +117,31 @@ router.put('/:bugId/classify', async (req, res, next) => {
       foundBug.classifiedOn = new Date();
       foundBug.lastUpdated = new Date();
     }
-    res.status(200).type("text/plain").send("Bug Updated!");
-    res.json(foundBug);
-}});
+    await dbModule.updateOneBug(bugId, foundBug);
+    res.status(200).json({message: `Bug ${bugId} updated!`});
+  }
 
-router.put('/:bugId/assign', async (req, res, next) => {
-  // FIXME: assign bug to user and send response as JSON;
-  const bugId = req.params.bugId;
-  const userId = req.body.userId;
+});
 
-  const foundBug = await dbModule.findBugById(dbModule.newId(bugId));
-  const user = await dbModule.findUserById(dbModule.newId(userId));
-  const userName = user.fullName;
+router.put('/:bugId/assign', validId('bugId'), validBody(assignSchema),  async (req, res, next) => {
+  // Assign bug to user and send response as JSON;
+  let bugId = req.bugId;
+  const assignedToUserId = dbModule.newId(req.body.assignedToUserId);
+  debugMain(assignedToUserId);
+
+  const user = await dbModule.findUserById(assignedToUserId);
+  debugMain(user);
+
+  const foundBug = await dbModule.findBugById(bugId);
+  const userName = user.firstName;
 
   if (!foundBug) {
     res.status(404).json({ error: `Bug ${bugId} Not Found`});
   } else {
     if (user != undefined) {
-      foundBug.assignedToUserId = dbModule.newId(userId);
+      foundBug.assignedToUserId = dbModule.newId(assignedToUserId);
     } else {
-      res.status(404).json({ error: `UserId ${userId} Not Found`});
+      res.status(404).json({ error: `UserId ${assignedToUserId} Not Found`});
     }
 
     if (userName != undefined) {
@@ -161,15 +153,16 @@ router.put('/:bugId/assign', async (req, res, next) => {
     foundBug.assignedOn = new Date();
     foundBug.lastUpdated = new Date();
 
-    res.status(200).type("text/plain").json({ message: `Bug ${bugId} assigned!`, bugId });
-
+    await dbModule.updateOneBug(bugId, foundBug);
+    res.status(200).json({message: `Bug ${bugId} assigned to ${userName}!`});
 }});
 
-router.put('/:bugId/close', async (req, res, next) => {
-  // FIXME: close bug and send response as JSON;
-  const bugId = req.params.bugId;
-
-  const foundBug = dbModule.findBugById(dbModule.newId(bugId));
+router.put('/:bugId/close', validId('bugId'), async (req, res, next) => {
+  // Close bug and send response as JSON;
+  const bugId = req.bugId;
+  debugMain(bugId);
+  const foundBug = await dbModule.findBugById(bugId);
+  debugMain(foundBug);
 
   if (!foundBug) {
     res.status(404).json({ error: `Bug ${bugId} Not Found`});
@@ -179,7 +172,10 @@ router.put('/:bugId/close', async (req, res, next) => {
     foundBug.lastUpdated = new Date();
   }
 
-  res.status(200).type("text/plain").json({ message: `Bug ${bugId} closed!`, bugId });
+  debugMain("conditional complete");
+
+  await dbModule.updateOneBug(bugId, foundBug);
+  res.status(200).json({message:`Bug ${bugId} closed!`});
 });
  
 // Export Router

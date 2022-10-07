@@ -76,7 +76,7 @@ async function readUserByEmail(email) {
   }
 }
 
-async function insertOneUser(user) {es
+async function insertOneUser(user) {
   const db = await connect();
   await db.collection('Users').insertOne({
     ...user,
@@ -102,6 +102,32 @@ async function deleteOneUser(userId) {
     await db.collection('Users').deleteOne({ _id: { $eq: userId } });
 }
 
+async function insertOneBug(bug) {
+  const db = await connect();
+  await db.collection('Bugs').insertOne({
+    ...bug,
+    createdDate: new Date(),
+  });
+}
+
+async function updateOneBug(bugId, update) {
+  const db = await connect();
+  await db.collection('Bugs').updateOne(
+    { _id: { $eq: bugId } },
+    {
+      $set: {
+        ...update,
+        lastUpdated: new Date(),
+      },
+    }
+  );
+}
+
+async function deleteOneBug(bugId) {
+    const db = await connect();
+    await db.collection('Bugs').deleteOne({ _id: { $eq: bugId } });
+}
+
 ping();
 
-export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, readUserByEmail, insertOneUser, updateOneUser, deleteOneUser, findAllBugs, findBugById };
+export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, readUserByEmail, insertOneUser, updateOneUser, deleteOneUser, findAllBugs, findBugById, insertOneBug, updateOneBug, deleteOneBug };
