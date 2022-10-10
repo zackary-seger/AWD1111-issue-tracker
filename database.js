@@ -128,6 +128,43 @@ async function deleteOneBug(bugId) {
     await db.collection('Bugs').deleteOne({ _id: { $eq: bugId } });
 }
 
+async function findAllCommentsByBugId(bugId) {
+  const db = await connect();
+  const comment = await db.collection('AllComments').findOne({ bugId: { $eq: bugId } });
+  return comment;
+}
+
+async function findAllCommentsByCommentIdAndBugId(commentId, bugId) {
+  const db = await connect();
+  const comment = await db.collection('AllComments').findOne( { _id: { $eq: commentId } }, { bugId: { $eq: bugId } });
+  return comment;
+}
+
+async function insertOneCommentToAllComments(comment) {
+  const db = await connect();
+  await db.collection('AllComments').insertOne({
+    ...comment,
+    createdDateTime: new Date(),
+  });
+}
+
+async function insertOneCommentToBug(comment, bugId) {
+  const db = await connect();
+
+  await db.collection('Bugs').updateOne(
+    { _id: { $eq: bugId } },
+    {
+      $push: {
+        bugComments: comment,
+      },
+    }
+  );
+
+}
+
 ping();
 
-export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, readUserByEmail, insertOneUser, updateOneUser, deleteOneUser, findAllBugs, findBugById, insertOneBug, updateOneBug, deleteOneBug };
+export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, readUserByEmail, 
+         insertOneUser, updateOneUser, deleteOneUser, findAllBugs, findBugById, insertOneBug, 
+         updateOneBug, deleteOneBug, insertOneCommentToAllComments, findAllCommentsByBugId, 
+         findAllCommentsByCommentIdAndBugId, insertOneCommentToBug };

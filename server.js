@@ -11,6 +11,7 @@ import cookieParser from 'cookie-parser';
 import * as database from './database.js';
 import { bugRouter } from './routes/api/bug.js';
 import { userRouter } from './routes/api/user.js';
+import { commentRouter } from './routes/api/comments.js';
 
 // Create Application
 const app = express();
@@ -21,6 +22,7 @@ app.use(cookieParser());
 // Register Routes
 app.use('/api/user', userRouter);
 app.use('/api/bug', bugRouter);
+app.use('/api/comment', commentRouter);
 app.use('/', express.static('public', { index: 'index.html'}));
 
 app.get('/', (req, res, next) => {
