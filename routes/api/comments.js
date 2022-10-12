@@ -19,7 +19,7 @@ router.get('/:bugId/comment/list', validId('bugId'), async (req, res, next) => {
   
   try {
     const comments = await dbModule.findAllCommentsByBugId();
-    res.json(comments);
+    res.status(200).json(comments);
   } catch (err) {
     next(err);
   }
@@ -36,7 +36,7 @@ router.get('/:bugId/comment/:commentId', validId('bugId'), validId('commentId'),
  if (!foundBug){
   res.status(404).json({ error: 'Bug not found..'})
  } else {
-  res.json(foundBug);
+  res.status(200).json(foundBug);
  }
 
 });
@@ -46,12 +46,15 @@ router.put('/:bugId/comment/new', validId('bugId'), validBody(newCommentSchema),
   // Create new bug and send response as JSON
 
   const bugId = req.bugId;
-  const authorId = req.body.authorId;
+  let authorId = req.body.authorId;
   const content  = req.body.content;
+
+  authorId = dbModule.newId(authorId);
 
   const newComment =  {
     authorId,
     content,
+    createdDateTime: new Date(),
   }
 
   await dbModule.insertOneCommentToAllComments(newComment);
