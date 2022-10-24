@@ -172,9 +172,62 @@ async function insertOneCommentToBug(comment, bugId) {
 
 }
 
+async function findAllTestCasesByBugId(bugId) {
+  
+  const db = await connect();
+
+  const cases = await db.collection('Bugs').findOne({ bugId: { $eq: bugId } });
+  return cases.bugTestCases;
+  
+}
+
+async function findAllTestCasesByTestIdAndBugId(testId, bugId) {
+ 
+  const db = await connect();
+
+  const bug = await db.collection('Bugs').findOne( { _id: { $eq: bugId } }, { bugTestCases: {$elemMatch:{testId: testId} }});
+
+  for (const testCase of bug.bugTestCases) {
+    if(testCase.testId.toString() == testId){
+      debug('found test case');
+      return testCase;
+    }
+  }
+  
+  return testCase;
+
+}
+
+
+async function insertOneTestCaseToBug(testCase, bugId) {
+  
+  const db = await connect();
+
+  await db.collection('Bugs').updateOne(
+    { _id: { $eq: bugId } },
+    {
+      $push: {
+        bugTestCases: testCase,
+      },
+    }
+  ); 
+
+}
+
+async function newIndex(collection) {
+  const db = await connect();
+  db.collection(collection).createIndex( { "$**": "text" } )
+}
+
+async function newDbConn(collection) {
+  const db = await connect();
+  return db;
+}
+
 ping();
 
 export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, readUserByEmail, 
          insertOneUser, updateOneUser, deleteOneUser, findAllBugs, findBugById, insertOneBug, 
          updateOneBug, deleteOneBug, insertOneCommentToAllComments, findAllCommentsByBugId, 
-         findAllCommentsByCommentIdAndBugId, insertOneCommentToBug };
+         findAllCommentsByCommentIdAndBugId, insertOneCommentToBug,findAllTestCasesByBugId,
+         findAllTestCasesByTestIdAndBugId, insertOneTestCaseToBug, newIndex, newDbConn };

@@ -35,6 +35,10 @@ const assignSchema = Joi.object({
   assignedToUserId: Joi.string().trim(),
 });
 
+const newTestCaseSchema = Joi.object({
+  bugTestCase: Joi.string().required()
+});
+
 // Register Routes
 router.get('/list', async (req, res, next) => {
   try {
@@ -173,6 +177,52 @@ router.put('/:bugId/close', validId('bugId'), async (req, res, next) => {
 
   await dbModule.updateOneBug(bugId, foundBug);
   res.status(200).json({message:`Bug ${bugId} closed!`});
+});
+
+router.get('/:bugId/test/list', validId('bugId'), async (req, res, next) => {
+  
+  try {
+    const cases = await dbModule.findAllTestCasesByBugId();
+    res.status(200).json(cases);
+  } catch (err) {
+    next(err);
+  }
+
+});
+
+router.get('/:bugId/test/:testId', validId('bugId'), validId('testId'), async (req, res, next) => {
+
+// Get bugs from bugs array and send response as JSON;
+const bugId = req.bugId;
+const testId = req.testId;
+
+const foundTestCase = await dbModule.findAllTestCasesByTestIdAndBugId(dbModule.newId(testId), dbModule.newId(bugId));
+if (!foundTestCase){
+ res.status(404).json({ error: 'Test not found..'})
+} else {
+ res.status(200).json(foundTestCase);
+}
+
+});
+
+router.put('/:bugId/test/new', validId('bugId'), validBody(newTestCaseSchema), async (req, res, next) => {
+  
+  // Create new bug and send response as JSON
+
+  const bugId = req.bugId;
+  const testId = dbModule.newId();
+  const testCase  = req.body.bugTestCase;
+
+  const newTestCase =  {
+    testId,
+    testCase,
+    createdDateTime: new Date(),
+  }
+
+  await dbModule.insertOneTestCaseToBug(newTestCase, bugId);
+  
+  res.status(200).json(newTestCase);
+  
 });
  
 // Export Router

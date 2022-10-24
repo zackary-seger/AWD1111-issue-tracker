@@ -38,8 +38,24 @@ const loginSchema = Joi.object({
 // Find all Users
 router.get('/list', async (req, res, next) => {
   try {
-    const users = await dbModule.findAllUsers();
+
+    await dbModule.newIndex('Users');
+
+    let users = await dbModule.findAllUsers();
+
+    let keywords = req.query.keywords;
+    if (keywords) {
+      const db = await dbModule.newDbConn();
+      db.collection('Users').find( { $text: { $search: `${keywords}` } } )
+    } 
+
+    let role = req.query.role;
+    let maxAge = req.query.maxAge;
+    let minAge = req.query.minAge;
+    let sortBy = req.query.sortBy;
+
     res.json(users);
+
   } catch (err) {
     next(err);
   }
