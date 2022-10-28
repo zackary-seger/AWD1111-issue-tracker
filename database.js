@@ -24,11 +24,16 @@ async function connect() {
 }
 
 async function ping() {
+
   const db = await connect();
+
   await db.command({
     ping: 1,
   });
+
   debug('Ping successful');
+  console.log('\n');
+
 }
 
 async function findAllUsers() {
@@ -214,14 +219,123 @@ async function insertOneTestCaseToBug(testCase, bugId) {
 
 }
 
-async function newIndex(collection) {
-  const db = await connect();
-  db.collection(collection).createIndex( { "$**": "text" } )
-}
-
-async function newDbConn(collection) {
+async function newDbConn() {
   const db = await connect();
   return db;
+}
+
+async function newTextIndex(db, collection) {
+  db.collection(collection).createIndex( { "$**":"text" }, { name: "fullText" } );
+}
+
+async function newDateIndex(db, collection, value, name) {
+  db.collection(collection).createIndex( { createdDateTime: value }, { name: name } );
+}
+
+async function newDateComboIndex(db, collection, value, name, secondIndexLoc) {
+  let obj = {};
+  obj['createdDateTime'] = value;
+  obj[secondIndexLoc] = -value;
+  db.collection(collection).createIndex( obj, { name: name } );
+}
+
+let results = [];
+
+async function sortBy(specifier) {
+
+  try {
+    
+    const db = await connect();
+
+    if (specifier == 'firstName') {
+
+      results[0] = `Sort By: ${specifier} ascending..`;
+      results[1] = { firstNameSort: await db.collection('Users').find().sort({ firstName: 1}).toArray() };
+      results[2] = { lastNameSort: await db.collection('Users').find().sort({ lastName: 1}).toArray() };
+      results[3] = { dateTimeSort: await db.collection('Users').find().sort({ createdDateTime: 1}).toArray() };
+
+      return results;
+
+    } else if (specifier == 'lastName') {
+
+      results[0] = `Sort By: ${specifier} ascending..`;
+      results[1] = { lastNameSort: await db.collection('Users').find().sort({ lastName: 1}).toArray()};
+      results[2] = { firstNameSort: await db.collection('Users').find().sort({ firstName: 1}).toArray()};
+      results[3] = { dateTimeSort: await db.collection('Users').find().sort({ createdDateTime: 1}).toArray()};
+
+      return results;
+      
+    } else if (specifier == 'role') {
+
+      results[0] = `Sort By: ${specifier} ascending..`;
+      results[1] = { roleSort: await db.collection('Users').find().sort({ role: 1}).toArray()};
+      results[2] = { firstNameSort: await db.collection('Users').find().sort({ firstName: 1}).toArray()};
+      results[3] = { lastNameSort: await db.collection('Users').find().sort({ lastName: 1}).toArray()};
+      results[4] = { dateTimeSort: await db.collection('Users').find().sort({ createdDateTime: 1}).toArray()};
+
+      return results;
+      
+    } else if (specifier == 'newest') {
+      
+      results[0] = `Sort By: ${specifier} descending..`;
+      results[1] = { dateTimeSort: await db.collection('Users').find().sort({ createdDateTime: -1}).toArray()};
+
+      return results;
+
+    } else if (specifier == 'oldest') {
+      
+      results[0] = `Sort By: ${specifier}`;
+      results[1] = { dateTimeSort: await db.collection('Users').find().sort({ createdDateTime: 1}).toArray()};
+
+      return results;
+
+    } else {
+
+      // res.status(400).json({ error: `We're sorry, your sortBy specifier was invalid, please enter a valid specifier..`})
+
+    }
+
+  } catch (err) {
+    next(err)
+  }
+
+}
+
+let finalArr;
+
+async function dbQuery(arrayQuery, identifier) {
+
+  let db = await connect();
+
+  if (identifier) {
+    debug(identifier + ': { Display Current Query String: ' + arrayQuery + ` }`);
+    console.log('\n');
+  }
+
+  // IMPORTANT: Everyone, everywhere, on the internet will tell you to use, new Function() rather than eval(), however they are
+  // both considered dangerous/evil. That being said, I have spent an extraordinary amount of time trying to do this same operation 
+  // using new Function(), and have found zero hints on how to make it work correctly, or at all.. As far as I can tell, using 
+  // eval() in this manner is relatively safe, because the only strings that can be added to it are a fixed, limited set, which 
+  // I have set myself. From what I have read, the JavaScript that the Node.js executes is, for all intents and purposes, interpreted.
+  // This means that the performance issues that come along with using eval() will be negligible, because there should be no reason  
+  // for the program to need to call a heavy compiler.
+
+  // NOTE: Beyond what has already been said here, the rest of our function is fairly straightforward. On line 324, the result variable 
+  // ends up equaling a Promise { <pending> }, which is an object representing the eventual completion or failure of an asynchronous operation.
+  // A Promise can either be undefined, pending, fulfilled, or rejected. We are the able to access the returned value of a Promise [object] in 
+  // another .then() callback: It should be noted that if you do not return your result here, accessing it outside of the callback function
+  // we be impossible.
+
+  // FINALLY: This function can and should be reused for each query that is built to be run. Also remember to export finalArr.
+
+  let result = eval(arrayQuery);
+
+  finalArr = result.then(function(result1) {
+    return result1;
+  });
+
+  await finalArr;
+
 }
 
 ping();
@@ -230,4 +344,5 @@ export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, read
          insertOneUser, updateOneUser, deleteOneUser, findAllBugs, findBugById, insertOneBug, 
          updateOneBug, deleteOneBug, insertOneCommentToAllComments, findAllCommentsByBugId, 
          findAllCommentsByCommentIdAndBugId, insertOneCommentToBug,findAllTestCasesByBugId,
-         findAllTestCasesByTestIdAndBugId, insertOneTestCaseToBug, newIndex, newDbConn };
+         findAllTestCasesByTestIdAndBugId, insertOneTestCaseToBug, newDbConn, newTextIndex,
+         newDateIndex, newDateComboIndex, sortBy, dbQuery, finalArr };

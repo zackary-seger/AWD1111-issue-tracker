@@ -45,5 +45,7 @@ app.use((err, req, res, next) => {
 const hostname = config.get('http.host');
 const port = config.get('http.port');
 app.listen(port, () => {
+  console.log('\n')
   debugMain(`Server running at http://${hostname}:${port}`);
+  console.log('\n');
 });
