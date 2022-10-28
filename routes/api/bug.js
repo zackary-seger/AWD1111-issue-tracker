@@ -45,10 +45,6 @@ router.get('/list', async (req, res, next) => {
   try {
 
     const bugs = await dbModule.findAllBugs();
-
-    // I created the newDbConn() function on my own accord for _db use here..
-    // You can do super neat one liners on this sheet if you do it this way..
-
     const db = await dbModule.newDbConn();
 
     // We only need to use lines 47-52 once for our database, so they are now commented out..

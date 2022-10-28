@@ -1,12 +1,17 @@
 import Debug from 'debug';
 const debugMain = Debug('app:routes:user');
+const debugReg = Debug('app:routes:user - reg');
 import * as dbModule from '../../database.js';
 import Joi from 'joi';
+import bcrypt from 'bcrypt';
+import config from 'config';
+import jwt from 'jsonwebtoken';
 import path from 'path';
 import express from 'express';
 import _ from 'lodash';
 import { validId } from '../../middleware/validId.js';
 import { validBody } from '../../middleware/validBody.js';
+import { auth } from '../../middleware/auth.js';
 
 // Create & Export Router
 const router = express.Router();
@@ -433,10 +438,20 @@ router.get('/:userId', validId('userId'), async (req, res, next) => {
   }
 });
 
-// Create User
+// Register User
+
+// Before the fun even begins, this function starts by running validBody(schema), and
+// pre-validated and sent directly to something like - req.body[n] = {name: name}; - where
+// req.body[n] stores the data inputs to be further used.
+
 router.put('/register', validBody(newUserSchema), async (req, res, next) => {
   
   try {
+
+    // Below, we use await and call findUserByGetEmail(), and we insert the email data
+    // we parsed through the request body. An actual example of using this would be creating
+    // html form boxes that use a 'submit' button, and have a a form action attribute set
+    // equal to the path you want your form to PUT to. ex:  action = "/user/api/register"
 
     const foundUser = await dbModule.findUserByEmail(req.body.email);
 
@@ -444,8 +459,32 @@ router.put('/register', validBody(newUserSchema), async (req, res, next) => {
 
         const user = req.body;
 
+        // Right here we are creating a hash of whatever password the user enters in. 
+        // The bycrypt.hash() function randomly salts, and then hashes over the previous
+        // hash as many times as you command. You can have an infinitely intricate password
+        // this way. I checked out the internets and found a way that you can access the 
+        // salts that are created with hash(). It actually looks super simple too.
+
+        user.password = await bcrypt.hash(user.password, 10);
+        debugReg({hashedPass: user.password});
+        console.log('\n');
+
+        // Now we need to issue a new JWT token.
+
+        const authPayload = { /* save user data that you will want later */ };
+        const authSecret = config.get('auth.secret');
+        const authExpiresIn = config.get('auth.tokenExpiresIn');
+        const authToken = jwt.sign(authPayload, authSecret, { expiresIn: authExpiresIn });
+
+        // Save the JWT token in a cookie.
+
+        const authMaxAge = parseInt(config.get('auth.cookieMaxAge'));
+        res.cookie('authToken', authToken, { maxAge: authMaxAge, httpOnly: true });
+
+        // Return the token back in the JSON response.
+        
         await dbModule.insertOneUser(user);
-        res.status(200).json({ message: 'New User Registered!' });
+        res.status(200).json({ message: 'New User Registered!' + `  -  Full Name: ${req.body.firstName} ${req.body.lastName}` , authToken });
 
     } else {
       res.status(400).json({ error: 'Email already registered..' });

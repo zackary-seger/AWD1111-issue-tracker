@@ -11,11 +11,18 @@ import { bugRouter } from './routes/api/bug.js';
 import { userRouter } from './routes/api/user.js';
 import { commentRouter } from './routes/api/comments.js';
 
+
 // Create Application
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Register Middleware Application Wide
+app.use('./middleware/auth', (req, res, next) => {
+  console.log('Request URL:', req.originalUrl)
+  next()
+} );
 
 // Register Routes
 app.use('/api/user', userRouter);
