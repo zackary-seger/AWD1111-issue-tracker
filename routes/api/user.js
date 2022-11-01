@@ -459,6 +459,10 @@ router.put('/register', validBody(newUserSchema), async (req, res, next) => {
 
         const user = req.body;
 
+        user.createdDateTime = new Date();
+        user._id = dbModule.newId();
+        user.role = null;
+
         // Right here we are creating a hash of whatever password the user enters in. 
         // The bycrypt.hash() function randomly salts, and then hashes over the previous
         // hash as many times as you command. You can have an infinitely intricate password
@@ -481,9 +485,24 @@ router.put('/register', validBody(newUserSchema), async (req, res, next) => {
         const authMaxAge = parseInt(config.get('auth.cookieMaxAge'));
         res.cookie('authToken', authToken, { maxAge: authMaxAge, httpOnly: true });
 
-        // Return the token back in the JSON response.
-        
+        // Create Edit Object
+
+        const editObj = {
+          timestamp: new Date(),
+          collection: 'Users',
+          operation: 'Insert',
+          target: user._id,
+          update: user,
+          auth: req.cookies.auth
+        }
+
+        debugMain({editObj: editObj});
+
+        await dbModule.insertOneEdit(editObj);
         await dbModule.insertOneUser(user);
+
+        // Return the token back in the JSON response.
+
         res.status(200).json({ message: 'New User Registered!' + `  -  Full Name: ${req.body.firstName} ${req.body.lastName}` , authToken });
 
     } else {
@@ -497,6 +516,19 @@ router.put('/register', validBody(newUserSchema), async (req, res, next) => {
 });
 
 // Login User
+
+// To log a user in, we have added new requirements, and create a session token for our user.
+// As with most routes, the first thing we do is check for the existence of our object, which  
+// in this case, is our user. To do this we use our findUserByEmail() function. Once we know  
+// our user does in fact exist, we query and save the user object. This object will contain 
+// the hashed password of the user wishing to login, which we will use in bcrypt.compare() to 
+// test whether or not the password entered was the correct password or not. To do this, 
+// bycrypt then either, a: encrypts the password entered using the correct corresponding salt
+// combinations and then compares that to the already encrypted password saved within the db,
+// or b: decrypts the password saved in the db user object using the correct corresponding salt
+// combinations and then compares that to the password entered. I can't be sure which is true
+// because the documentation does not actually speak to ow the compare() function truly works.
+
 router.put('/login', validBody(loginSchema), async (req, res, next) => {
   
   try {
@@ -506,13 +538,82 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
     if (!foundUser) {
       res.status(404).json({ error: `User: ${req.body.email} not found` });
     } else {
+
       const email = req.body.email;
-      const password = req.body.password;
-  
+      const inputPassword = req.body.password;
+
       const user = await dbModule.readUserByEmail(email);
-      const userPassword = user.password;
-  
-      res.status(200).json( `Welcome back ${user.fullName}!` );
+
+      if (user && await bcrypt.compare(inputPassword, user.password)) {
+
+        // Once we make it this far, we can safely generate an authToken for the user's new session.
+
+        // To create our token we use the jwt.sign() function. This function is described in it's
+        // comment as: Synchronously sign the given payload into a JSON Web Token string payload. 
+
+        // Lines 557-588 we taken from the IBM link below on line 556.
+        // https://www.ibm.com/docs/en/cics-ts/6.1?topic=cics-json-web-token-jwt
+
+        // Lets define what an authToken is. An authToken, is truly a JSON Web Token, or JWT. A JWT 
+        // consists of three parts - a header, payload, and signature.
+
+        // Header:
+
+          // The header typically consists of two parts: the type of the token, which is JWT, and the 
+          // algorithm that is used, such as HMAC SHA256 or RSA SHA256. It is Base64Url encoded to form 
+          // the first part of the JWT.
+        
+        // Payload:
+
+          // The payload contains the claims. There is a set of registered claims, for example: iss (issuer), 
+          // exp (expiration time), sub (subject), and aud (audience). These claims are not mandatory but 
+          // recommended to provide a set of useful, interoperable claims. The payload can also include extra 
+          // attributes that define custom claims, such as employee role. Typically, the subject claim is used 
+          // to create the OpenID Connect user subject. However, the Liberty JVM server can be configured to 
+          // use an alternative claim. The payload is Base64Url encoded to form the second part of the JWT.
+        
+        // Signature:
+
+          // To create the signature part, the encoded header and encoded payload are signed by using the 
+          // signature algorithm from the header. The signature is used to verify that the issuer of the JWT is 
+          // who it says it is and to ensure that the message wasn't changed along the way.
+
+        // Typical JWT Authentication Flow:
+
+          /*  
+            •  The user logs in using their credentials.
+            •  When the user is authenticated, a JWT is returned.
+            •  When the user wants to access a protected resource, the client application sends the JWT, typically in the HTTP Authorization header.
+            •  The JWT is then used by the application server, to identify the user and allow access to the resource.
+          */
+
+        // We haven't actually needed the authPayload for anything so far, so nothing has been added
+        // to it.
+
+        const authPayload = { /* save user data that you will want later */ };
+
+        // Above, we haven't actually needed the authPayload for anything so far, so nothing has been added to it. 
+        
+        // Below, we save authSecret and authExpiresIn variables by deep access of our .env variables. Our .env file is used as 
+        // a buffer between our database keys, and malicious actors on gitHub. The .env file has been added to our .gitignore
+        // file, which keeps it from ever being pushed onto the repository. However, we still have yet another file, known
+        // as custom-environment-variables.json, which is located in a /config folder at the root of this project, which
+        // we actually use on lines 602 & 603. If you are reading this and believe that using the config module seems a bit
+        // unnecessary, I currently agree with you. That being said, I'm currently not in the mood to get rid of it, so it's
+        // going to stay there for the time being. 
+
+        const authSecret = config.get('auth.secret');
+        const authExpiresIn = config.get('auth.tokenExpiresIn');
+
+        const authToken = jwt.sign(authPayload, authSecret, { expiresIn: authExpiresIn });
+        const authMaxAge = parseInt(config.get('auth.cookieMaxAge'));
+
+        res.cookie('authToken', authToken, { maxAge: authMaxAge, httpOnly: true });
+        
+        res.status(200).json( `Welcome back ${user.firstName}!`, user.userId, authToken );
+
+      }
+
     }
 
     } catch (err) {
@@ -522,22 +623,51 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
 });
 
 // Update User
-router.put('/:userId', validId('userId'), validBody(updateUserSchema),  async (req, res, next) => {
-  try{
-    const userId = req.userId;
-    const update = req.body;
-    debugMain(`Update User ${userId}`, update);
 
-    const userFound = await dbModule.findUserById(userId);
-    if (!userFound) {
-      res.status(404).json({ error: `User ${userId} not found` });
-    } else {
-      await dbModule.updateOneUser(dbModule.newId(userId), update);
-      res.json({ message: `User ${userId} updated` });
+// Here in update user the important thing to remember is that we will not need to use the user object that
+// already exists to create our updated one. With this is mind, we still first query and save the user object
+// we wish to update. We do this because we need a test that will prove to us whether or not there is even an
+// object to update. If there is a user object to update it, our updateOneUser() function uses an 
+// updateOne({ $set: {...update} }) operation, where update is equal to the req.body, which, in this case, is
+// equal to data that conforms to the updateUserSchema, as prescribed by our validBody() middleware function.
+
+router.put('/:userId', validId('userId'), validBody(updateUserSchema),  async (req, res, next) => {
+
+  try {
+
+      const userId = req.userId;
+      const update = req.body;
+
+      debugMain(`Update User ${userId}`, update);
+      console.log('\n');
+
+      const userFound = await dbModule.findUserById(userId);
+
+      debugMain(req.cookies);
+      console.log('\n');
+
+      if (req.cookies.authToken != undefined) {
+
+        if (!userFound) {
+          res.status(404).json({ error: `User ${userId} not found` });
+        } else {
+
+          await dbModule.updateOneUser(dbModule.newId(userId), update);
+
+          res.json({ message: `User ${userId} updated` });
+          debugMain({log: 'Update Successful!'});
+          console.log('\n');
+
+        }
+
+      } else {
+        res.status(401).json( `Error: User ${req.email}, is not logged in!`);
+      }
+
+    } catch (err) {
+      next(err);
     }
-  } catch (err) {
-    next(err);
-  }
+
 });
 
 //Delete User

@@ -10,6 +10,7 @@ import cookieParser from 'cookie-parser';
 import { bugRouter } from './routes/api/bug.js';
 import { userRouter } from './routes/api/user.js';
 import { commentRouter } from './routes/api/comments.js';
+import { auth } from './middleware/auth.js';
 
 
 // Create Application
@@ -20,8 +21,8 @@ app.use(cookieParser());
 
 // Register Middleware Application Wide
 app.use('./middleware/auth', (req, res, next) => {
-  console.log('Request URL:', req.originalUrl)
-  next()
+  debugMain('Auth Middleware Moving..');
+  next();
 } );
 
 // Register Routes

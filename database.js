@@ -85,7 +85,6 @@ async function insertOneUser(user) {
   const db = await connect();
   await db.collection('Users').insertOne({
     ...user,
-    createdDate: new Date(),
   });
 }
 
@@ -338,6 +337,13 @@ async function dbQuery(arrayQuery, identifier) {
 
 }
 
+async function insertOneEdit(edit) {
+  const db = await connect();
+  await db.collection('Edits').insertOne({
+    ...edit,
+  });
+}
+
 ping();
 
 export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, readUserByEmail, 
@@ -345,4 +351,4 @@ export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, read
          updateOneBug, deleteOneBug, insertOneCommentToAllComments, findAllCommentsByBugId, 
          findAllCommentsByCommentIdAndBugId, insertOneCommentToBug,findAllTestCasesByBugId,
          findAllTestCasesByTestIdAndBugId, insertOneTestCaseToBug, newDbConn, newTextIndex,
-         newDateIndex, newDateComboIndex, sortBy, dbQuery, finalArr };
+         newDateIndex, newDateComboIndex, sortBy, dbQuery, insertOneEdit, finalArr };

@@ -10,6 +10,7 @@ function auth() {
   return (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const authCookie = req.cookies.authToken;
+    debugMain({authCookie: authCookie});
 
     if (authHeader) {
       const [authType, authToken] = authHeader.split(' ', 2);
