@@ -7,6 +7,7 @@ const debugError = Debug("app:error");
 import config from 'config';
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import * as path from 'path';
 import { bugRouter } from './routes/api/bug.js';
 import { userRouter } from './routes/api/user.js';
 import { commentRouter } from './routes/api/comments.js';
