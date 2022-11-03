@@ -4,6 +4,8 @@ import * as dbModule from '../../database.js';
 import express from 'express';
 import _ from 'lodash';
 import Joi from 'joi';
+import config from 'config';
+import jwt from 'jsonwebtoken';
 import { validId } from '../../middleware/validId.js';
 import { validBody } from '../../middleware/validBody.js';
 
@@ -17,50 +19,80 @@ const newCommentSchema = Joi.object({
 
 router.get('/:bugId/comment/list', validId('bugId'), async (req, res, next) => {
   
-  try {
-    const comments = await dbModule.findAllCommentsByBugId();
-    res.status(200).json(comments);
-  } catch (err) {
-    next(err);
+  if (req.cookies.authToken != undefined) {
+
+    try {
+      const comments = await dbModule.findAllCommentsByBugId();
+      res.status(200).json(comments);
+    } catch (err) {
+      next(err);
+    }
+  
+  } else {
+    res.status(401).json({error: 'Error: you are not logged in.. Log in and try again..'});
   }
 
 });
 
 router.get('/:bugId/comment/:commentId', validId('bugId'), validId('commentId'), async (req, res, next) => {
 
-   // Get bugs from bugs array and send response as JSON;
- const bugId = req.bugId;
- const commentId = req.commentId;
+ if (req.cookies.authToken != undefined) {
 
- const foundBug = await dbModule.findAllCommentsByCommentIdAndBugId(dbModule.newId(commentId), dbModule.newId(bugId));
- if (!foundBug){
-  res.status(404).json({ error: 'Bug not found..'})
- } else {
-  res.status(200).json(foundBug);
- }
+  // Get bugs from bugs array and send response as JSON;
+  const bugId = req.bugId;
+  const commentId = req.commentId;
+
+  const foundBug = await dbModule.findAllCommentsByCommentIdAndBugId(dbModule.newId(commentId), dbModule.newId(bugId));
+  if (!foundBug){
+    res.status(404).json({ error: 'Bug not found..'})
+  } else {
+    res.status(200).json(foundBug);
+  }
+
+} else {
+  res.status(401).json({error: 'Error: you are not logged in.. Log in and try again..'});
+}
 
 });
 
 router.put('/:bugId/comment/new', validId('bugId'), validBody(newCommentSchema), async (req, res, next) => {
   
-  // Create new bug and send response as JSON
+  if (req.cookies.authToken != undefined) {
 
-  const bugId = req.bugId;
-  let authorId = req.body.authorId;
-  const content  = req.body.content;
+    // Create new bug and send response as JSON
 
-  authorId = dbModule.newId(authorId);
+    const secret = config.get('auth.secret');
+    const token = req.cookies.authToken;
 
-  const newComment =  {
-    authorId,
-    content,
-    createdDateTime: new Date(),
+    // Below, we use the jwt.verify() function to access the data saved within our authToken 
+    // cookie. That cookie contains the three variables we save inside it during our login stage.
+
+    const payload = jwt.verify(token, secret);
+
+    // Create new bug and send response as JSON
+
+    const bugId = req.bugId;
+    let authorId = dbModule.newId(payload.userId);
+    const content  = req.body.content;
+
+    authorId = dbModule.newId(authorId);
+
+    const newComment =  {
+      authorId,
+      content,
+      createdBy: dbModule.newId(payload.userId), 
+      createdDateTime: new Date(),
+    }
+
+    await dbModule.insertOneCommentToAllComments(newComment);
+    await dbModule.insertOneCommentToBug(newComment, bugId);
+    
+    res.status(200).json(newComment);
+
+  } else {
+    res.status(401).json({error: 'Error: you are not logged in.. Log in and try again..'});
+
   }
-
-  await dbModule.insertOneCommentToAllComments(newComment);
-  await dbModule.insertOneCommentToBug(newComment, bugId);
-  
-  res.status(200).json(newComment);
   
 });
 

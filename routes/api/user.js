@@ -16,6 +16,7 @@ import { auth } from '../../middleware/auth.js';
 const router = express.Router();
 
 // Define joi validation schemas
+
 const newUserSchema = Joi.object({
   email: Joi.string().email({ minDomainSegments: 2 }).trim().required(),
   password: Joi.string().trim().required(),
@@ -43,6 +44,7 @@ const loginSchema = Joi.object({
 // Find all Users
 
 router.get('/list', async (req, res, next) => {
+
   if (req.cookies.authToken != undefined) {
     
     try {
@@ -261,7 +263,7 @@ router.get('/list', async (req, res, next) => {
           minAgeArray += `.limit(5)`;
         }
         if (sortByArray != undefined) {
-          sortByArray.slice(5);
+          sortByArray.slice(0,5);
         }
 
       }
@@ -336,8 +338,6 @@ router.get('/list', async (req, res, next) => {
         // callback function with await, where we are directly inserting it into our finalArray.
         
         let finalKeywordArr = arr1.then(function(result) {
-          console.log('\n');
-          debugMain(result); 
           return result;
         });
 
@@ -598,7 +598,7 @@ router.put('/register', validBody(newUserSchema), async (req, res, next) => {
 
         // Now we need to issue a new JWT token.
 
-        const authPayload = { /* save user data that you will want later */ };
+        const authPayload = { "userId": `${user._id}`, "firstName": `${user.firstName}`, "email": `${user.email}`};
         const authSecret = config.get('auth.secret');
         const authExpiresIn = config.get('auth.tokenExpiresIn');
         const authToken = jwt.sign(authPayload, authSecret, { expiresIn: authExpiresIn });
@@ -618,8 +618,6 @@ router.put('/register', validBody(newUserSchema), async (req, res, next) => {
           update: user,
           auth: req.cookies.auth
         }
-
-        debugMain({editObj: editObj});
 
         await dbModule.insertOneEdit(editObj);
         await dbModule.insertOneUser(user);
@@ -765,39 +763,45 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
 
 router.put('/:userId', validId('userId'), validBody(updateUserSchema),  async (req, res, next) => {
 
-  try {
+  if (req.cookies.authToken != undefined) {
+  
+    try {
 
-      const userId = req.userId;
-      const update = req.body;
+        const userId = req.userId;
+        const update = req.body;
 
-      debugMain(`Update User ${userId}`, update);
-      console.log('\n');
+        debugMain(`Update User ${userId}`, update);
+        console.log('\n');
 
-      const userFound = await dbModule.findUserById(userId);
+        const userFound = await dbModule.findUserById(userId);
 
-      debugMain(req.cookies);
-      console.log('\n');
+        debugMain(req.cookies);
+        console.log('\n');
 
-      if (req.cookies.authToken != undefined) {
+        if (req.cookies.authToken != undefined) {
 
-        if (!userFound) {
-          res.status(404).json({ error: `User ${userId} not found` });
+          if (!userFound) {
+            res.status(404).json({ error: `User ${userId} not found` });
+          } else {
+
+            await dbModule.updateOneUser(dbModule.newId(userId), update);
+
+            res.json({ message: `User ${userId} updated` });
+            debugMain({log: 'Update Successful!'});
+            console.log('\n');
+
+          }
+
         } else {
-
-          await dbModule.updateOneUser(dbModule.newId(userId), update);
-
-          res.json({ message: `User ${userId} updated` });
-          debugMain({log: 'Update Successful!'});
-          console.log('\n');
-
+          res.status(401).json( `Error: User ${req.email}, is not logged in!`);
         }
 
-      } else {
-        res.status(401).json( `Error: User ${req.email}, is not logged in!`);
+      } catch (err) {
+        next(err);
       }
 
-    } catch (err) {
-      next(err);
+    } else {
+      res.status(401).json( `Error: User ${req.email}, is not logged in!`);
     }
 
 });
@@ -806,39 +810,45 @@ router.put('/:userId', validId('userId'), validBody(updateUserSchema),  async (r
 
 router.delete('/:userId', validId('userId'), async (req, res, next) => {
  
-  try{
+  if (req.cookies.authToken != undefined) {
 
-    const userId = req.userId;
-    debugMain(`Delete user ${userId}`);
+    try{
 
-    const userFound = await dbModule.findUserById(dbModule.newId(userId));
-    
-    if (!userFound) {
-      res.status(404).json({ error: `User ${userId} not found` });
-    } else {
+      const userId = req.userId;
+      debugMain(`Delete user ${userId}`);
 
-      // Create Edit Object
+      const userFound = await dbModule.findUserById(dbModule.newId(userId));
+      
+      if (!userFound) {
+        res.status(404).json({ error: `User ${userId} not found` });
+      } else {
 
-      const editObj = {
-        timestamp: new Date(),
-        collection: 'Users',
-        operation: 'Delete',
-        target: req.userId,
-        update: userFound,
-        authToken: req.cookies.authToken
+        // Create Edit Object
+
+        const editObj = {
+          timestamp: new Date(),
+          collection: 'Users',
+          operation: 'Delete',
+          target: req.userId,
+          update: userFound,
+          authToken: req.cookies.authToken
+        }
+
+        debugMain({editObj: editObj});
+
+        await dbModule.insertOneEdit(editObj);
+        await dbModule.deleteOneUser(dbModule.newId(userId));
+
+        res.json({ message: `User ${userId} deleted` });
       }
 
-      debugMain({editObj: editObj});
-
-      await dbModule.insertOneEdit(editObj);
-      await dbModule.deleteOneUser(dbModule.newId(userId));
-
-      res.json({ message: `User ${userId} deleted` });
+    } catch (err) {
+      next(err);
     }
 
-  } catch (err) {
-    next(err);
- }
+  } else {
+    res.status(401).json( `Error: User ${req.email}, is not logged in!`);
+  }
  
 });
  

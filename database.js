@@ -109,8 +109,7 @@ async function deleteOneUser(userId) {
 async function insertOneBug(bug) {
   const db = await connect();
   await db.collection('Bugs').insertOne({
-    ...bug,
-    createdDate: new Date(),
+    ...bug
   });
 }
 
@@ -190,15 +189,16 @@ async function findAllTestCasesByTestIdAndBugId(testId, bugId) {
   const db = await connect();
 
   const bug = await db.collection('Bugs').findOne( { _id: { $eq: bugId } }, { bugTestCases: {$elemMatch:{testId: testId} }});
+  let case1;
 
-  for (const testCase of bug.bugTestCases) {
+  bug.bugTestCases.forEach (async (testCase) => {
+
     if(testCase.testId.toString() == testId){
-      debug('found test case');
-      return testCase;
-    }
-  }
-  
-  return testCase;
+      case1 =  testCase;
+    } 
+  });
+
+  return case1;
 
 }
 
@@ -344,6 +344,23 @@ async function insertOneEdit(edit) {
   });
 }
 
+async function updateOneTestCaseToBug(bugId, testCaseId, update) {
+  const db = await connect();
+  return await db.collection('Bugs').updateOne(
+    { $and: [ { _id: { $eq: bugId } }, { bugTestCases: { $elemMatch: { testId: { $eq: testCaseId } }}} ]},
+    { $set: {"bugTestCases.$[element].testId": "update" }},
+    { arrayFilters: [{ element: { $eq: testCaseId } }]}
+  );
+}
+
+async function deleteOneTestCaseToBug(bugId, testCaseId) {
+  const db = await connect();
+  await db.collection('Bugs').updateOne(
+    { _id: { $eq: bugId } },
+    { $pull:  { bugTestCases: { testId: { $eq: testCaseId } } } },
+  ); 
+}
+
 ping();
 
 export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, readUserByEmail, 
@@ -351,4 +368,5 @@ export { newId, connect, ping, findAllUsers, findUserById, findUserByEmail, read
          updateOneBug, deleteOneBug, insertOneCommentToAllComments, findAllCommentsByBugId, 
          findAllCommentsByCommentIdAndBugId, insertOneCommentToBug,findAllTestCasesByBugId,
          findAllTestCasesByTestIdAndBugId, insertOneTestCaseToBug, newDbConn, newTextIndex,
-         newDateIndex, newDateComboIndex, sortBy, dbQuery, insertOneEdit, finalArr };
+         newDateIndex, newDateComboIndex, sortBy, dbQuery, insertOneEdit, deleteOneTestCaseToBug,
+         updateOneTestCaseToBug, finalArr };
