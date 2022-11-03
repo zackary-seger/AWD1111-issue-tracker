@@ -30,7 +30,7 @@ app.use('./middleware/auth', (req, res, next) => {
 app.use('/api/user', userRouter);
 app.use('/api/bug', bugRouter);
 app.use('/api/comment', commentRouter);
-app.use(express.static('/build'));
+app.use(express.static(path.join('D:/rankenProjects/Ranken Full MERN Stack (MongoExpressreactNode) (S4)/courseworkRepos/AWD1111-issue-tracker', 'build')));
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join('/', 'build', 'index.html'));
