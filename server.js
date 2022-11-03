@@ -35,10 +35,10 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.get('/', (req, res, next) => {
-  debugMain('Home Page');
-  res.type("text/plain").send('Home Page');
-});
+// app.get('/', (req, res, next) => {
+//   debugMain('Home Page');
+//   res.type("text/plain").send('Home Page');
+// });
 
 // register error handlers
 app.use((req, res, next) => {
