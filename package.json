@@ -38,5 +38,9 @@
     "eslint": "^8.23.1",
     "html-validate": "^7.5.0",
     "stylelint": "^14.12.1"
+  },
+  "engines": {
+    "node": "18.7.0",
+    "npm": "8.2.0"
   }
 }
