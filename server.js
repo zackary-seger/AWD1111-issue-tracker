@@ -29,7 +29,7 @@ app.use('./middleware/auth', (req, res, next) => {
 app.use('/api/user', userRouter);
 app.use('/api/bug', bugRouter);
 app.use('/api/comment', commentRouter);
-app.use('/', express.static('public', { index: 'index.html'}));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
