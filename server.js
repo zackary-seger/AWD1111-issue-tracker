@@ -8,11 +8,14 @@ import config from 'config';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import * as path from 'path';
+import url from 'url';
 import { bugRouter } from './routes/api/bug.js';
 import { userRouter } from './routes/api/user.js';
 import { commentRouter } from './routes/api/comments.js';
 import { auth } from './middleware/auth.js';
 
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create Application
 const app = express();
@@ -30,10 +33,10 @@ app.use('./middleware/auth', (req, res, next) => {
 app.use('/api/user', userRouter);
 app.use('/api/bug', bugRouter);
 app.use('/api/comment', commentRouter);
-app.use('/build', express.static(path.join('D:/rankenProjects/Ranken Full MERN Stack (MongoExpressreactNode) (S4)/courseworkRepos/AWD1111-issue-tracker')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join('/', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // app.get('/', (req, res, next) => {
