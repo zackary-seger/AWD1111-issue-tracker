@@ -28,30 +28,37 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Register Middleware Application Wide
+// Register Middleware Application Wide:
 
-// Im not exactly sure what lines 45-48 do, or why it is here. I wrote it here because our
+// Im not exactly sure what lines 49-52 do, or why it is here. I wrote it here because our
 // lab assignment required students to, 'register auth middleware application wide'. I am 
 // about to do a local test with this code commented out, and will note what happens in
 // the next comment below.
 
 // NOTE: What happened was that nothing happened because this project no longer has a quick
-// transition to do a local test in. Lines 70-73 are commented out, and contain a replacement 
-// for lines 65-69, which sets up the use of our ReactJS build. In the next note, I will 
-// describe what happens when I deploy to Heroku, and test using the Chrome browser. Inside my
-// browser I will simply connect to 'https://bug-tracker-zackary-seger.herokuapp.com/bugList',
+// transition to do a local test in. Lines 76-79 are commented out, and contain a replacement 
+// for lines 70-74, which sets up the serving and use of our ReactJS build. In the next note, I  
+// will describe what happens when I deploy to Heroku, and test using the Chrome browser. Inside
+// my browser I will simply connect to 'https://bug-tracker-zackary-seger.herokuapp.com/bugList',
 // where I will then be able to check the console using: right-click > inspect > console, and 
 // should, if all is still working properly, see a JSON response with data message stating that
 // I need to log in and try again, and status of 401.
 
-//
+// NOTE: Everything still worked properly. Originally, I believed that using this required the 
+// user to have the secret, but I see that it isn't working that way. In any case, if it were then
+// it would need to be deleted from the code because the user would never have the secret. I am 
+// going to leave it here this way for now because it doesn't seem to harm anything.
 
-// app.use('./middleware/auth', (req, res, next) => {
-//   debugMain('Auth Middleware Moving..');
-//   next();
-// } );
+app.use('./middleware/auth', (req, res, next) => {
+  debugMain('Auth Middleware Moving..');
+  next();
+} );
 
-// Register Routes
+// Register Routes:
+
+// When a user goes to a route, the router object from each corresponding router.js file is used to
+// define the actual function that is called for all of our created possible routes, where are created
+// here, and inside of each of the router.js files.
 
 app.use('/api/user', userRouter);
 app.use('/api/bug', bugRouter);
