@@ -240,6 +240,8 @@ async function newDateComboIndex(db, collection, value, name, secondIndexLoc) {
 
 let results = [];
 
+// sortBy() Function:
+
 async function sortBy(specifier) {
 
   try {
