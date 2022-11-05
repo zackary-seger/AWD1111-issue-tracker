@@ -53,7 +53,7 @@ const LoginUser = props => {
   
   return (
 
-    <Form onSubmit={ UserLogin }>
+    <Form onSubmit={ LoginUser }>
 
       <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
 
