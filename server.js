@@ -12,7 +12,6 @@ import url from 'url';
 import { bugRouter } from './routes/api/bug.js';
 import { userRouter } from './routes/api/user.js';
 import { commentRouter } from './routes/api/comments.js';
-import { auth } from './middleware/auth.js';
 
 // Here we create __dirname, which is an elusive way to create a saved string which
 // equals the correctly formatted path of the directory of the file the code is 
@@ -85,7 +84,7 @@ app.get('/*', (req, res) => {
 //   res.type("text/plain").send('Home Page');
 // });
 
-// Register Error Handlers
+// Register Error Handlers:
 
 app.use((req, res, next) => {
   debugError(`Sorry, we couldn't find ${req.originalUrl}`);
@@ -99,7 +98,8 @@ app.use((err, req, res, next) => {
      .json({ error: err.message});
 });
 
-// Listen for Requests
+// Listen for Requests:
+
 const hostname = config.get('http.host');
 const port = config.get('http.port');
 app.listen(port, () => {

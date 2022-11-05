@@ -22,8 +22,7 @@ const BugList = props => {
 
   bugArray = bugs;
 
-  return ( <div><h1>Donald J. Trump</h1></div> )
-
 }
 
+export { bugArray };
 export default BugList;
