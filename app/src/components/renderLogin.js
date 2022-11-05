@@ -13,14 +13,24 @@ import { useHistory } from "react-router-dom";
 let loginCreds;
 let x = 5;
 
-const LoginUser = (props, e) => { 
+const LoginUser = (props) => { 
 
   const [authToken, setAuthToken] = useState([]); 
   const history = (useHistory);
 
   useEffect(() => { 
-    loginUser(e) 
+    loginUser() 
   }); 
+
+  // Direct reference to autocomplete DOM node
+  // (e.g. <input ref="autocomplete" ... />
+
+  const node = React.findDOMNode(this.refs.autocomplete);
+
+  // Evergreen event listener || Event listener
+
+  const addEvent = node.addEventListener || node.attachEvent;
+  addEvent('keypress', this.handleKeyPress, false);
 
   function loginUser(e) { 
 
