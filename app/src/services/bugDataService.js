@@ -32,12 +32,15 @@ class BugDataService extends React.Component{
     let loginCreds = [{email: this.email}, {password: this.password}]
 
     // Create Schema Object Function: mongoose.model(modelName, schema)
-    const loginCredsObject = mongoose.model('loginCredsSchema', loginSchema);
+    const loginCredsObject = mongoose.model('loginCredsSchema', {
+      email: { type: String },
+      password: { type: String }
+  });
     
     loginCredsObject.insertMany(loginCreds).then( function() {
-      console.log("Data inserted")  // Success
+      console.log("Data inserted");  // Success
     }).catch( function(error) {
-      console.log(error)      // Failure
+      console.log(error);            // Failure
     });
 
     return axios({
