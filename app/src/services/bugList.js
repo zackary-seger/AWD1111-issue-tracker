@@ -7,10 +7,26 @@ class BugDataService {
   } 
 
   login(userEmail, userPass){ 
-    return axios.put(`api/user/login`, {
-        email: userEmail,
-        password: userPass
-    }) 
+
+    let bodyFormData = new FormData();
+    bodyFormData.append('email', 'userEmail');
+    bodyFormData.append('password', 'userPass');
+
+    return axios({
+      method: "post",
+      url: "api/user/login",
+      data: bodyFormData,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+    .then(function (response) {
+      //handle success
+      console.log(response);
+    })
+    .catch(function (response) {
+      //handle error
+      console.log(response);
+    });
+
   } 
 
   // get(id){ 
