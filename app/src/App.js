@@ -10,11 +10,12 @@ import Navbar from 'react-bootstrap/Navbar'
 import Switch from 'react-bootstrap/Switch'
 
 import { Route } from "react-router";
-import { bugArray } from './components/bugList.js';
 
 import bugList from "./components/bugList.js" 
 import bugById from "./components/bugById.js"
 import createBug from "./components/createBug.js" 
+import renderLogin from "./components/renderLogin.js"
+import login from "./components/login.js"
 
 function App() {
   return (
@@ -39,10 +40,10 @@ function App() {
 
       <Switch> 
 
-        <Route exact path = { ["/"] } > 
+        <Route exact path = { ["/"] } component = { renderLogin } > 
         </Route>
 
-        <Route exact path = { ["/bugList"] } component = { bugList }> 
+        <Route exact path = { ["/bugList"] } component = { bugList } > 
         </Route>
 
         <Route path = "/bug/:bugId/" component = { bugById } > 

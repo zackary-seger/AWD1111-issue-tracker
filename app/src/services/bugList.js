@@ -6,6 +6,15 @@ class BugDataService {
     return axios.get(`/api/bug/list`) 
   } 
 
+  login(userEmail, userPass){ 
+    return axios.get(`api/user/login`, {
+      params: {
+        email: userEmail,
+        password: userPass
+      }
+    }) 
+  } 
+
   // get(id){ 
   //   return axios.get(`http://localhost:5000/api/v1/movies/id/${id}`) 
   // }  

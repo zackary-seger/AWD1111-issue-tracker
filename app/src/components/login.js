@@ -2,27 +2,27 @@ import React, {useState, useEffect } from 'react'
 import BugDataService from "../services/bugList" 
 import { Link } from "react-router-dom" 
 
-let bugArray;
+let savedAuthToken;
 
-const BugList = props => { 
+const UserLogin = props => { 
 
-  const [bugs, setBugs] = useState([]) 
+  const [authToken, setAuthToken] = useState([]) 
 
   useEffect(() =>{ 
-    retrieveBugs() 
+    loginUser() 
   },[]) 
   
-  const retrieveBugs = () =>{ BugDataService.bugList().then( response => { 
+  const loginUser = () => { BugDataService.login().then( response => { 
     console.log(response.data) 
-    setBugs(response.data)
+    setAuthToken(response.data)
   }).catch( e =>{ 
     console.log(e) 
   }) 
   } 
 
-  bugArray = bugs;
+  savedAuthToken = authToken;
 
 }
 
-export { bugArray };
-export default BugList;
+export { savedAuthToken };
+export default UserLogin;
