@@ -3,20 +3,22 @@ import axios from "axios";
 
 class BugDataService extends React.Component{ 
 
-  constructor(props) {
+  constructor(props, email, pass) {
     super(props);
     this.login = this.login.bind(this);
+    this.email = email;
+    this.pass = pass;
   }
 
   bugList(){ 
     return axios.get(`/api/bug/list`) 
   } 
 
-  login(userEmail, userPass){ 
+  login(){ 
 
     let bodyFormData = new FormData();
-    bodyFormData.append('email', userEmail);
-    bodyFormData.append('password', userPass);
+    bodyFormData.append('email', this.email);
+    bodyFormData.append('password', this.pass);
 
     return axios({
       method: "put",
