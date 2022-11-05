@@ -1,4 +1,5 @@
-import React, {useState, useEffect } from 'react' 
+import React from 'react';
+import Debug from 'debug';
 
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button'; 
@@ -10,6 +11,9 @@ import BugDataService from "../services/bugList"
 
 import { useHistory } from "react-router-dom";
 
+const debugMain = Debug("react:renderLogin");
+const debugError = Debug("react:error");
+
 let loginCreds;
 let savedToken;
 let x = 5;
@@ -17,6 +21,7 @@ let x = 5;
 const history = (useHistory);
 
 class LoginForm extends React.Component {
+  
   constructor(props) {
     super(props);
     this.loginUser = this.loginUser.bind(this);
@@ -29,6 +34,8 @@ class LoginForm extends React.Component {
 
     const formData = new FormData();
     loginCreds = Object.fromEntries(formData.entries());
+    
+    debugMain(loginCreds);
 
     const bds = new BugDataService(); 
 
