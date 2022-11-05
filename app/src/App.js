@@ -14,7 +14,7 @@ import { Route } from "react-router";
 import bugList from "./components/bugList.js" 
 import bugById from "./components/bugById.js"
 import createBug from "./components/createBug.js" 
-import LoginUser from "./components/renderLogin.js"
+import LoginForm from "./components/renderLogin.js"
 
 function App() {
   return (
@@ -39,7 +39,7 @@ function App() {
 
       <Switch> 
 
-        <Route exact path = { ["/"] } component = { LoginUser } > 
+        <Route exact path = { ["/"] } component = { LoginForm } > 
         </Route>
 
         <Route exact path = { ["/bugList"] } component = { bugList } > 

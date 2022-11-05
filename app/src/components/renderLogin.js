@@ -16,7 +16,7 @@ let x = 5;
 
 const history = (useHistory);
 
-class NameForm extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,7 +55,7 @@ class NameForm extends React.Component {
 
     return (
 
-      <Form onSubmit={ LoginUser }>
+      <Form onSubmit={ this.loginUser }>
 
         <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
 
@@ -71,7 +71,8 @@ class NameForm extends React.Component {
 
           <Button 
             variant="primary" 
-            type="submit" 
+            type="submit"
+            ref={this.input} 
           >
             Login
           </Button> 
@@ -83,5 +84,5 @@ class NameForm extends React.Component {
     );
   }
 }
-
-// export default LoginUser;
+ 
+export default LoginForm;
