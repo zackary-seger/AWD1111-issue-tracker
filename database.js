@@ -350,8 +350,7 @@ async function updateOneTestCaseToBug(bugId, testCaseId, update) {
   const db = await connect();
   return await db.collection('Bugs').updateOne(
     { $and: [ { _id: { $eq: bugId } }, { bugTestCases: { $elemMatch: { testId: { $eq: testCaseId } }}} ]},
-    { $set: {"bugTestCases.$[element].testId": "update" }},
-    { arrayFilters: [{ element: { $eq: testCaseId } }]}
+    { $set: {"bugTestCases.$.testId": testCaseId }}
   );
 }
 
