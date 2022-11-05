@@ -46,7 +46,7 @@ class LoginForm extends React.Component {
 
   }
 
-  loginUser(event, props, ref) { 
+  async loginUser(event, props, ref) { 
 
     event.preventDefault();
 
