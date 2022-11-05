@@ -18,70 +18,74 @@ const LoginUser = (props) => {
   const [authToken, setAuthToken] = useState([]); 
   const history = (useHistory);
 
-  useEffect(() => { 
-    loginUser() 
-  }); 
-
-  function loginUser() { 
-
-    // e.preventDefault();
-
-    const formData = new FormData(e.target);
-    loginCreds = Object.fromEntries(formData.entries());
-
-    BugDataService.login(loginCreds.emailInput, loginCreds.passwordInput).then( response => { 
-
-      console.log(response.data); 
-      setAuthToken(response.data);
-
-    }).catch( e =>{ 
-      console.log(e); 
-    }) 
-
-    props.authToken = authToken;
-
-    if ( props.authToken !== null && props.authToken !== undefined ) {
-      history("/bugList", { replace: true });
-    } else {
-      console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
-      x--;
+  class NameForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.input = React.createRef();
     }
+
+    loginUser(event) { 
+
+      event.preventDefault();
+
+      const formData = new FormData();
+      loginCreds = Object.fromEntries(formData.entries());
+
+      BugDataService.login(loginCreds.emailInput, loginCreds.passwordInput).then( response => { 
+
+        console.log(response.data); 
+        setAuthToken(response.data);
+
+      }).catch( e =>{ 
+        console.log(e); 
+      }) 
+
+      props.authToken = authToken;
+
+      if ( props.authToken !== null && props.authToken !== undefined ) {
+        history("/bugList", { replace: true });
+      } else {
+        console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
+        x--;
+      }
+      
+    } 
+
+    // Render HTML:
     
-  } 
+    render() {
 
-  // Render HTML:
-  
-  return (
+      return (
 
-    <Form onSubmit={ LoginUser }>
+        <Form onSubmit={ LoginUser }>
 
-      <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
+          <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
 
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="name@example.com" controlId="emailInput"/>
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="name@example.com" controlId="emailInput"/>
 
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" controlId="passwordInput"/>
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" controlId="passwordInput"/>
 
-      </Form.Group>
+          </Form.Group>
 
-      <Form.Group className="mb-3" controlId="renderLogin.loginButton">
+          <Form.Group className="mb-3" controlId="renderLogin.loginButton">
 
-        <Button 
-          variant="primary" 
-          type="submit" 
-        >
-          Login
-        </Button> 
-        
-      </Form.Group>
+            <Button 
+              variant="primary" 
+              type="submit" 
+            >
+              Login
+            </Button> 
+            
+          </Form.Group>
 
-    </Form>
+        </Form>
 
-  );
+      );
+    }
+  }
 }
 
 export default LoginUser;
-
-
-
