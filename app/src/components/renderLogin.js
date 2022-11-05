@@ -25,7 +25,6 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.loginUser = this.loginUser.bind(this);
-    this.fileInput = React.createRef();
   }
 
   loginUser(event) { 
@@ -35,7 +34,7 @@ class LoginForm extends React.Component {
     const formData = new FormData();
     loginCreds = Object.fromEntries(formData.entries());
     
-    debugMain(loginCreds);
+    console.log(loginCreds);
 
     const bds = new BugDataService(); 
 
