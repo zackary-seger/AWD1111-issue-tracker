@@ -16,7 +16,7 @@ const debugError = Debug("react:error");
 
 let loginCreds;
 let savedToken;
-let x = 5;
+let x = 1;
 
 const history = (useHistory);
 
@@ -39,8 +39,11 @@ class LoginForm extends React.Component {
 
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
-
-    this.focusInput.current.focus();
+    if (x !== 1) {
+      this.focusInput.current.focus();
+    } else {
+      x++;
+    }
 
     // this.emailInput.current.focus();
     // this.passwordInput.current.focus();
