@@ -58,8 +58,8 @@ class LoginForm extends React.Component {
 
     // console.log('this.emailInput object: ' + JSON.stringify(this.emailInput));
 
-    formData.append('email', this.emailInput);
-    formData.append('password', this.passwordInput);
+    formData.append('email', this.emailInput.current.value);
+    formData.append('password', this.passwordInput.current.value);
 
     loginCreds = Object.fromEntries(formData.entries());
 
