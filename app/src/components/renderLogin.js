@@ -23,10 +23,14 @@ const history = (useHistory);
 class LoginForm extends React.Component {
   
   constructor(props) {
+    
     super(props);
+
     this.loginUser = this.loginUser.bind(this);
+
     this.emailInput = React.createRef();
     this.passwordInput = React.createRef();
+
   }
 
   loginUser(event) { 
@@ -35,8 +39,8 @@ class LoginForm extends React.Component {
 
     const formData = new FormData();
 
-    formData.append('email', this.emailInput);
-    formData.append('password', this.passwordInput);
+    formData.append('email', this.emailInput.current.value);
+    formData.append('password', this.passwordInput.current.value);
 
     loginCreds = Object.fromEntries(formData.entries());
     
