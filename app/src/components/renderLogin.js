@@ -13,13 +13,13 @@ import { useHistory } from "react-router-dom";
 let loginCreds;
 let x = 5;
 
-const LoginUser = props => { 
+const LoginUser = (props, e) => { 
 
   const [authToken, setAuthToken] = useState([]); 
   const history = (useHistory);
 
   useEffect(() => { 
-    loginUser() 
+    loginUser(e) 
   }); 
 
   function loginUser(e) { 
@@ -53,7 +53,7 @@ const LoginUser = props => {
   
   return (
 
-    <Form onSubmit={ LoginUser }>
+    <Form onSubmit={ this.LoginUser }>
 
       <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
 
