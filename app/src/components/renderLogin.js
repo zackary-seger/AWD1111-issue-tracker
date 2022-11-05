@@ -11,7 +11,7 @@ import BugDataService from "../services/bugList"
 import { useHistory } from "react-router-dom";
 
 let loginCreds;
-let x = 4;
+let x = 5;
 
 const LoginUser = props => { 
 
@@ -22,7 +22,7 @@ const LoginUser = props => {
     loginUser() 
   }); 
 
-  const loginUser = (e) => { 
+  function loginUser(e) { 
 
     e.preventDefault();
 
@@ -34,20 +34,20 @@ const LoginUser = props => {
       console.log(response.data); 
       setAuthToken(response.data);
 
-  }).catch( e =>{ 
-    console.log(e); 
-  }) 
+    }).catch( e =>{ 
+      console.log(e); 
+    }) 
 
-  props.authToken = authToken;
+    props.authToken = authToken;
 
-  if ( props.authToken !== null && props.authToken !== undefined ) {
-    history("/bugList", { replace: true });
-  } else {
-    console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
-    x--;
-  }
-  
-} 
+    if ( props.authToken !== null && props.authToken !== undefined ) {
+      history("/bugList", { replace: true });
+    } else {
+      console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
+      x--;
+    }
+    
+  } 
 
   // Render HTML:
   
