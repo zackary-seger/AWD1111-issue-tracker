@@ -25,6 +25,7 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.loginUser = this.loginUser.bind(this);
+    this.Button = React.createRef();
   }
 
   loginUser(event) { 
@@ -32,6 +33,10 @@ class LoginForm extends React.Component {
     event.preventDefault();
 
     const formData = new FormData();
+
+    formData.append('email', this.emailInput.current.value);
+    formData.append('password', this.passwordInput.current.value);
+
     loginCreds = Object.fromEntries(formData.entries());
     
     console.log(loginCreds);
@@ -68,10 +73,10 @@ class LoginForm extends React.Component {
         <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
 
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="name@example.com" controlId="emailInput"/>
+          <Form.Control type="email" placeholder="name@example.com" controlId="emailInput" inputRef={(ref) => {this.emailInput = ref}} />
 
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" controlId="passwordInput"/>
+          <Form.Control type="password" controlId="passwordInput" inputRef={(ref) => {this.passwordInput = ref}} />
 
         </Form.Group>
 
@@ -80,7 +85,6 @@ class LoginForm extends React.Component {
           <Button 
             variant="primary" 
             type="submit"
-            ref={this.fileInput} 
           >
             Login
           </Button> 
