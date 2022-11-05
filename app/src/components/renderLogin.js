@@ -81,6 +81,7 @@ class LoginForm extends React.Component {
       history("/bugList", { replace: true });
     } else {
       console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
+      x--;
     }
     
   } 
