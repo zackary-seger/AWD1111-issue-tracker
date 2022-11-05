@@ -39,10 +39,10 @@ function App() {
 
       <Switch> 
 
-        <Route exact path = "/"> 
+        <Route exact path = { ["/"] } > 
         </Route>
 
-        <Route exact path = "/bugList" component = { bugList }> 
+        <Route exact path = { ["/bugList"] } component = { bugList }> 
         </Route>
 
         <Route path = "/bug/:bugId/" component = { bugById } > 
