@@ -32,7 +32,7 @@ class BugDataService extends React.Component{
     let loginCreds = [{email: this.email}, {password: this.password}]
 
     // Create Schema Object Function: mongoose.model(modelName, schema)
-    const loginCredsObject = mongoose.model('loginCredsSchema', {
+    const loginCredsObject = mongoose.model('loginCredsObject', {
       email: { type: String },
       password: { type: String }
   });
