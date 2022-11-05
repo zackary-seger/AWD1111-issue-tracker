@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
     this.emailInput = React.createRef();
     this.passwordInput = React.createRef();
 
-    this.focusInput = this.focusEmailInput.bind(this);
+    this.focusInput = this.focusInput.bind(this);
 
   }
 
