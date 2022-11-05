@@ -8,10 +8,8 @@ class BugDataService {
 
   login(userEmail, userPass){ 
     return axios.put(`api/user/login`, {
-      params: {
         email: userEmail,
         password: userPass
-      }
     }) 
   } 
 
