@@ -27,10 +27,12 @@ class BugDataService extends React.Component{
     let bodyFormData = new FormData();
     bodyFormData.append('email', this.email);
     bodyFormData.append('password', this.pass);
-    // let loginCreds = Object.fromEntries(bodyFormData.entries());
+    let loginCreds = Object.fromEntries(bodyFormData.entries());
 
     // Create Schema Object Function: mongoose.model(modelName, schema)
-    const loginCreds = mongoose.model('loginCreds', loginSchema);
+    const loginCredModel = mongoose.model('loginCredModel', loginSchema);
+    const credsObjModel = new loginCredModel();
+    credsObjModel.insertMany(loginCreds, function(error, docs) {});
 
     return axios({
       method: "put",
