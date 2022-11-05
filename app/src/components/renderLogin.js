@@ -63,7 +63,7 @@ class LoginForm extends React.Component {
 
     loginCreds = Object.fromEntries(formData.entries());
     
-    console.log('email credentials: ' + loginCreds.emailInput);
+    console.log('email credentials: ' + loginCreds[0]);
 
     const bds = new BugDataService(); 
 
