@@ -67,7 +67,7 @@ class LoginForm extends React.Component {
 
     const bds = new BugDataService(); 
 
-    bds.login(loginCreds.emailInput.current.value, loginCreds.passwordInput.current.value).then( response => { 
+    bds.login(this.emailInput.current.value, this.passwordInput.current.value).then( response => { 
 
       console.log(response.data); 
       savedToken = response.data;
