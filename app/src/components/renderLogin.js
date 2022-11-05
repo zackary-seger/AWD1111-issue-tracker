@@ -99,15 +99,15 @@ class LoginForm extends React.Component {
 
         <h1 className="mt-3">User Login</h1>
 
-        <Form className="mt-3" onSubmit={ this.loginUser }>
+        <Form className="mt-3 me-3" onSubmit={ this.loginUser }>
 
-          <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
+          <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
 
             <Form.Label>Email address</Form.Label>
-            <Form.Control className="pe-3" type="email" placeholder="name@example.com" controlId="emailInput" ref={this.emailInput} />
+            <Form.Control className="" type="email" placeholder="name@example.com" controlId="emailInput" ref={this.emailInput} />
 
             <Form.Label>Password</Form.Label>
-            <Form.Control className="pe-3" type="password" controlId="passwordInput" ref={this.passwordInput} />
+            <Form.Control className="" type="password" controlId="passwordInput" ref={this.passwordInput} />
 
           </Form.Group>
 
