@@ -346,8 +346,6 @@ async function insertOneEdit(edit) {
   });
 }
 
-// 11/4 updateOneTestCaseToBug test-05
-
 async function updateOneTestCaseToBug(bugId, testCaseId, update) {
   const db = await connect();
   return await db.collection('Bugs').updateOne(
