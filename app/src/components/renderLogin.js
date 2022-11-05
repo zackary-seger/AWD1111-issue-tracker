@@ -56,7 +56,7 @@ class LoginForm extends React.Component {
 
     const formData = new FormData();
 
-    console.log('this.emailInput object: ' + JSON.stringify(this.emailInput));
+    // console.log('this.emailInput object: ' + JSON.stringify(this.emailInput));
 
     formData.append('email', this.emailInput);
     formData.append('password', this.passwordInput);
