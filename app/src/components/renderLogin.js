@@ -65,7 +65,7 @@ class LoginForm extends React.Component {
 
     // console.log('credentials object: ' + JSON.stringify(loginCreds));
 
-    const bds = new BugDataService(this.emailInput.current.value, this.passwordInput.current.value); 
+    let bds = new BugDataService(this.emailInput.current.value, this.passwordInput.current.value); 
 
     bds.login().then( response => { 
 
