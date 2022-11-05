@@ -30,10 +30,10 @@ class LoginForm extends React.Component {
 
     this.emailInput = React.createRef();
     this.passwordInput = React.createRef();
-
   }
 
-  loginUser(event) { 
+  loginUser(event, props, ref) { 
+
 
     event.preventDefault();
 
