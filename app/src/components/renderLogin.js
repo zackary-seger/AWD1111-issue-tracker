@@ -83,10 +83,10 @@ class LoginForm extends React.Component {
           <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
 
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="name@example.com" controlId="emailInput" inputRef={(ref) => {this.emailInput.current = ref}} />
+            <Form.Control className="me-3" type="email" placeholder="name@example.com" controlId="emailInput" inputRef={(ref) => {this.emailInput = ref}} />
 
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" controlId="passwordInput" inputRef={(ref) => {this.passwordInput.current = ref}} />
+            <Form.Control className="me-3" type="password" controlId="passwordInput" inputRef={(ref) => {this.passwordInput = ref}} />
 
           </Form.Group>
 
