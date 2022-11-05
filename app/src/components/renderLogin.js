@@ -25,7 +25,8 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.loginUser = this.loginUser.bind(this);
-    this.Button = React.createRef();
+    this.emailInput = React.createRef();
+    this.passwordInput = React.createRef();
   }
 
   loginUser(event) { 
