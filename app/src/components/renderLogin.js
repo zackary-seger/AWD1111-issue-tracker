@@ -1,4 +1,5 @@
 import React from 'react';
+import Joi, { isSchema } from "joi"
 
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button'; 
@@ -6,8 +7,7 @@ import Button from 'react-bootstrap/Button';
 // import Row from 'react-bootstrap/Row'; 
 // import Container from 'react-bootstrap/Container';
 
-import BugDataService from "../services/bugDataService" 
-
+import BugDataService from "../services/bugDataService"
 import { useHistory } from "react-router-dom";
 
 let loginCreds;
@@ -15,6 +15,11 @@ let savedToken;
 let x = 1;
 
 const history = (useHistory);
+
+const loginSchema = Joi.object().keys({
+  username: Joi.string().required(),
+  password: Joi.string().min(8).required()
+});
 
 class LoginForm extends React.Component {
   
@@ -59,17 +64,18 @@ class LoginForm extends React.Component {
 
     // loginCreds = Object.fromEntries(formData.entries());
 
-    // console.log('credentials object: ' + JSON.stringify(loginCreds));
-
+    // console.log('credentials object: ' + JSON.stringify(loginCreds));    
 
     let emailTxt = this.emailInput.current.value;
     let passTxt = this.passwordInput.current.value;
     
+    let joiObj = loginSchema.validate({email: emailTxt, password: passTxt});
+
     console.log('\n');
-    console.log('emailTxt: ' + emailTxt + '  |  passTxt: ' + passTxt);
+    console.log('emailTxt: ' + joiObj.value['email'] + '  |  passTxt: ' + joiObj.value['password']);
     console.log('\n');
 
-    let bds = new BugDataService(emailTxt, passTxt); 
+    let bds = new BugDataService(joiObj.value['email'], joiObj.value['password']); 
 
     bds.login().then( response => { 
 
@@ -94,6 +100,11 @@ class LoginForm extends React.Component {
   
   render() {
 
+    const {
+      user: { username, password },
+      errors, validateHandler 
+    } = this.props;
+
     return (
       <div>
 
@@ -116,7 +127,7 @@ class LoginForm extends React.Component {
             <Button 
               variant="primary" 
               type="submit"
-              onClick={this.focusInput}
+              onClick={validateHandler(this.focusInput)}
             >
               Login
             </Button> 
@@ -129,5 +140,17 @@ class LoginForm extends React.Component {
     );
   }
 }
+
+LoginForm.defaultProps = {
+  username: '',
+  password: ''
+};
+ 
+var validationOptions = {
+  joiSchema: loginSchema,
+  only: 'user'
+};
+ 
+validate(MyComponent, validationOptions)
  
 export default LoginForm;
