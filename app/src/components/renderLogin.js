@@ -22,19 +22,9 @@ const LoginUser = (props) => {
     loginUser() 
   }); 
 
-  // Direct reference to autocomplete DOM node
-  // (e.g. <input ref="autocomplete" ... />
+  function loginUser() { 
 
-  const node = React.findDOMNode(this.refs.autocomplete);
-
-  // Evergreen event listener || Event listener
-
-  const addEvent = node.addEventListener || node.attachEvent;
-  addEvent('keypress', this.handleKeyPress, false);
-
-  function loginUser(e) { 
-
-    e.preventDefault();
+    // e.preventDefault();
 
     const formData = new FormData(e.target);
     loginCreds = Object.fromEntries(formData.entries());
