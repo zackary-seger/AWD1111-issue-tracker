@@ -4,10 +4,10 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
-const loginSchema = new Schema({
-  email:  String,   // Here, String is shorthand for {type: String}
-  password: String
-});
+// const loginSchema = new Schema({
+//   email:  String,   // Here, String is shorthand for {type: String}
+//   password: String
+// });
 
 class BugDataService extends React.Component{ 
 
