@@ -39,8 +39,8 @@ class LoginForm extends React.Component {
 
     const formData = new FormData();
 
-    formData.append('email', this.emailInput.current.value);
-    formData.append('password', this.passwordInput.current.value);
+    formData.append('email', this.emailInput.current[0]);
+    formData.append('password', this.passwordInput.current[0]);
 
     loginCreds = Object.fromEntries(formData.entries());
     
@@ -72,32 +72,36 @@ class LoginForm extends React.Component {
   render() {
 
     return (
+      <div>
 
-      <Form onSubmit={ this.loginUser }>
+        <h1 className="mt-3">User Login</h1>
 
-        <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
+        <Form className="mt-3" onSubmit={ this.loginUser }>
 
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="name@example.com" controlId="emailInput" inputRef={(ref) => {this.emailInput.current = ref}} />
+          <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
 
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" controlId="passwordInput" inputRef={(ref) => {this.passwordInput.current = ref}} />
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="name@example.com" controlId="emailInput" inputRef={(ref) => {this.emailInput.current = ref}} />
 
-        </Form.Group>
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" controlId="passwordInput" inputRef={(ref) => {this.passwordInput.current = ref}} />
 
-        <Form.Group className="mb-3" controlId="renderLogin.loginButton">
+          </Form.Group>
 
-          <Button 
-            variant="primary" 
-            type="submit"
-          >
-            Login
-          </Button> 
-          
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="renderLogin.loginButton">
 
-      </Form>
+            <Button 
+              variant="primary" 
+              type="submit"
+            >
+              Login
+            </Button> 
+            
+          </Form.Group>
 
+        </Form>
+
+      </div>  
     );
   }
 }
