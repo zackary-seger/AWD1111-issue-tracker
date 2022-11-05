@@ -346,11 +346,13 @@ async function insertOneEdit(edit) {
   });
 }
 
+// 11/4 updateOneTestCaseToBug test-02
+
 async function updateOneTestCaseToBug(bugId, testCaseId, update) {
   const db = await connect();
   return await db.collection('Bugs').updateOne(
     { $and: [ { _id: { $eq: bugId } }, { bugTestCases: { $elemMatch: { testId: { $eq: testCaseId } }}} ]},
-    { $set: {"bugTestCases.$.testId": testCaseId }}
+    { $set: {"bugTestCases.$.testId": "testCaseId" }}
   );
 }
 
