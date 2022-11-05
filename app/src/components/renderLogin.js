@@ -100,10 +100,10 @@ class LoginForm extends React.Component {
           <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
 
             <Form.Label>Email address</Form.Label>
-            <Form.Control className="me-3" type="email" placeholder="name@example.com" controlId="emailInput" inputRef={this.emailInput} />
+            <Form.Control className="me-3" type="email" placeholder="name@example.com" controlId="emailInput" ref={this.emailInput} />
 
             <Form.Label>Password</Form.Label>
-            <Form.Control className="me-3" type="password" controlId="passwordInput" inputRef={this.passwordInput} />
+            <Form.Control className="me-3" type="password" controlId="passwordInput" ref={this.passwordInput} />
 
           </Form.Group>
 
