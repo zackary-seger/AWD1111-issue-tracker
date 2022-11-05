@@ -30,10 +30,22 @@ class LoginForm extends React.Component {
 
     this.emailInput = React.createRef();
     this.passwordInput = React.createRef();
+
+    this.focusInput = this.focusEmailInput.bind(this);
+
+  }
+
+  focusInput() {
+
+    // Explicitly focus the text input using the raw DOM API
+    // Note: we're accessing "current" to get the DOM node
+
+    this.emailInput.current.focus();
+    this.passwordInput.current.focus();
+
   }
 
   loginUser(event, props, ref) { 
-
 
     event.preventDefault();
 
@@ -41,8 +53,8 @@ class LoginForm extends React.Component {
 
     console.log(this.emailInput.current);
 
-    formData.append('email', this.emailInput.current[0]);
-    formData.append('password', this.passwordInput.current[0]);
+    formData.append('email', this.emailInput);
+    formData.append('password', this.passwordInput);
 
     loginCreds = Object.fromEntries(formData.entries());
     
@@ -95,6 +107,7 @@ class LoginForm extends React.Component {
             <Button 
               variant="primary" 
               type="submit"
+              onClick={this.focusInput}
             >
               Login
             </Button> 
