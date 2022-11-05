@@ -84,4 +84,4 @@ class NameForm extends React.Component {
   }
 }
 
-export default LoginUser;
+// export default LoginUser;
