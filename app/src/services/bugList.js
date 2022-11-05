@@ -19,11 +19,12 @@ class BugDataService extends React.Component{
     let bodyFormData = new FormData();
     bodyFormData.append('email', this.email);
     bodyFormData.append('password', this.pass);
+    let loginCreds = Object.fromEntries(bodyFormData.entries());
 
     return axios({
       method: "put",
       url: "api/user/login",
-      data: bodyFormData,
+      data: loginCreds,
       headers: { "Content-Type": "multipart/form-data" },
     })
     .then(function (response) {

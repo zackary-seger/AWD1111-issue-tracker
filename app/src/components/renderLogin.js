@@ -1,5 +1,5 @@
 import React from 'react';
-import Debug from 'debug';
+import mongoose from 'mongoose';
 
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button'; 
@@ -11,8 +11,11 @@ import BugDataService from "../services/bugList"
 
 import { useHistory } from "react-router-dom";
 
-const debugMain = Debug("react:renderLogin");
-const debugError = Debug("react:error");
+const { Schema } = mongoose;
+const loginSchema = new Schema({
+  email:  String,   // Here, String is shorthand for {type: String}
+  password: String
+});
 
 let loginCreds;
 let savedToken;
@@ -65,8 +68,10 @@ class LoginForm extends React.Component {
 
     // console.log('credentials object: ' + JSON.stringify(loginCreds));
 
-    let emailTxt = { email: this.emailInput.current.value };
-    let passTxt = { password: this.passwordInput.current.value };
+    // const email = mongoose.model('Blog', blogSchema);
+
+    let emailTxt = this.emailInput.current.value;
+    let passTxt = this.passwordInput.current.value;
     
     console.log('\n');
     console.log('emailTxt: ' + emailTxt + '  |  passTxt: ' + passTxt);
