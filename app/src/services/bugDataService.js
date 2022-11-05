@@ -22,7 +22,7 @@ class BugDataService extends React.Component{
     return axios.get(`/api/bug/list`) 
   } 
 
-  login(){ 
+  async login(){ 
 
     // let bodyFormData = new FormData();
     // bodyFormData.append('email', this.email);
@@ -32,12 +32,9 @@ class BugDataService extends React.Component{
     let loginCreds = [{email: this.email}, {password: this.password}]
 
     // Create Schema Object Function: mongoose.model(modelName, schema)
-    const loginCredsObject = mongoose.model('loginCredsObject', {
-      email: { type: String },
-      password: { type: String }
-  });
+    const LoginCredsObject = mongoose.model('LoginCredsObject');
     
-    loginCredsObject.insertMany(loginCreds).then( function() {
+    LoginCredsObject.insertMany(loginCreds).then( function() {
       console.log("Data inserted");  // Success
     }).catch( function(error) {
       console.log(error);            // Failure
