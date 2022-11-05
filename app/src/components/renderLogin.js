@@ -101,7 +101,7 @@ class LoginForm extends React.Component {
   
   render() {
 
-    const validator = { CreateValidator }   
+    const validator = CreateValidator;   
 
     return (
       <div>
@@ -113,10 +113,10 @@ class LoginForm extends React.Component {
           <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
 
             <Form.Label>Email address</Form.Label>
-            <Form.Control onChange={validator.updateEmail()} className="" type="email" placeholder="name@example.com" controlId="emailInput" ref={this.emailInput} />
+            <Form.Control onChange={ validator.updateEmail } className="" type="email" placeholder="name@example.com" controlId="emailInput" ref={ this.emailInput } />
 
             <Form.Label>Password</Form.Label>
-            <Form.Control onChange={validator.updatePassword()} className="" type="password" controlId="passwordInput" ref={this.passwordInput} />
+            <Form.Control onChange={ validator.updatePassword } className="" type="password" controlId="passwordInput" ref={ this.passwordInput } />
 
           </Form.Group>
 
