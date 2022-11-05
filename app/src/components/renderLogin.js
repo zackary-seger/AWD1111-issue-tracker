@@ -1,11 +1,12 @@
 import React from 'react';
-import Joi, { isSchema } from "joi"
+import Joi from "joi"
 
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button'; 
 // import Col from 'react-bootstrap/Col'; 
 // import Row from 'react-bootstrap/Row'; 
 // import Container from 'react-bootstrap/Container';
+import CreateValidator from './validate.js'
 
 import BugDataService from "../services/bugDataService"
 import { useHistory } from "react-router-dom";
@@ -100,10 +101,7 @@ class LoginForm extends React.Component {
   
   render() {
 
-    const {
-      user: { username, password },
-      errors, validateHandler 
-    } = this.props;
+    const validator = { CreateValidator }   
 
     return (
       <div>
@@ -115,10 +113,10 @@ class LoginForm extends React.Component {
           <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
 
             <Form.Label>Email address</Form.Label>
-            <Form.Control className="" type="email" placeholder="name@example.com" controlId="emailInput" ref={this.emailInput} />
+            <Form.Control onChange={validator.updateEmail()} className="" type="email" placeholder="name@example.com" controlId="emailInput" ref={this.emailInput} />
 
             <Form.Label>Password</Form.Label>
-            <Form.Control className="" type="password" controlId="passwordInput" ref={this.passwordInput} />
+            <Form.Control onChange={validator.updatePassword()} className="" type="password" controlId="passwordInput" ref={this.passwordInput} />
 
           </Form.Group>
 
@@ -127,7 +125,7 @@ class LoginForm extends React.Component {
             <Button 
               variant="primary" 
               type="submit"
-              onClick={validateHandler(this.focusInput)}
+              onClick={this.focusInput}
             >
               Login
             </Button> 
@@ -140,17 +138,5 @@ class LoginForm extends React.Component {
     );
   }
 }
-
-LoginForm.defaultProps = {
-  username: '',
-  password: ''
-};
- 
-var validationOptions = {
-  joiSchema: loginSchema,
-  only: 'user'
-};
- 
-validate(MyComponent, validationOptions)
  
 export default LoginForm;
