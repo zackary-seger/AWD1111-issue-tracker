@@ -7,7 +7,7 @@ class BugDataService {
   } 
 
   login(userEmail, userPass){ 
-    return axios.get(`api/user/login`, {
+    return axios.put(`api/user/login`, {
       params: {
         email: userEmail,
         password: userPass
