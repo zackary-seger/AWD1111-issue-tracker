@@ -54,12 +54,12 @@ class LoginForm extends React.Component {
 
     event.preventDefault();
 
-    const formData = new FormData();
+    // const formData = new FormData();
 
     // console.log('this.emailInput object: ' + JSON.stringify(this.emailInput));
 
-    formData.append('email', this.emailInput.current.value);
-    formData.append('password', this.passwordInput.current.value);
+    // formData.append('email', this.emailInput.current.value);
+    // formData.append('password', this.passwordInput.current.value);
 
     loginCreds = Object.fromEntries(formData.entries());
 
@@ -67,7 +67,7 @@ class LoginForm extends React.Component {
 
     const bds = new BugDataService(); 
 
-    bds.login(loginCreds.emailInput, loginCreds.passwordInput).then( response => { 
+    bds.login(loginCreds.emailInput.current.value, loginCreds.passwordInput.current.value).then( response => { 
 
       console.log(response.data); 
       savedToken = response.data;
