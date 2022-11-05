@@ -19,8 +19,8 @@ const history = (useHistory);
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.input = React.createRef();
+    this.loginUser = this.loginUser.bind(this);
+    this.fileInput = React.createRef();
   }
 
   loginUser(event) { 
@@ -72,7 +72,7 @@ class LoginForm extends React.Component {
           <Button 
             variant="primary" 
             type="submit"
-            ref={this.input} 
+            ref={this.fileInput} 
           >
             Login
           </Button> 
