@@ -53,7 +53,7 @@ const LoginUser = (props, e) => {
   
   return (
 
-    <Form onSubmit={ this.LoginUser }>
+    <Form onSubmit={ LoginUser }>
 
       <Form.Group className="mb-3" controlId="renderLogin.userCredentials">
 
