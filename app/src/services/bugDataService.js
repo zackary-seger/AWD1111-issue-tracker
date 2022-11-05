@@ -1,13 +1,11 @@
 import React from 'react' 
 import axios from "axios"; 
-import mongoose from 'mongoose';
+import validate from 'react-joi-validation';
 
-const { Schema } = mongoose;
-
-// const loginSchema = new Schema({
-//   email:  String,   // Here, String is shorthand for {type: String}
-//   password: String
-// });
+const loginSchema = Joi.object().keys({
+  username: Joi.string().required(),
+  password: Joi.string().min(8).required()
+});
 
 class BugDataService extends React.Component{ 
 
@@ -24,21 +22,7 @@ class BugDataService extends React.Component{
 
   async login(){ 
 
-    // let bodyFormData = new FormData();
-    // bodyFormData.append('email', this.email);
-    // bodyFormData.append('password', this.pass);
-    // let loginCreds = Object.fromEntries(bodyFormData.entries());
-
     let loginCreds = [{email: this.email}, {password: this.password}]
-
-    // Create Schema Object Function: mongoose.model(modelName, schema)
-    const LoginCredsObject = mongoose.model('LoginCredsObject');
-    
-    LoginCredsObject.insertMany(loginCreds, (error) => {if (error) {return error}}).then( function() {
-      console.log("Data inserted");  // Success
-    }).catch( function(error) {
-      console.log(error);            // Failure
-    });
 
     return axios({
       method: "put",
