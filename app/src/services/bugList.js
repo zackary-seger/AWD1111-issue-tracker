@@ -55,5 +55,5 @@ class BugDataService {
   
 } 
     
-    export default new BugDataService()
+export default BugDataService;
 
