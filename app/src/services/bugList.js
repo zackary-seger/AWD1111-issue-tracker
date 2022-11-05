@@ -9,11 +9,11 @@ class BugDataService {
   login(userEmail, userPass){ 
 
     let bodyFormData = new FormData();
-    bodyFormData.append('email', 'userEmail');
-    bodyFormData.append('password', 'userPass');
+    bodyFormData.append('email', userEmail);
+    bodyFormData.append('password', userPass);
 
     return axios({
-      method: "post",
+      method: "put",
       url: "api/user/login",
       data: bodyFormData,
       headers: { "Content-Type": "multipart/form-data" },
