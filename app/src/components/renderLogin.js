@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
     const formData = new FormData();
     loginCreds = Object.fromEntries(formData.entries());
 
-    BugDataService.login(loginCreds.emailInput, loginCreds.passwordInput).then( response => { 
+    new BugDataService.login(loginCreds.emailInput, loginCreds.passwordInput).then( response => { 
 
       console.log(response.data); 
       savedToken = response.data;

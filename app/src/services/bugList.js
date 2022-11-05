@@ -1,6 +1,13 @@
+import React from 'react' 
 import axios from "axios"; 
 
-class BugDataService { 
+class BugDataService extends React.Component{ 
+
+  constructor(props) {
+    super(props);
+    this.login = this.login.bind(this);
+    this.fileInput = React.createRef();
+  }
 
   bugList(){ 
     return axios.get(`/api/bug/list`) 
@@ -55,5 +62,5 @@ class BugDataService {
   
 } 
     
-export default BugDataService;
+export default BugDataService
 
