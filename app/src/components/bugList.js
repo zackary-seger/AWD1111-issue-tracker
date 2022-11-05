@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react' 
-import BugDataService from "../services/bugList" 
+import BugDataService from "../services/bugDataService" 
 import { Link } from "react-router-dom" 
 
 let bugArray;

@@ -1,5 +1,13 @@
 import React from 'react' 
 import axios from "axios"; 
+import mongoose from 'mongoose';
+
+const { Schema } = mongoose;
+
+const loginSchema = new Schema({
+  email:  String,   // Here, String is shorthand for {type: String}
+  password: String
+});
 
 class BugDataService extends React.Component{ 
 
@@ -19,7 +27,10 @@ class BugDataService extends React.Component{
     let bodyFormData = new FormData();
     bodyFormData.append('email', this.email);
     bodyFormData.append('password', this.pass);
-    let loginCreds = Object.fromEntries(bodyFormData.entries());
+    // let loginCreds = Object.fromEntries(bodyFormData.entries());
+
+    // Create Schema Object Function: mongoose.model(modelName, schema)
+    const loginCreds = mongoose.model('loginCreds', loginSchema);
 
     return axios({
       method: "put",

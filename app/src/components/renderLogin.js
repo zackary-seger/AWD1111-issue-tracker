@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 // import Row from 'react-bootstrap/Row'; 
 // import Container from 'react-bootstrap/Container';
 
-import BugDataService from "../services/bugList" 
+import BugDataService from "../services/bugDataService" 
 
 import { useHistory } from "react-router-dom";
 
