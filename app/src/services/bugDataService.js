@@ -18,12 +18,10 @@ class BugDataService extends React.Component{
 
   async login(){ 
 
-    let loginCreds = [this.email, this.password]
-
     return axios({
       method: "put",
       url: "api/user/login",
-      data: loginCreds,
+      data: { email: this.email, password: this.pass},
       headers: { "Content-Type": "multipart/form-data" },
     }).catch(function (error) {
       if (error.response) {
