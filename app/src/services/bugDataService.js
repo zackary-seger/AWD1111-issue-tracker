@@ -1,12 +1,7 @@
 import React from 'react' 
 import axios from "axios"; 
-import Joi from 'joi';
 import validate from 'react-joi-validation';
 
-const loginSchema = Joi.object().keys({
-  username: Joi.string().required(),
-  password: Joi.string().min(8).required()
-});
 
 class BugDataService extends React.Component{ 
 
@@ -23,7 +18,7 @@ class BugDataService extends React.Component{
 
   async login(){ 
 
-    let loginCreds = [{email: this.email}, {password: this.password}]
+    let loginCreds = [this.email, this.password]
 
     return axios({
       method: "put",
