@@ -115,7 +115,7 @@ class LoginForm extends React.Component {
             <Form.Label>Email address</Form.Label>
             <Form.Control onChange={ validator.updateEmail } className="" type="email" placeholder="name@example.com" controlId="emailInput" ref={ this.emailInput } />
 
-            <Form.Label>Password</Form.Label>
+            <Form.Label className="mt-2">Password</Form.Label>
             <Form.Control onChange={ validator.updatePassword } className="" type="password" controlId="passwordInput" ref={ this.passwordInput } />
 
           </Form.Group>
