@@ -12,13 +12,13 @@ class BugDataService extends React.Component{
     this.pass = pass;
   }
 
-  bugList(){ 
-    return axios.get(`/api/bug/list`) 
+  async bugList(){ 
+    return await axios.get(`/api/bug/list`) 
   } 
 
   async login(){ 
 
-    return axios({
+    return await axios({
       method: "put",
       url: "api/user/login",
       data: { email: this.email, password: this.pass},
