@@ -21,9 +21,12 @@ function App() {
   <>
 
       <Navbar bg="primary" variant="dark">
+        
         <Container>
+
           <Navbar.Brand>Bug Tracker</Navbar.Brand>
-          <Nav className="mr-auto">
+
+          <Nav className="">
             <Nav.Link href="/bugList">
               Bug List
             </Nav.Link>
@@ -34,7 +37,9 @@ function App() {
               Create Bug
             </Nav.Link>
           </Nav>
+
         </Container>
+
       </Navbar>
 
       <Switch> 
