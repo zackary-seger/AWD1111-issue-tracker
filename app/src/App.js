@@ -26,7 +26,7 @@ function App() {
           alt=""
           width="30"
           height="30"
-          className="d-inline-block align-top"
+          className="d-inline-block align-top pe-2"
         />
         Bug Tracker v0.1
         </Navbar.Brand>
