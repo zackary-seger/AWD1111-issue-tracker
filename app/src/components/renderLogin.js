@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 // import Container from 'react-bootstrap/Container';
 import CreateValidator from './validate.js'
 
+import RenderNavbar from './navbar'
 import BugDataService from "../services/bugDataService"
 import { useHistory } from "react-router-dom";
 
@@ -94,8 +95,11 @@ class LoginForm extends React.Component {
       console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
       x--;
     }
+
+    RenderNavbar();
     
   } 
+  
 
   // Render HTML:
   
