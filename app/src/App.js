@@ -35,7 +35,7 @@ function App() {
         <Navbar.Collapse id="responsive-navbar-nav">
 
           <Nav className="mr-auto"></Nav>
-          <Nav className="position-absolute end-0 pe-4 responsive-navbar-nav">
+          <Nav className="float-right">
 
             <Nav.Link href="/">Login</Nav.Link>
             <Nav.Link href="/user/list">List All Users</Nav.Link>
