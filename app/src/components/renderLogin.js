@@ -95,8 +95,6 @@ class LoginForm extends React.Component {
       console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
       x--;
     }
-
-    RenderNavbar();
     
   } 
   
@@ -105,7 +103,8 @@ class LoginForm extends React.Component {
   
   render() {
 
-    const validator = CreateValidator;   
+    const validator = CreateValidator; 
+    RenderNavbar();  
 
     return (
       <div>
