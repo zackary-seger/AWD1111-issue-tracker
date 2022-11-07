@@ -26,7 +26,7 @@ function App() {
           alt=""
           width="30"
           height="30"
-          className="d-inline-block align-top"
+          className="d-inline-block align-top pe-2"
         />
         Bug Tracker v0.1
         </Navbar.Brand>
@@ -35,7 +35,7 @@ function App() {
         <Navbar.Collapse id="responsive-navbar-nav">
 
           <Nav className="mr-auto"></Nav>
-          <Nav className="position-absolute end-0 pe-4">
+          <Nav className="position-absolute end-0 pe-4 responsive-navbar-nav">
 
             <Nav.Link href="/">Login</Nav.Link>
             <Nav.Link href="/user/list">List All Users</Nav.Link>
