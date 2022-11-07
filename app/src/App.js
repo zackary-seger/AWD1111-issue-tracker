@@ -31,8 +31,8 @@ function App() {
         Bug Tracker v0.1
         </Navbar.Brand>
 
-        <Navbar.Toggle className = "position-absolute end-0 pe-4" aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse className="ml-auto" id="responsive-navbar-nav">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse className="position-absolute end-0 pe-4 ml-auto" id="responsive-navbar-nav">
 
           <Nav className="mr-auto"></Nav>
           <Nav>
@@ -42,7 +42,7 @@ function App() {
             <Nav.Link href="/bug/list">List All Bugs</Nav.Link>
             <Nav.Link href="/bug/:bugId">Find Bug By bugID</Nav.Link>
 
-            <NavDropdown title="Update Bug " id="collapsible-nav-dropdown">
+            <NavDropdown title="Update Bug" id="collapsible-nav-dropdown">
 
               <NavDropdown.Item href="#action/3.1">Update Existing Bug</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Classify Bug</NavDropdown.Item>
