@@ -32,9 +32,9 @@ function App() {
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse className="ml-auto" id="responsive-navbar-nav">
 
-          <Nav className="ml-auto"></Nav>
+          <Nav className="mr-auto"></Nav>
           <Nav>
 
             <Nav.Link href="/">Login</Nav.Link>
