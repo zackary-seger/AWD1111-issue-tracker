@@ -5,6 +5,7 @@ import { ReactComponent as Logo } from "../logo.svg";
 
 
 function RenderNavbar() {
+
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ps-4 pe-4">
@@ -51,6 +52,7 @@ function RenderNavbar() {
         </Navbar>
     </div>
   );
+
 }
 
 export default RenderNavbar;
