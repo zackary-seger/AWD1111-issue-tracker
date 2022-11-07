@@ -24,9 +24,9 @@ function App() {
         
         <Container>
 
-          <Navbar.Brand className="align-left">Bug Tracker</Navbar.Brand>
+          <Navbar.Brand className="">Bug Tracker</Navbar.Brand>
 
-          <Nav className="align-right">
+          <Nav className="ml-auto">
 
             <Nav.Link href="/bugList">Bug List</Nav.Link>
             <Nav.Link href="/bug/:bugId">Bug By Id</Nav.Link>
