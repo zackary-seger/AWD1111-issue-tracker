@@ -20,19 +20,19 @@ function App() {
   return (
   <>
 
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ms-3 me-3">
       <Navbar.Brand href="#home">
         <Logo
           alt=""
           width="30"
           height="30"
-          className="d-inline-block align-top ms-3"
+          className="d-inline-block align-top"
         />
         Bug Tracker v0.1
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav me-3">
+        <Navbar.Collapse id="responsive-navbar-nav">
 
           <Nav className="mr-auto"></Nav>
           <Nav>
