@@ -26,13 +26,13 @@ function App() {
           alt=""
           width="30"
           height="30"
-          className="d-inline-block align-top"
+          className="d-inline-block align-top ms-3"
         />
         Bug Tracker v0.1
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse id="responsive-navbar-nav me-3">
 
           <Nav className="mr-auto"></Nav>
           <Nav>
@@ -59,7 +59,7 @@ function App() {
             <Nav.Link eventKey={2} href="#memes">Register New User</Nav.Link>
             
           </Nav>
-          </Navbar.Collapse>
+        </Navbar.Collapse>
 
         </Navbar>
   
