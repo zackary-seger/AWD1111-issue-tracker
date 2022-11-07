@@ -20,7 +20,7 @@ function App() {
   return (
   <>
 
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ms-3 me-3">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ps-5 pe-5">
       <Navbar.Brand href="#home">
         <Logo
           alt=""
