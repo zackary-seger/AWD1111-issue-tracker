@@ -24,18 +24,14 @@ function App() {
         
         <Container>
 
-          <Navbar.Brand>Bug Tracker</Navbar.Brand>
+          <Navbar.Brand className="align-left">Bug Tracker</Navbar.Brand>
 
-          <Nav className="">
-            <Nav.Link href="/bugList">
-              Bug List
-            </Nav.Link>
-            <Nav.Link href="/bug/:bugId">
-              Bug By Id
-            </Nav.Link>
-            <Nav.Link href="/createBug">
-              Create Bug
-            </Nav.Link>
+          <Nav className="align-right">
+
+            <Nav.Link href="/bugList">Bug List</Nav.Link>
+            <Nav.Link href="/bug/:bugId">Bug By Id</Nav.Link>
+            <Nav.Link href="/createBug">Create Bug</Nav.Link>
+
           </Nav>
 
         </Container>
