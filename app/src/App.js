@@ -21,7 +21,7 @@ function App() {
   <>
 
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ps-4 pe-4">
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="#home" className="me-5">
         <Logo
           alt=""
           width="30"
@@ -35,7 +35,7 @@ function App() {
         <Navbar.Collapse id="responsive-navbar-nav">
 
           <Nav className="mr-auto"></Nav>
-          <Nav className="float-right">
+          <Nav>
 
             <Nav.Link href="/">Login</Nav.Link>
             <Nav.Link href="/user/list">List All Users</Nav.Link>
