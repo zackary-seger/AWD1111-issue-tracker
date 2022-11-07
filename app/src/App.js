@@ -32,7 +32,7 @@ function App() {
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse id="responsive-navbar-nav position-absolute end-0">
 
           <Nav className="position-absolute end-0 pe-4"></Nav>
           <Nav>
