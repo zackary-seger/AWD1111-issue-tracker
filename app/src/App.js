@@ -32,10 +32,9 @@ function App() {
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse className="position-absolute end-0 pe-4" id="responsive-navbar-nav">
+        <Navbar.Collapse id="responsive-navbar-nav">
 
-          <Nav className="position-absolute end-0 pe-4"></Nav>
-          <Nav>
+          <Nav className="position-absolute end-0 pe-4">
 
             <Nav.Link href="/">Login</Nav.Link>
             <Nav.Link href="/user/list">List All Users</Nav.Link>
