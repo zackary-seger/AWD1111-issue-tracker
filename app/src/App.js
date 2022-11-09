@@ -11,10 +11,13 @@ import bugList from "./components/bugList.js"
 import bugById from "./components/bugById.js"
 import createBug from "./components/createBug.js" 
 import LoginForm from "./components/renderLogin.js"
+import RenderNavbar from './components/navbar';
 
 function App() {
   return (
     <div>
+
+      <RenderNavbar />
 
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ps-4 pe-4">
       <Navbar.Brand href="#home" className="me-5">
