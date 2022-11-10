@@ -35,7 +35,7 @@ const updateUserSchema = Joi.object({
 }).min(1);
 
 const loginSchema = Joi.object({
-  email: Joi.string().email({ minDomainSegments: 2 }).trim().required(),
+  email: Joi.string().email().trim().required(),
   password: Joi.string().trim().required(),
 });
 
