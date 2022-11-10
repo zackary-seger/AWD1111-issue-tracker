@@ -21,11 +21,11 @@ class BugDataService extends React.Component{
     return await axios({
       method: "put",
       url: "api/user/login",
-      data: JSON.stringify({email: {
+      data: {email: {
             "description": this.email,
             "type": "string",
             "format": "email"
-        }, password: this.pass}),
+        }, password: `${this.pass}`},
       headers: { "Content-Type": "application/json" },
     }).catch(function (error) {
       if (error.response) {
