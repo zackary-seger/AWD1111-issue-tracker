@@ -21,8 +21,8 @@ class BugDataService extends React.Component{
     return await axios({
       method: "put",
       url: "api/user/login",
-      data: { email: this.email, password: this.pass},
-      headers: { "Content-Type": "application/json;charset=UTF-8" },
+      data: JSON.stringify({email: this.email, password: this.pass}),
+      headers: { "Content-Type": "application/json" },
     }).catch(function (error) {
       if (error.response) {
         // The request was made and the server responded with a status code
