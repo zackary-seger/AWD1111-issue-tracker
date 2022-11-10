@@ -104,7 +104,7 @@ class LoginForm extends React.Component {
   render() {
 
     const validator = CreateValidator; 
-    RenderNavbar();  
+    // RenderNavbar(); // ??? Check this out.. ??? <----- Not doing anything??  
 
     return (
       <div>

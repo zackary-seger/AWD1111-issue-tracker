@@ -62,6 +62,7 @@ router.get('/list', async (req, res, next) => {
       // await dbModule.newDateIndex(db, 'Users', -1, 'Date');
       // await dbModule.newDateComboIndex(db, 'Users', -1, 'DateTitle', 'title');
       // await dbModule.newDateComboIndex(db, 'Users', -1, 'DateClassification', 'classification');
+      
       // await dbModule.newDateComboIndex(db, 'Bugs', -1, 'DateAssignedToUser', 'assignedToUserId');
       // await dbModule.newDateComboIndex(db, 'Bugs', -1, 'DateCreatedByUser', 'createdByUserId');
 

@@ -3,8 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import * as React from "react";
 import Switch from 'react-bootstrap/Switch'
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { ReactComponent as Logo } from "./logo.svg";
 import { Route } from "react-router";
 
 import bugList from "./components/bugList.js" 

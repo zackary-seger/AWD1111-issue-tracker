@@ -16,13 +16,13 @@ class BugDataService extends React.Component{
     return await axios.get(`/api/bug/list`) 
   } 
 
-  async login(){ 
+  async login(props){ 
 
     return await axios({
       method: "put",
       url: "api/user/login",
       data: { email: this.email, password: this.pass},
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: { "Content-Type": "application/json;charset=UTF-8" },
     }).catch(function (error) {
       if (error.response) {
         // The request was made and the server responded with a status code
