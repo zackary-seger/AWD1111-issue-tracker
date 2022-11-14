@@ -12,8 +12,6 @@ import RenderNavbar from './navbar'
 import BugDataService from "../services/bugDataService"
 import { useHistory } from "react-router-dom";
 
-let loginCreds;
-let savedToken;
 let x = 1;
 
 const history = (useHistory);
@@ -35,6 +33,8 @@ class LoginForm extends React.Component {
     this.passwordInput = React.createRef();
 
     this.focusInput = this.focusInput.bind(this);
+
+    this.savedToken = null;
 
   }
 
@@ -82,15 +82,15 @@ class LoginForm extends React.Component {
     bds.login().then( response => { 
 
       console.log('response: ' + response); 
-      savedToken = response;
+      this.savedToken = response;
 
     }).catch( e =>{ 
       console.log(e); 
     }) 
 
-    console.log('response/savedToken: ' + savedToken); 
+    console.log('response/savedToken: ' + this.savedToken); 
 
-    if ( savedToken !== null && savedToken !== undefined ) {
+    if ( this.savedToken !== null ) {
       history("/bugList", { replace: true });
     } else {
       console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
