@@ -34,8 +34,6 @@ class LoginForm extends React.Component {
 
     this.focusInput = this.focusInput.bind(this);
 
-    this.savedToken = null;
-
   }
 
   focusInput() {
@@ -79,18 +77,18 @@ class LoginForm extends React.Component {
 
     let bds = new BugDataService(joiObj.value['email'], joiObj.value['password']); 
 
-    bds.login().then( response => { 
+    let bdsResp = bds.login().then( response => { 
 
       console.log('response: ' + response); 
-      this.savedToken = response;
+      return response;
 
     }).catch( e =>{ 
       console.log(e); 
     }) 
 
-    console.log('response/savedToken: ' + this.savedToken); 
+    console.log('response/savedToken: ' + bdsResp); 
 
-    if ( this.savedToken !== null ) {
+    if ( bdsResp !== null ) {
       history("/bugList", { replace: true });
     } else {
       console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
