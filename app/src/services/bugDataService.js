@@ -17,7 +17,8 @@ class BugDataService extends React.Component{
   } 
 
   async login(props){ 
-    console.log(this.pass)
+    console.log(this.email);
+    console.log(this.pass);
     return await axios({
       method: "put",
       url: "api/user/login",

@@ -662,7 +662,7 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
     } else {
 
       const email = req.body.email;
-      const inputPassword = 'password'; //req.body.password
+      const inputPassword = req.body.password;
 
       const user = await dbModule.readUserByEmail(email);
 
