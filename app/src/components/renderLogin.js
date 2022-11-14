@@ -82,7 +82,7 @@ class LoginForm extends React.Component {
     bds.login().then( response => { 
 
       console.log(response.data); 
-      savedToken = response.data;
+      savedToken = bds.response;
 
     }).catch( e =>{ 
       console.log(e); 
