@@ -46,7 +46,7 @@ class BugDataService extends React.Component{
     }).then(function (response) {
       //handle success
       console.log(response);
-      resp = response;
+      resp = response; 
     })
     .catch(function (response) {
       //handle error
