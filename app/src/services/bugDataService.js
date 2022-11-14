@@ -10,6 +10,7 @@ class BugDataService extends React.Component{
     this.login = this.login.bind(this);
     this.email = email;
     this.pass = pass;
+    this.response = null;
   }
 
   async bugList(){ 
@@ -43,13 +44,12 @@ class BugDataService extends React.Component{
     }).then(function (response) {
       //handle success
       console.log(response);
-      return response;
+      this.response = response;
     })
     .catch(function (response) {
       //handle error
       console.log(response);
     });
-    
   } 
 
   // get(id){ 
