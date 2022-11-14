@@ -5,7 +5,7 @@ import validate from 'react-joi-validation';
 
 class BugDataService extends React.Component{ 
 
-  constructor(props, email, pass) {
+  constructor(email, pass, props) {
     super(props);
     this.login = this.login.bind(this);
     this.email = email;
@@ -16,9 +16,7 @@ class BugDataService extends React.Component{
     return await axios.get(`/api/bug/list`) 
   } 
 
-  async login(props){ 
-    console.log(this.email);
-    console.log(this.pass);
+  async login(){ 
     return await axios({
       method: "put",
       url: "api/user/login",
@@ -50,7 +48,7 @@ class BugDataService extends React.Component{
       //handle error
       console.log(response);
     });
-
+    
   } 
 
   // get(id){ 
