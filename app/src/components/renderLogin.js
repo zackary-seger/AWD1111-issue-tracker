@@ -81,8 +81,8 @@ class LoginForm extends React.Component {
 
     bds.login().then( response => { 
 
-      console.log('explanation: ' + response.data); 
-      savedToken = response.data;
+      console.log('response.data: ' + response.data); 
+      savedToken = response;
 
     }).catch( e =>{ 
       console.log(e); 
