@@ -88,12 +88,12 @@ class LoginForm extends React.Component {
 
     console.log('response/savedToken: ' + bdsResp); 
 
-    if ( bdsResp !== null ) {
-      history("/bugList", { replace: true });
-    } else {
-      console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
-      x--;
-    }
+    // if ( bdsResp !== null ) {
+    //   history("/bugList", { replace: true });
+    // } else {
+    //   console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
+    //   x--;
+    // }
     
   } 
   
