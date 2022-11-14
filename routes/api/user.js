@@ -736,10 +736,12 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
         const authToken = jwt.sign(authPayload, authSecret, { expiresIn: authExpiresIn });
         const authMaxAge = parseInt(config.get('auth.cookieMaxAge'));
 
+        res.cookie('authToken', authToken, { maxAge: authMaxAge, httpOnly: true });
+
         debugMain(req.cookies);
         console.log('\n');
 
-        res.status(200).cookie('authToken', authToken, { maxAge: authMaxAge, httpOnly: true }).json( `Welcome back ${user.firstName}!`);
+        res.status(200).json( `Welcome back ${user.firstName}!`);
 
       }
 
