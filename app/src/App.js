@@ -18,10 +18,12 @@ function App() {
   return (
     <div>
 
+      <Helmet>
+      <title>{ TITLE }</title>
+      </Helmet>
+
       <RenderNavbar />
 
-      <title>{ TITLE }</title>
-  
       <Switch> 
 
         <Route exact path = { ["/"] } component = { LoginForm } > 
