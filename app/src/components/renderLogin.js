@@ -92,7 +92,13 @@ class LoginForm extends React.Component {
 
     this.state = { authToken: Cookies.get() }
     console.log(this.state);
-    
+
+    if (this.state) {
+      if (typeof window !== 'undefined') {
+        window.location.href = "https://boatborrowers.com/bug/list";
+      }
+    }
+
     // if ( bdsResp !== null ) {
     //   history("/bugList", { replace: true });
     // } else {

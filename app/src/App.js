@@ -29,7 +29,7 @@ function App() {
         <Route exact path = { ["/"] } component = { LoginForm } > 
         </Route>
 
-        <Route exact path = { ["/bugList"] } component = { bugList } > 
+        <Route exact path = { ["/bug/list"] } component = { bugList } > 
         </Route>
 
         <Route path = "/bug/:bugId/" component = { bugById } > 
