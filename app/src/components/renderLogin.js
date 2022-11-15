@@ -104,7 +104,7 @@ class LoginForm extends React.Component {
   render() {
 
     const validator = CreateValidator; 
-    PageTitle('BoatBorrowers.com - User Login');
+    // PageTitle('BoatBorrowers.com - User Login');
 
     return (
       <div>
