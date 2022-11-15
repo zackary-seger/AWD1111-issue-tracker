@@ -12,7 +12,7 @@ import createBug from "./components/createBug.js"
 import LoginForm from "./components/renderLogin.js"
 import RenderNavbar from './components/navbar';
 
-const TITLE = 'BoatBorrowers.com 🔐 Login';
+const TITLE = 'BoatBorrowers.com • Login';
 
 function App() {
   return (
