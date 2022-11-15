@@ -11,6 +11,7 @@ import CreateValidator from './validate.js'
 import RenderNavbar from './navbar'
 import BugDataService from "../services/bugDataService"
 import { useHistory } from "react-router-dom";
+import PageTitle from "./pageTitle";
 
 let x = 1;
 
@@ -103,7 +104,7 @@ class LoginForm extends React.Component {
   render() {
 
     const validator = CreateValidator; 
-    // RenderNavbar(); // ??? Check this out.. ??? <----- Not doing anything??  
+    PageTitle('BoatBorrowers.com - User Login');
 
     return (
       <div>

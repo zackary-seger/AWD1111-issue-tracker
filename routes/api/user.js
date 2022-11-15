@@ -736,7 +736,7 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
         const authToken = jwt.sign(authPayload, authSecret, { expiresIn: authExpiresIn });
         const authMaxAge = parseInt(config.get('auth.cookieMaxAge'));
 
-        res.cookie('authToken', authToken, { maxAge: authMaxAge, httpOnly: false });
+        res.cookie('authToken', authToken, { maxAge: authMaxAge, secure });
 
         debugMain(req.cookies);
         console.log('\n');
