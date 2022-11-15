@@ -1,5 +1,6 @@
 import React from 'react';
 import Joi from "joi"
+import Cookies from 'js-cookie';
 
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button'; 
@@ -89,6 +90,9 @@ class LoginForm extends React.Component {
 
     console.log('response/savedToken: ' + bdsResp); 
 
+    this.state = { authToken: Cookies.get() }
+    console.log(this.state);
+    
     // if ( bdsResp !== null ) {
     //   history("/bugList", { replace: true });
     // } else {
