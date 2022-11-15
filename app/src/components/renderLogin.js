@@ -104,12 +104,11 @@ class LoginForm extends React.Component {
   render() {
 
     const validator = CreateValidator; 
-    const Title = PageTitle('BoatBorrowers.com 🔐 User Login');
 
     return (
       <div>
 
-        <Title />
+        <title>BoatBorrowers.com 🔐</title>
 
         <h1 className="mt-3">User Login</h1>
 
