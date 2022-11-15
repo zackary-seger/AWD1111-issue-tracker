@@ -95,7 +95,7 @@ class LoginForm extends React.Component {
 
     if (this.state) {
       if (typeof window !== 'undefined') {
-        window.location.href = "https://boatborrowers.com/bug/list";
+        window.location.href = "https://www.boatborrowers.com/bug/list";
       }
     }
 
