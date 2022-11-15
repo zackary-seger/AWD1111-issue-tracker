@@ -16,6 +16,8 @@ function App() {
     <div>
 
       <RenderNavbar />
+
+      <title>BoatBorrowers.com 🔐</title>
   
       <Switch> 
 
