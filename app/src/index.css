@@ -27,7 +27,8 @@ h1 {
 @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
 
 nav {
-  font-family: 'Yanone Kaffeesatz', sans-serif;;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 2.5em;
   margin-bottom: .75em;
 }
 
