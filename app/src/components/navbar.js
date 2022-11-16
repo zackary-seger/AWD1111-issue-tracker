@@ -54,10 +54,10 @@ function RenderNavbar() {
           </Nav>
         </Navbar.Collapse>
 
-        <Navbar.Brand id="navIcons" className="ms-3">
-          <FaShoppingCart className="me-1"/>
-          <FaUserCircle className="me-1"/> 
-          <FaAlignJustify className="me-1"/>
+        <Navbar.Brand id="navIcons" className="ms-3 pb-1">
+          <FaShoppingCart className="me-2"/>
+          <FaUserCircle className="me-2"/> 
+          <FaAlignJustify className="me-2"/>
         </Navbar.Brand>
 
         </Navbar>
