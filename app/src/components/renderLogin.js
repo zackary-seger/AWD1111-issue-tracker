@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button'; 
 import CreateValidator from './validate.js';
+import '../index.css';
 
 import BugDataService from "../services/bugDataService";
 
@@ -112,10 +113,10 @@ class LoginForm extends React.Component {
     return (
       <div>
 
-      <body className='container'>
-        <h1 className="pt-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
+      <body className='container bg-warning'>
+        <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
 
-        <Form className="mt-3 me-3" onSubmit={ this.loginUser }>
+        <Form className="mt-3 ms-3 me-3" onSubmit={ this.loginUser }>
 
           <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
 
@@ -127,13 +128,13 @@ class LoginForm extends React.Component {
 
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="renderLogin.loginButton">
+          <Form.Group className="mb-3 ms-3" controlId="renderLogin.loginButton">
 
             <Button 
               variant="primary" 
               type="submit"
               onClick={this.focusInput}
-              className="mt-2"
+              className="mt-2 mb-3"
               id="loginBtn"
             >
               Login
