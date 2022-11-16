@@ -56,6 +56,12 @@ h1 {
   margin-bottom: 1.5em;
 }
 
+#responsive-navbar-nav {
+  justify-content: end;
+  padding-right: 2em;
+  font-family: 'Poppins', sans-serif;
+}
+
 label {
   font-weight: 500
 }
