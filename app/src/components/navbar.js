@@ -5,7 +5,7 @@ import { FaSignInAlt } from "react-icons/fa";
 
 
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { ReactComponent as Logo } from "../logo.svg";
+import { ReactComponent as Logo } from "../logo-blue-white.svg";
 
 
 function RenderNavbar() {
@@ -15,10 +15,10 @@ function RenderNavbar() {
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ps-4 pe-4">
       <Navbar.Brand href="/" id="navTitle" className="me-5">
         <Logo
-          alt=""
+          alt="BoatBorrowers.com Logo, Black, Blue, & White"
           width="30"
           height="30"
-          className="d-inline-block align-top pe-2"
+          className="me-2"
         />
         BoatBorrowers.com
         </Navbar.Brand>
@@ -29,7 +29,7 @@ function RenderNavbar() {
           <Nav className="mr-auto"></Nav>
           <Nav>
 
-            <Nav.Link className="pe-2" href="/">Login <FaSignInAlt /></Nav.Link>
+            <Nav.Link className="pe-2" href="/">Login  <FaSignInAlt className="ms-2"/></Nav.Link>
             <Nav.Link className="pe-2" href="/user/list">List All Users</Nav.Link>
             <Nav.Link className="pe-2" href="/bug/list">List All Bugs</Nav.Link>
             <Nav.Link className="pe-2"href="/bug/:bugId">Find Bug By bugID</Nav.Link>

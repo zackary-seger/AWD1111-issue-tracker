@@ -12,10 +12,18 @@ h1 {
   font-family: 'Bebas Neue', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin-top: 3em;
+  margin-left: 3em;
+}
+
+svg {
+  width: 20em; 
+  height: 20em;
 }
 
 #navTitle {
-  color: rgb(0, 119, 183);
+  color: white;
+  font-weight: 1000;
 }
 
 code {
