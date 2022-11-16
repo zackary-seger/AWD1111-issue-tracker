@@ -34,7 +34,7 @@ const BugList = props => {
 
         <img src="../images/img_avatar.png" alt="Avatar"></img>
         <div class="container">
-          <h4><b>{bugs.data[0].title}</b></h4>
+          <h4><b>{bugs.data['0'].title}</b></h4>
           <p>Found By: Zackary Seger</p>
         </div>
 
