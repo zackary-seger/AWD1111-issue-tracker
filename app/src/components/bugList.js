@@ -13,8 +13,8 @@ const BugList = props => {
     
     bugArray = bds.bugList().then( response => { 
 
-      console.log(response);
-      return response.data.data;
+      console.log(response.data);
+      return response.data;
       
     }).catch( e =>{ 
       console.log(e) 
