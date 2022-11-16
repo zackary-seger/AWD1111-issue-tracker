@@ -1,4 +1,5 @@
 import * as React from "react";
+import '../index.css';
 
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { ReactComponent as Logo } from "../logo.svg";
