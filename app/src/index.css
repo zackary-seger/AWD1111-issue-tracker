@@ -29,6 +29,10 @@ h1 {
   padding-bottom: .75em;
 }
 
+#navbar {
+  padding-left: 1.5em;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
 
 nav {
