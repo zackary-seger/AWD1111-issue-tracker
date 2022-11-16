@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Anybody:wght@300&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&display=swap');
 
 * {
-  font-family: 'Anybody', cursive;
+  font-family: 'Abel', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
