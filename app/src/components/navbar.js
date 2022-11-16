@@ -31,24 +31,22 @@ function RenderNavbar() {
           <Nav className="mr-auto"></Nav>
           <Nav className="pb-1 text-nowrap">
 
-            <Nav.Link className="pe-2 text-nowrap" href="/">Login  ◆</Nav.Link>
-            <Nav.Link className="pe-2 text-nowrap" href="/user/list">List All Users  ◆</Nav.Link>
-            <Nav.Link className="pe-2 text-nowrap" href="/bug/list">List All Bugs  ◆</Nav.Link>
-            <Nav.Link className="pe-2 text-nowrap"href="/bug/:bugId">Find Bug By bugID  ◆</Nav.Link>
+            <Nav.Link className="pe-2 text-nowrap" href="/">Login</Nav.Link>
+            <Nav.Link className="pe-2 text-nowrap" href="/user/list">List All Users</Nav.Link>
+            <Nav.Link className="pe-2 text-nowrap" href="/bug/list">List All Bugs</Nav.Link>
+            <Nav.Link className="pe-2 text-nowrap"href="/bug/:bugId">Find Bug By bugID</Nav.Link>
+            <NavDropdown className="text-nowrap" title="Update Bug" id="collapsible-nav-dropdown">
 
-            <NavDropdown className="pe-1 text-nowrap" title="Update Bug" id="collapsible-nav-dropdown">
-
-              <NavDropdown.Item href="#action/3.1">◆  Update Existing Bug  ◆</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Classify Bug  ◆</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Assign Bug  ◆</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.4">Close Bug  ◆</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.1">Update Existing Bug</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Classify Bug</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Assign Bug</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.4">Close Bug</NavDropdown.Item>
 
               <NavDropdown.Divider />
 
               <NavDropdown.Item href="#action/3.5">Bug Test Case Options</NavDropdown.Item>
 
             </NavDropdown>
-
             <Nav.Link className="pe-2 text-nowrap" href="#deets">Create Bug</Nav.Link>
             <Nav.Link className="pe-2 text-nowrap" href="#memes">Register New User</Nav.Link>
             
