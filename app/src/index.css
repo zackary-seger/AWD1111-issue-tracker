@@ -89,6 +89,9 @@ code {
   #navbar {
     font-size: .75em;
   }
+  #responsive-navbar-nav {
+    font-size: 1.2em;
+  }
 }
 
 @media screen and (max-width: 450px) {
