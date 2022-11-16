@@ -113,7 +113,7 @@ class LoginForm extends React.Component {
       <div>
 
       <body>
-        <h1 className="mt-3">User Login  <FaSignInAlt className="ms-2"/></h1>
+        <h1 className="pt-3">User Login  <FaSignInAlt className="ms-2"/></h1>
 
         <Form className="mt-3 me-3" onSubmit={ this.loginUser }>
 

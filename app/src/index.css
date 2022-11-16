@@ -26,7 +26,7 @@ h1 {
 
 #navIcons {
   float: right;
-  padding-bottom: 1em;
+  padding-bottom: .75em;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
