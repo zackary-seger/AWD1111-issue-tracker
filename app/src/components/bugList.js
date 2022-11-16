@@ -7,18 +7,11 @@ let bugArray;
 
 const BugList = props => { 
 
-  const [bugs, setBugs] = useState([]) 
-  const [auth, setAuth] = useState([]) 
+  const [bugs, setBugs] = useState([])  
 
   useEffect(() =>{ 
     retrieveBugs() 
   }) 
-
-  setAuth({ authToken: Cookies.get() })
-  
-  const retrievedToken = auth.authToken;
-
-  // const payload = jwt.verify(retrievedToken, secret);
 
   const bds = new BugDataService('payload.email', 'payload.email');
 
