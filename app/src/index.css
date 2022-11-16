@@ -34,9 +34,7 @@ h1 {
 }
 
 #loginBtn {
-  font-family: 'Bebas Neue', cursive;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-weight: bolder;
 }
 
 #navbar {
