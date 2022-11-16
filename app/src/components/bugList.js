@@ -9,7 +9,7 @@ const BugList = props => {
   const [saveArr, setSaveArr] = useState([])
   const [genListBool, setGenListBool] = useState([])
 
-  React.useEffect(() =>{  
+  React.useEffect(() => {  
 
     const bds = new BugDataService('payload.email', 'payload.password');
     
@@ -35,17 +35,7 @@ const BugList = props => {
 
           <img src="../images/img_avatar.png" alt="Avatar"></img>
           <div class="container">
-            <h4><b>{saveArr.filter( (x) => { 
-
-              let n=0; 
-              if (n === 0){ 
-                n++; 
-                return x.title + '\n'
-              } else {
-                return null
-              }
-
-              })}</b></h4>
+            <h4><b>{`saveArr.0`}</b></h4>
             <p>Found By: Zackary Seger</p>
           </div>
 
