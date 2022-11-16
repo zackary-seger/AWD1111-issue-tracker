@@ -33,6 +33,7 @@ h1 {
 #navTitle {
   color: white;
   font-weight: 1000;
+  letter-spacing: .125rem;
 }
 
 #navIcons {
