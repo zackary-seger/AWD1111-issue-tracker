@@ -30,8 +30,8 @@ const BugList = props => {
 
   React.useEffect(() => {
     return (
-      <div>
-        <div className="card bug">
+      <div> Test 01
+        {/* <div className="card bug">
 
           <img src="../images/img_avatar.png" alt="Avatar"></img>
           <div class="container">
@@ -39,10 +39,11 @@ const BugList = props => {
             <p>Found By: Zackary Seger</p>
           </div>
 
-        </div>
+        </div> */}
       </div>  
     )
   }, [saveArr]);
+
 
   return (
     <div>
