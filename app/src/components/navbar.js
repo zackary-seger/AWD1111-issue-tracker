@@ -16,9 +16,8 @@ function RenderNavbar() {
       <Navbar.Brand href="/" id="navTitle" className="me-5">
         <Logo
           alt="BoatBorrowers.com Logo, Black, Blue, & White"
-          width="30"
-          height="30"
           className="me-2"
+          id="navLogo"
         />
         BoatBorrowers.com
         </Navbar.Brand>
