@@ -112,7 +112,7 @@ class LoginForm extends React.Component {
     return (
       <div>
 
-      <body>
+      <body className='container'>
         <h1 className="pt-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
 
         <Form className="mt-3 me-3" onSubmit={ this.loginUser }>
