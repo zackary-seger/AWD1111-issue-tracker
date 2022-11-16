@@ -127,12 +127,14 @@ class LoginForm extends React.Component {
 
           </Form.Group>
 
-          <Form.Group className="mb-3 mt-2" controlId="renderLogin.loginButton">
+          <Form.Group className="mb-3" controlId="renderLogin.loginButton">
 
             <Button 
               variant="primary" 
               type="submit"
               onClick={this.focusInput}
+              className="mt-2"
+              id="loginBtn"
             >
               Login
             </Button> 
