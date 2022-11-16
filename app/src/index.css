@@ -32,9 +32,10 @@ h1 {
 }
 
 #navTitle {
+  font-family: 'Poppins', sans-serif;
   color: white;
   font-weight: 1000;
-  letter-spacing: .125rem;
+  /* letter-spacing: .125rem; */
 }
 
 #navIcons {
@@ -81,6 +82,7 @@ code {
 @media screen and (max-width: 450px) {
   #navbar {
     margin-bottom: .75em;
+    font-size: .85em;
   }
 }
 
