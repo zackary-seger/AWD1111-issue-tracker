@@ -27,11 +27,11 @@ const BugList = props => {
 
   }, [genListBool])
 
-  React.useEffect(() => {
+  // React.useEffect(() => {
 
-    <LoadBugList />
+  //   <LoadBugList />
 
-  }, [saveArr]);
+  // }, [saveArr]);
 
   console.log('saveArr: ' + saveArr);
   console.log(saveArr);
