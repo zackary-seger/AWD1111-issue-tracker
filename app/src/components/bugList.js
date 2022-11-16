@@ -9,9 +9,9 @@ const BugList = props => {
 
   const [bugs, setBugs] = useState([])  
 
-  useEffect(() =>{ 
-    retrieveBugs() 
-  }) 
+  // useEffect(() =>{ 
+  //   retrieveBugs() 
+  // }) 
 
   const bds = new BugDataService('payload.email', 'payload.email');
 
