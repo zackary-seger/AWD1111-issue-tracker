@@ -9,18 +9,18 @@ const BugList = props => {
 
   const [bugs, setBugs] = useState([]) 
 
-  useCallback(() =>{   
+  const response = useCallback(() =>{   
     const bds = new BugDataService('payload.email', 'payload.email');
     
     bds.bugList().then( response => { 
     console.log(response.data) 
-    setBugs(response.data)
     return response;
   }).catch( e =>{ 
     console.log(e) 
   }) 
   },[])
 
+  setBugs(response)
   bugArray = bugs;
   console.log(bugArray);
 
