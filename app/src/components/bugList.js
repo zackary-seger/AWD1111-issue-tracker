@@ -1,34 +1,43 @@
-import {useState, useCallback } from 'react' 
+import {useState, useCallback, useEffect } from 'react' 
 import BugDataService from "../services/bugDataService" 
 
 let bugArray;
-let x = 0;
 
 const BugList = props => { 
 
   const [bugs, setBugs] = useState([]) 
 
-  const response = useCallback(() =>{  
+  const response = useEffect(() =>{  
 
-  const bds = new BugDataService('payload.email', 'payload.email');
-  
-  const bugArray = bds.bugList().then( response => { 
-
-    return response;
+    const bds = new BugDataService('payload.email', 'payload.password');
     
-  }).catch( e =>{ 
-    console.log(e) 
-  }) 
+    bugArray = bds.bugList().then( response => { 
 
-  setBugs(bugArray);
-  return bugArray;
+      console.log('resp: ' + response);
+      return response;
+      
+    }).catch( e =>{ 
+      console.log(e) 
+    }) 
 
-  },[])
+    console.log('bugArray: ' + bugArray);
+    return bugArray;
+
+  },[bugs])
 
   console.log('response const: ' + response);
+  console.log('bugArray let: ' + bugArray);
   console.log(response);
-  console.log('x = ' + x);
   console.log(bugs);
+
+  return (
+    <div>
+      <p className='mb-2'>If you have properly logged in, click the button for an updated bugList!</p>
+      <button onClick={() => setBugs(BugList)}>
+        Generate List
+      </button>
+    </div>
+  );
 
 }
 

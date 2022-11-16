@@ -13,6 +13,7 @@ class BugDataService extends React.Component{
   }
 
   async bugList(){ 
+    console.log('Running Axios GET request..')
     return await axios.get(`/api/bug/list`) 
   } 
 
