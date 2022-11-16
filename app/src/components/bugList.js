@@ -34,7 +34,7 @@ const BugList = props => {
 
         <img src="../images/img_avatar.png" alt="Avatar"></img>
         <div class="container">
-          <h4><b>{bugs.data.filter( (x) => { 
+          <h4><b>{bugs.filter( (x) => { 
 
             let n=0; 
             if (n === 0){ 
