@@ -13,9 +13,9 @@ import { ReactComponent as Logo } from "../logo-blue-white.svg";
 function RenderNavbar() {
 
   return (
-    <div className="mb-4">
+    <div className="">
       <Navbar id="navbar" collapseOnSelect expand="lg" bg="dark" variant="dark" className="pe-4">
-      <Navbar.Brand href="/" id="navTitle" className="me-4">
+      <Navbar.Brand href="/" id="navTitle" className="me-3">
         <Logo
           alt="BoatBorrowers.com Logo, Black, Blue, & White"
           className="me-3 mb-2"
