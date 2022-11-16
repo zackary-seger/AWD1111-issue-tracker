@@ -57,3 +57,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@media screen and (max-width: 1300px) {
+  #navIcons {
+    display: none !important;
+  }
+}
