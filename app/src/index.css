@@ -85,7 +85,7 @@ code {
   }
 }
 
-@media screen and (max-width: 666px) {
+@media screen and (max-width: 991px) {
   #navbar {
     font-size: .75em;
   }
