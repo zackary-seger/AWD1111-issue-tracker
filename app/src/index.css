@@ -1,6 +1,7 @@
-body {
-  font-family: 'PTSerif-Regular';
-  src: local('PTSerif-Regular'), url(./fonts/PTSerif-Regular.ttf) format('truetype');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
+* {
+  font-family: 'PT Serif', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
