@@ -83,7 +83,7 @@ code {
     monospace;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1390px) {
   #navIcons {
     display: none !important;
   }
