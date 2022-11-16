@@ -6,8 +6,6 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { FaAlignJustify } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
-import { Link } from 'react-router-dom';
-import { Route } from "react-router";
 
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { ReactComponent as Logo } from "../logo-blue-white.svg";
@@ -58,9 +56,7 @@ function RenderNavbar() {
         </Navbar.Collapse>
 
         <Navbar.Brand id="navIcons" className="ms-3">
-          <a href='#cart' className="me-3">
-            <FaShoppingCart />
-          </a>
+          <FaShoppingCart href="#cart" className="me-3"/>
           <FaUserCircle className="me-3"/>
           <FaEnvelope className="me-3"/>  
           <FaAlignJustify className="me-1"/>
