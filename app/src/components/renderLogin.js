@@ -4,19 +4,13 @@ import Cookies from 'js-cookie';
 
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button'; 
-// import Col from 'react-bootstrap/Col'; 
-// import Row from 'react-bootstrap/Row'; 
-// import Container from 'react-bootstrap/Container';
-import CreateValidator from './validate.js'
+import CreateValidator from './validate.js';
 
-import RenderNavbar from './navbar'
-import BugDataService from "../services/bugDataService"
-import { useHistory } from "react-router-dom";
-import PageTitle from "./pageTitle";
+import BugDataService from "../services/bugDataService";
+
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 let x = 1;
-
-const history = (useHistory);
 
 const loginSchema = Joi.object().keys({
   username: Joi.string().required(),
@@ -119,7 +113,7 @@ class LoginForm extends React.Component {
       <div>
 
       <body>
-        <h1 className="mt-3">User Login</h1>
+        <h1 className="mt-3">User Login <i class='fas fa-sign-in-alt fa-2x'>fa-2x</i></h1>
 
         <Form className="mt-3 me-3" onSubmit={ this.loginUser }>
 

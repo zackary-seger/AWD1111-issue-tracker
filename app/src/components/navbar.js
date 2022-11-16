@@ -15,9 +15,9 @@ function RenderNavbar() {
           alt=""
           width="30"
           height="30"
-          className="d-inline-block align-top pe-2"
+          className="text-primary d-inline-block align-top pe-2"
         />
-        BoatBorrowers.com v0.0.1
+        BoatBorrowers.com
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -26,7 +26,7 @@ function RenderNavbar() {
           <Nav className="mr-auto"></Nav>
           <Nav>
 
-            <Nav.Link className="pe-2" href="/">Login</Nav.Link>
+            <Nav.Link className="pe-2" href="/">Login <i class='fas fa-sign-in-alt fa-2x'>fa-2x</i></Nav.Link>
             <Nav.Link className="pe-2" href="/user/list">List All Users</Nav.Link>
             <Nav.Link className="pe-2" href="/bug/list">List All Bugs</Nav.Link>
             <Nav.Link className="pe-2"href="/bug/:bugId">Find Bug By bugID</Nav.Link>
