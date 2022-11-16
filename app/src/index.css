@@ -22,7 +22,8 @@ h1 {
   border-radius: .75em;
   width: 95%;
   height: 95%;
-  margin-top: 2.15% !important;
+  padding-bottom: 1px;
+  padding-top: 0.4em;
 }
 
 #navLogo {
