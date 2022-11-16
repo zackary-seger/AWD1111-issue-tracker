@@ -28,21 +28,21 @@ const BugList = props => {
   console.log('saveArr: ' + saveArr);
   console.log(saveArr);
 
-  React.useEffect(() => {
-    return (
-      <div> Test 01
-        {/* <div className="card bug">
+  // React.useEffect(() => {
+  //   return (
+  //     <div> Test 01
+  //       {/* <div className="card bug">
 
-          <img src="../images/img_avatar.png" alt="Avatar"></img>
-          <div class="container">
-            <h4><b>{saveArr['0']}</b></h4>
-            <p>Found By: Zackary Seger</p>
-          </div>
+  //         <img src="../images/img_avatar.png" alt="Avatar"></img>
+  //         <div class="container">
+  //           <h4><b>{saveArr['0']}</b></h4>
+  //           <p>Found By: Zackary Seger</p>
+  //         </div>
 
-        </div> */}
-      </div>  
-    )
-  }, [saveArr]);
+  //       </div> */}
+  //     </div>  
+  //   )
+  // }, [saveArr]);
 
 
   return (
