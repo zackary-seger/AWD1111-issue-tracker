@@ -1,8 +1,10 @@
 import * as React from "react";
 import '../index.css';
 
-import { FaSignInAlt } from "react-icons/fa";
-
+import { FaSignInAlt } from "react-icons/fa"; 
+import { FaShoppingCart } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
+import { FaAlignJustify } from "react-icons/fa";
 
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { ReactComponent as Logo } from "../logo-blue-white.svg";
@@ -51,6 +53,12 @@ function RenderNavbar() {
             
           </Nav>
         </Navbar.Collapse>
+
+        <Navbar.Brand id="navIcons" className="ms-3">
+          <FaShoppingCart className="me-1"/>
+          <FaUserCircle className="me-1"/> 
+          <FaAlignJustify className="me-1"/>
+        </Navbar.Brand>
 
         </Navbar>
     </div>
