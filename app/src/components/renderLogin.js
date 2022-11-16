@@ -113,7 +113,7 @@ class LoginForm extends React.Component {
     return (
       <div>
 
-      <body className='container bg-warning'>
+      <body id="container1" className='container'>
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
 
         <Form className="mt-3 ms-3 me-3" onSubmit={ this.loginUser }>
@@ -134,7 +134,7 @@ class LoginForm extends React.Component {
               variant="primary" 
               type="submit"
               onClick={this.focusInput}
-              className="mt-2 mb-3"
+              className="mt-2 mb-4"
               id="loginBtn"
             >
               Login
