@@ -12,7 +12,7 @@ function RenderNavbar() {
 
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ps-4 pe-4">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ps-4 pe-4 me-2">
       <Navbar.Brand href="/" id="navTitle" className="me-5">
         <Logo
           alt="BoatBorrowers.com Logo, Black, Blue, & White"
@@ -28,12 +28,12 @@ function RenderNavbar() {
           <Nav className="mr-auto"></Nav>
           <Nav>
 
-            <Nav.Link className="pe-2" href="/">Login  <FaSignInAlt className="ms-1"/></Nav.Link>
-            <Nav.Link className="pe-2" href="/user/list">List All Users</Nav.Link>
-            <Nav.Link className="pe-2" href="/bug/list">List All Bugs</Nav.Link>
-            <Nav.Link className="pe-2"href="/bug/:bugId">Find Bug By bugID</Nav.Link>
+            <Nav.Link className="pe-2 text-nowrap" href="/">Login  <FaSignInAlt className="ms-1"/></Nav.Link>
+            <Nav.Link className="pe-2 text-nowrap" href="/user/list">List All Users</Nav.Link>
+            <Nav.Link className="pe-2 text-nowrap" href="/bug/list">List All Bugs</Nav.Link>
+            <Nav.Link className="pe-2 text-nowrap"href="/bug/:bugId">Find Bug By bugID</Nav.Link>
 
-            <NavDropdown className="pe-2" title="Update Bug" id="collapsible-nav-dropdown">
+            <NavDropdown className="pe-1 text-nowrap" title="Update Bug" id="collapsible-nav-dropdown">
 
               <NavDropdown.Item href="#action/3.1">Update Existing Bug</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Classify Bug</NavDropdown.Item>
@@ -46,8 +46,8 @@ function RenderNavbar() {
 
             </NavDropdown>
 
-            <Nav.Link className="pe-2" href="#deets">Create Bug</Nav.Link>
-            <Nav.Link className="pe-2" href="#memes">Register New User</Nav.Link>
+            <Nav.Link className="pe-2 text-nowrap" href="#deets">Create Bug</Nav.Link>
+            <Nav.Link className="pe-2 text-nowrap" href="#memes">Register New User</Nav.Link>
             
           </Nav>
         </Navbar.Collapse>
