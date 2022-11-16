@@ -21,7 +21,7 @@ const BugList = props => {
     }) 
 
     console.log(bugArray);
-    return bugArray;
+    return bugArray; 
 
   },[bugs])
 
