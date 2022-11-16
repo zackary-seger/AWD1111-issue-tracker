@@ -2,7 +2,8 @@ import * as React from "react";
 import '../index.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
+import { FaSignInAlt } from "react-icons/fa";
+
 
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { ReactComponent as Logo } from "../logo.svg";
@@ -29,7 +30,7 @@ function RenderNavbar() {
           <Nav className="mr-auto"></Nav>
           <Nav>
 
-            <Nav.Link className="pe-2" href="/">Login <FontAwesomeIcon icon={ faSignInAlt } /></Nav.Link>
+            <Nav.Link className="pe-2" href="/">Login <FontAwesomeIcon icon={ FaSignInAlt } /></Nav.Link>
             <Nav.Link className="pe-2" href="/user/list">List All Users</Nav.Link>
             <Nav.Link className="pe-2" href="/bug/list">List All Bugs</Nav.Link>
             <Nav.Link className="pe-2"href="/bug/:bugId">Find Bug By bugID</Nav.Link>
