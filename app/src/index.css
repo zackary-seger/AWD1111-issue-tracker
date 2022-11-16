@@ -18,10 +18,11 @@ h1 {
 }
 
 #container1 {
-  background-color: rgb(203, 209, 255);
+  background-color: #ededed;
   border-radius: .75em;
-  width: 85%;
-  height: 85%;
+  width: 95%;
+  height: 95%;
+  margin-top: 2.2em !important;
 }
 
 #navLogo {
