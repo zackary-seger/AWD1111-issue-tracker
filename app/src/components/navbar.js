@@ -13,12 +13,12 @@ import { ReactComponent as Logo } from "../logo-blue-white.svg";
 function RenderNavbar() {
 
   return (
-    <div className="mb-2">
+    <div className="mb-4">
       <Navbar id="navbar" collapseOnSelect expand="lg" bg="dark" variant="dark" className="pe-4">
       <Navbar.Brand href="/" id="navTitle" className="me-4">
         <Logo
           alt="BoatBorrowers.com Logo, Black, Blue, & White"
-          className="me-3 mb-4"
+          className="me-3 mb-2"
           id="navLogo"
         />
         boatborrowers.com
