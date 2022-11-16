@@ -26,12 +26,12 @@ function RenderNavbar() {
           <Nav className="mr-auto"></Nav>
           <Nav>
 
-            <Nav.Link href="/">Login</Nav.Link>
-            <Nav.Link href="/user/list">List All Users</Nav.Link>
-            <Nav.Link href="/bug/list">List All Bugs</Nav.Link>
-            <Nav.Link href="/bug/:bugId">Find Bug By bugID</Nav.Link>
+            <Nav.Link className="pe-2" href="/">Login</Nav.Link>
+            <Nav.Link className="pe-2" href="/user/list">List All Users</Nav.Link>
+            <Nav.Link className="pe-2" href="/bug/list">List All Bugs</Nav.Link>
+            <Nav.Link className="pe-2"href="/bug/:bugId">Find Bug By bugID</Nav.Link>
 
-            <NavDropdown title="Update Bug" id="collapsible-nav-dropdown">
+            <NavDropdown className="pe-2" title="Update Bug" id="collapsible-nav-dropdown">
 
               <NavDropdown.Item href="#action/3.1">Update Existing Bug</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Classify Bug</NavDropdown.Item>
@@ -44,8 +44,8 @@ function RenderNavbar() {
 
             </NavDropdown>
 
-            <Nav.Link href="#deets">Create Bug</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">Register New User</Nav.Link>
+            <Nav.Link className="pe-2" href="#deets">Create Bug</Nav.Link>
+            <Nav.Link className="pe-2" href="#memes">Register New User</Nav.Link>
             
           </Nav>
         </Navbar.Collapse>
