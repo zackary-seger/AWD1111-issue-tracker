@@ -5,6 +5,7 @@ import { FaSignInAlt } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { FaAlignJustify } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { ReactComponent as Logo } from "../logo-blue-white.svg";
@@ -55,8 +56,9 @@ function RenderNavbar() {
         </Navbar.Collapse>
 
         <Navbar.Brand id="navIcons" className="ms-3">
-          <FaShoppingCart className="me-3"/>
-          <FaUserCircle className="me-3"/> 
+          <a href="#setLater"><FaShoppingCart className="me-3"/></a>
+          <FaUserCircle className="me-3"/>
+          <FaEnvelope className="me-3"/>  
           <FaAlignJustify className="me-1"/>
         </Navbar.Brand>
 
