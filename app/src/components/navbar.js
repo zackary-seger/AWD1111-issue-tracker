@@ -14,7 +14,7 @@ function RenderNavbar() {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ps-4 pe-4">
-      <Navbar.Brand href="#home" className="text-primary me-5">
+      <Navbar.Brand href="/" id="navTitle" className="me-5">
         <Logo
           alt=""
           width="30"

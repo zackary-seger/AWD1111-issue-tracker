@@ -14,6 +14,10 @@ h1 {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#navTitle {
+  color: rgb(0, 119, 183);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
