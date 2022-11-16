@@ -56,7 +56,7 @@ function RenderNavbar() {
         </Navbar.Collapse>
 
         <Navbar.Brand id="navIcons" className="ms-3">
-          <FaShoppingCart href="#cart" className="me-3"/>
+          <a id="a1" href="#cart"><FaShoppingCart href="#cart" className="me-3"/></a>
           <FaUserCircle className="me-3"/>
           <FaEnvelope className="me-3"/>  
           <FaAlignJustify className="me-1"/>

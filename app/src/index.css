@@ -41,8 +41,10 @@ h1 {
 #navIcons {
   float: right;
   padding-bottom: .75em;
-  width: 1.2em; 
-  height: 1.2em;
+}
+
+#a1 {
+  color: white;
 }
 
 #signIn1 {
