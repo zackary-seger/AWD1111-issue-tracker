@@ -15,15 +15,6 @@ const BugList = props => {
     bugArray = bds.bugList().then( response => { 
 
       console.log(response.data);
-      return response.data;
-      
-    }).catch( e =>{ 
-      console.log(e) 
-    }) 
-
-    bugArray.then( response => { 
-
-      console.log(response);
       setSaveArr(response);
       
     }).catch( e =>{ 
@@ -32,11 +23,9 @@ const BugList = props => {
     
     return saveArr; 
 
-  },[bugs, saveArr])
+  })
 
-  console.log('response const: ' + response);
   console.log('saveArr: ' + saveArr);
-  console.log(response);
   console.log(saveArr);
 
   return (
