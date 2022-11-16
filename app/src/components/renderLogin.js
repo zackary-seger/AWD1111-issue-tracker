@@ -128,7 +128,7 @@ class LoginForm extends React.Component {
 
           </Form.Group>
 
-          <Form.Group className="mb-3 ms-3" controlId="renderLogin.loginButton">
+          <Form.Group className="mb-3" controlId="renderLogin.loginButton">
 
             <Button 
               variant="primary" 
