@@ -28,10 +28,26 @@ const BugList = props => {
   console.log('saveArr: ' + saveArr);
   console.log(saveArr);
 
+  useEffect(() => {
+    return (
+      <div className="card bug">
+
+        <img src="../images/img_avatar.png" alt="Avatar"></img>
+        <div class="container">
+          <h4><b>{bugs.data[0].title}</b></h4>
+          <p>Found By: Zackary Seger</p>
+        </div>
+
+      </div>
+    )
+  }, [bugs]);
+
   return (
     <div>
       <p className='mb-2'>If you have properly logged in, click the button for an updated bugList!</p>
-      <button onClick={() => setBugs(saveArr)}>
+      <button onClick={() => 
+        setBugs(saveArr.data)
+      }>
         Generate List
       </button>
     </div>
