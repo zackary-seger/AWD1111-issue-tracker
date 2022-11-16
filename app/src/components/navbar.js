@@ -13,9 +13,9 @@ import { ReactComponent as Logo } from "../logo-blue-white.svg";
 function RenderNavbar() {
 
   return (
-    <div>
+    <div className="mb-2">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ps-4 pe-4 me-2">
-      <Navbar.Brand href="/" id="navTitle" className="me-5">
+      <Navbar.Brand href="/" id="navTitle" className="me-5 ms-2">
         <Logo
           alt="BoatBorrowers.com Logo, Black, Blue, & White"
           className="me-3 mb-2"
@@ -54,7 +54,7 @@ function RenderNavbar() {
           </Nav>
         </Navbar.Collapse>
 
-        <Navbar.Brand id="navIcons" className="ms-3 pb-2">
+        <Navbar.Brand id="navIcons" className="ms-3">
           <FaShoppingCart className="me-3"/>
           <FaUserCircle className="me-3"/> 
           <FaAlignJustify className="me-1"/>
