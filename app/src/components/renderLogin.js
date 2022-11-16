@@ -119,11 +119,11 @@ class LoginForm extends React.Component {
 
           <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
 
-            <Form.Label>Email address</Form.Label>
+            <Form.Label className='font-weight-bold'>Email address</Form.Label>
             <Form.Control onChange={ validator.updateEmail } className="mb-1" type="email" placeholder="name@example.com" controlId="emailInput" ref={ this.emailInput } />
 
-            <Form.Label className="mt-2">Password</Form.Label>
-            <Form.Control onChange={ validator.updatePassword } className="" type="password" controlId="passwordInput" id="passwordTxt" ref={ this.passwordInput } />
+            <Form.Label className="font-weight-bold mt-2">Password</Form.Label>
+            <Form.Control onChange={ validator.updatePassword } className="mb-2" type="password" controlId="passwordInput" id="passwordTxt" ref={ this.passwordInput } />
 
           </Form.Group>
 
