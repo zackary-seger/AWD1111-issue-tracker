@@ -6,6 +6,7 @@ let bugArray;
 const BugList = props => { 
 
   const [bugs, setBugs] = useState([]) 
+  const [saveArr, setSaveArr] = useState([])
 
   const response = useEffect(() =>{  
 
@@ -20,20 +21,28 @@ const BugList = props => {
       console.log(e) 
     }) 
 
-    console.log(bugArray);
-    return bugArray; 
+    bugArray.then( response => { 
 
-  },[bugs])
+      console.log(response);
+      setSaveArr(response);
+      
+    }).catch( e =>{ 
+      console.log(e) 
+    }) 
+    
+    return saveArr; 
+
+  },[bugs, saveArr])
 
   console.log('response const: ' + response);
-  console.log('bugArray let: ' + bugArray);
+  console.log('saveArr: ' + saveArr);
   console.log(response);
-  console.log(bugs);
+  console.log(saveArr);
 
   return (
     <div>
       <p className='mb-2'>If you have properly logged in, click the button for an updated bugList!</p>
-      <button onClick={() => setBugs(BugList)}>
+      <button onClick={() => setBugs(saveArr)}>
         Generate List
       </button>
     </div>
