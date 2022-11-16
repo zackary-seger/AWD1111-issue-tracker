@@ -6,10 +6,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Yanone+Kaffeesatz&display=swap');
 
 h1 {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
