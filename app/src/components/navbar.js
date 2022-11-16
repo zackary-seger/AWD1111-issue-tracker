@@ -28,7 +28,7 @@ function RenderNavbar() {
         <Navbar.Collapse id="responsive-navbar-nav">
 
           <Nav className="mr-auto"></Nav>
-          <Nav className="pb-1">
+          <Nav className="pb-1 text-nowrap">
 
             <Nav.Link className="pe-2 text-nowrap" href="/">Login  <FaSignInAlt className="ms-1 pb-1"/></Nav.Link>
             <Nav.Link className="pe-2 text-nowrap" href="/user/list">List All Users</Nav.Link>
