@@ -8,7 +8,7 @@ const BugList = props => {
   const [bugs, setBugs] = useState([]) 
   const [saveArr, setSaveArr] = useState([])
 
-  const response = useEffect(() =>{  
+  React.useEffect(() =>{  
 
     const bds = new BugDataService('payload.email', 'payload.password');
     
