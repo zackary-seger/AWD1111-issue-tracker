@@ -120,7 +120,7 @@ class LoginForm extends React.Component {
 
           <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
 
-            <Form.Label className='font-weight-bold ps-1'>Email address</Form.Label>
+            <Form.Label className='font-weight-bold ps-1'>Email Address</Form.Label>
             <Form.Control onChange={ validator.updateEmail } className="mb-1" type="email" placeholder="name@example.com" controlId="emailInput" ref={ this.emailInput } />
 
             <Form.Label className="font-weight-bold mt-2 ps-1">Password</Form.Label>
