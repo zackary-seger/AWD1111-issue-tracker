@@ -1,7 +1,6 @@
 body {
-  margin: 0;
-  font-family: 'MyFont';
-  src: local('MyFont'), url(./fonts/PTSerif-Regular.ttf) format('truetype');
+  font-family: 'PTSerif-Regular';
+  src: local('PTSerif-Regular'), url(./fonts/PTSerif-Regular.ttf) format('truetype');
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

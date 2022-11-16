@@ -118,6 +118,7 @@ class LoginForm extends React.Component {
     return (
       <div>
 
+      <body>
         <h1 className="mt-3">User Login</h1>
 
         <Form className="mt-3 me-3" onSubmit={ this.loginUser }>
@@ -145,7 +146,7 @@ class LoginForm extends React.Component {
           </Form.Group>
 
         </Form>
-
+      </body>
       </div>  
     );
   }
