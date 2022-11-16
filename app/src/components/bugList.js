@@ -30,25 +30,27 @@ const BugList = props => {
 
   useEffect(() => {
     return (
-      <div className="card bug">
+      <div>
+        <div className="card bug">
 
-        <img src="../images/img_avatar.png" alt="Avatar"></img>
-        <div class="container">
-          <h4><b>{bugs.filter( (x) => { 
+          <img src="../images/img_avatar.png" alt="Avatar"></img>
+          <div class="container">
+            <h4><b>{bugs.filter( (x) => { 
 
-            let n=0; 
-            if (n === 0){ 
-              n++; 
-              return x.title + '\n'
-            } else {
-              return null
-            }
+              let n=0; 
+              if (n === 0){ 
+                n++; 
+                return x.title + '\n'
+              } else {
+                return null
+              }
 
-            })}</b></h4>
-          <p>Found By: Zackary Seger</p>
+              })}</b></h4>
+            <p>Found By: Zackary Seger</p>
+          </div>
+
         </div>
-
-      </div>
+      </div>  
     )
   }, [bugs]);
 
