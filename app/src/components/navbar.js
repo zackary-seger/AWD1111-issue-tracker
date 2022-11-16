@@ -1,8 +1,6 @@
 import * as React from "react";
 import '../index.css';
 
-import bugList from "./bugList.js" 
-
 import { FaSignInAlt } from "react-icons/fa"; 
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
@@ -60,9 +58,9 @@ function RenderNavbar() {
         </Navbar.Collapse>
 
         <Navbar.Brand id="navIcons" className="ms-3">
-          <link to='#cart' className="me-3">
+          <a href='#cart' className="me-3">
             <FaShoppingCart />
-          </link>
+          </a>
           <FaUserCircle className="me-3"/>
           <FaEnvelope className="me-3"/>  
           <FaAlignJustify className="me-1"/>
