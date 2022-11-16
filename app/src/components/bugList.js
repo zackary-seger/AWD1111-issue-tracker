@@ -1,4 +1,4 @@
-import {useState, useCallback, useEffect } from 'react' 
+import React, {useState, useCallback, useEffect } from 'react' 
 import BugDataService from "../services/bugDataService" 
 
 let bugArray;
@@ -28,7 +28,7 @@ const BugList = props => {
   console.log('saveArr: ' + saveArr);
   console.log(saveArr);
 
-  useEffect(() => {
+  React.useEffect(() => {
     return (
       <div>
         <div className="card bug">
