@@ -19,7 +19,7 @@ function RenderNavbar() {
           className="me-2"
           id="navLogo"
         />
-        BoatBorrowers.com
+        boatborrowers.com
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -28,7 +28,7 @@ function RenderNavbar() {
           <Nav className="mr-auto"></Nav>
           <Nav>
 
-            <Nav.Link className="pe-2" href="/">Login  <FaSignInAlt className="ms-2"/></Nav.Link>
+            <Nav.Link className="pe-2" href="/">Login  <FaSignInAlt className="ms-1"/></Nav.Link>
             <Nav.Link className="pe-2" href="/user/list">List All Users</Nav.Link>
             <Nav.Link className="pe-2" href="/bug/list">List All Bugs</Nav.Link>
             <Nav.Link className="pe-2"href="/bug/:bugId">Find Bug By bugID</Nav.Link>
