@@ -78,6 +78,10 @@ nav {
   margin-bottom: .75em;
 }
 
+button {
+  border-radius: 10%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
