@@ -1,7 +1,9 @@
 import React, {useState, useCallback, useEffect } from 'react' 
 import BugDataService from "../services/bugDataService" 
+import LoadBugList from "./loadBugList"
 
 let bugArray;
+let finalArr
 
 const BugList = props => { 
 
@@ -25,25 +27,15 @@ const BugList = props => {
 
   }, [genListBool])
 
+  React.useEffect(() => {
+
+    <LoadBugList />
+
+  }, [saveArr]);
+
   console.log('saveArr: ' + saveArr);
   console.log(saveArr);
-
-  // React.useEffect(() => {
-  //   return (
-  //     <div> Test 01
-  //       {/* <div className="card bug">
-
-  //         <img src="../images/img_avatar.png" alt="Avatar"></img>
-  //         <div class="container">
-  //           <h4><b>{saveArr['0']}</b></h4>
-  //           <p>Found By: Zackary Seger</p>
-  //         </div>
-
-  //       </div> */}
-  //     </div>  
-  //   )
-  // }, [saveArr]);
-
+  finalArr = saveArr;
 
   return (
     <div>
@@ -58,5 +50,5 @@ const BugList = props => {
 
 }
 
-export { bugArray };
+export { finalArr };
 export default BugList;
