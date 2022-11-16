@@ -26,9 +26,9 @@ function RenderNavbar() {
         <Navbar.Collapse id="responsive-navbar-nav">
 
           <Nav className="mr-auto"></Nav>
-          <Nav>
+          <Nav className="pb-1">
 
-            <Nav.Link className="pe-2 text-nowrap" href="/">Login  <FaSignInAlt className="ms-1"/></Nav.Link>
+            <Nav.Link className="pe-2 text-nowrap" href="/">Login  <FaSignInAlt className="ms-1 pb-1"/></Nav.Link>
             <Nav.Link className="pe-2 text-nowrap" href="/user/list">List All Users</Nav.Link>
             <Nav.Link className="pe-2 text-nowrap" href="/bug/list">List All Bugs</Nav.Link>
             <Nav.Link className="pe-2 text-nowrap"href="/bug/:bugId">Find Bug By bugID</Nav.Link>
