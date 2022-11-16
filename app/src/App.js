@@ -1,6 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import './index.css';
 
 import * as React from "react";
 import Switch from 'react-bootstrap/Switch'
@@ -25,21 +26,23 @@ function App() {
 
       <RenderNavbar />
 
-      <Switch> 
+        <body id="container1" className='container-fluid'>
+          <Switch> 
 
-        <Route exact path = { ["/"] } component = { LoginForm } > 
-        </Route>
+            <Route exact path = { ["/"] } component = { LoginForm } > 
+            </Route>
 
-        <Route exact path = { ["/bug/list"] } component = { bugList } > 
-        </Route>
+            <Route exact path = { ["/bug/list"] } component = { bugList } > 
+            </Route>
 
-        <Route path = "/bug/:bugId/" component = { bugById } > 
-        </Route> 
+            <Route path = "/bug/:bugId/" component = { bugById } > 
+            </Route> 
 
-        <Route path = "/createBug" component = { createBug } >
-        </Route> 
+            <Route path = "/createBug" component = { createBug } >
+            </Route> 
 
-      </Switch>
+          </Switch>
+        </body>
 
     </div>
   );
