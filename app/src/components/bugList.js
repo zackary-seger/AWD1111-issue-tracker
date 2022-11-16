@@ -20,7 +20,7 @@ const BugList = props => {
       console.log(e) 
     }) 
 
-    console.log('bugArray: ' + bugArray);
+    console.log(bugArray);
     return bugArray;
 
   },[bugs])
