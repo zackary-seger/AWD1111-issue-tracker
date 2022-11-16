@@ -25,6 +25,10 @@ const BugList = props => {
   },[])
 
   bugArray = bugs;
+
+  console.log('response const: ' + response);
+  console.log(response);
+  console.log('x = ' + x);
   console.log(bugArray);
 
 }
