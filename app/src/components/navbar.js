@@ -12,8 +12,8 @@ function RenderNavbar() {
       <Navbar.Brand href="#home" className="me-5">
         <Logo
           alt=""
-          width="45"
-          height="45"
+          width="30"
+          height="30"
           className="d-inline-block align-top pe-2"
         />
         BoatBorrowers.com v0.0.1
