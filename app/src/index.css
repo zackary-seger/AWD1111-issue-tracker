@@ -76,3 +76,9 @@ code {
     display: none !important;
   }
 }
+
+@media screen and (max-width: 450px) {
+  #navbar {
+    margin-bottom: .75em;
+  }
+}
