@@ -1,6 +1,9 @@
 import * as React from "react";
 import '../index.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
+
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { ReactComponent as Logo } from "../logo.svg";
 
@@ -10,12 +13,12 @@ function RenderNavbar() {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="ps-4 pe-4">
-      <Navbar.Brand href="#home" className="me-5">
+      <Navbar.Brand href="#home" className="text-primary me-5">
         <Logo
           alt=""
           width="30"
           height="30"
-          className="text-primary d-inline-block align-top pe-2"
+          className="d-inline-block align-top pe-2"
         />
         BoatBorrowers.com
         </Navbar.Brand>
@@ -26,7 +29,7 @@ function RenderNavbar() {
           <Nav className="mr-auto"></Nav>
           <Nav>
 
-            <Nav.Link className="pe-2" href="/">Login <i class='fas fa-sign-in-alt fa-2x'>fa-2x</i></Nav.Link>
+            <Nav.Link className="pe-2" href="/">Login <FontAwesomeIcon icon={ faSignInAlt } /></Nav.Link>
             <Nav.Link className="pe-2" href="/user/list">List All Users</Nav.Link>
             <Nav.Link className="pe-2" href="/bug/list">List All Bugs</Nav.Link>
             <Nav.Link className="pe-2"href="/bug/:bugId">Find Bug By bugID</Nav.Link>

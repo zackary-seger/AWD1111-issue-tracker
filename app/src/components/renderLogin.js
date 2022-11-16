@@ -8,7 +8,7 @@ import CreateValidator from './validate.js';
 
 import BugDataService from "../services/bugDataService";
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 let x = 1;
 
@@ -113,7 +113,7 @@ class LoginForm extends React.Component {
       <div>
 
       <body>
-        <h1 className="mt-3">User Login <i class='fas fa-sign-in-alt fa-2x'>fa-2x</i></h1>
+        <h1 className="mt-3">User Login <FontAwesomeIcon icon={ faSignInAlt } /></h1>
 
         <Form className="mt-3 me-3" onSubmit={ this.loginUser }>
 
