@@ -8,6 +8,6 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'MyFont';
+  src: local('MyFont'), url(./fonts/PTSerif-Regular.ttf) format('truetype');
 }
