@@ -29,8 +29,12 @@ h1 {
   padding-bottom: .75em;
 }
 
+#signIn1 {
+  color: rgb(0, 109, 199);
+}
+
 #navbar {
-  padding-left: 1.65em;
+  padding-left: 1.8em;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
