@@ -7,6 +7,7 @@ const BugList = props => {
 
   const [bugs, setBugs] = useState([]) 
   const [saveArr, setSaveArr] = useState([])
+  const [genListBool, setGenListBool] = useState([])
 
   React.useEffect(() =>{  
 
@@ -15,15 +16,14 @@ const BugList = props => {
     bugArray = bds.bugList().then( response => { 
 
       console.log(response.data);
-      setSaveArr(response);
+      setSaveArr(response.data);
       
     }).catch( e =>{ 
       console.log(e) 
     }) 
-    
-    return saveArr; 
+     
 
-  })
+  }, [genListBool])
 
   console.log('saveArr: ' + saveArr);
   console.log(saveArr);
@@ -35,7 +35,7 @@ const BugList = props => {
 
           <img src="../images/img_avatar.png" alt="Avatar"></img>
           <div class="container">
-            <h4><b>{bugs.filter( (x) => { 
+            <h4><b>{saveArr.filter( (x) => { 
 
               let n=0; 
               if (n === 0){ 
@@ -52,13 +52,13 @@ const BugList = props => {
         </div>
       </div>  
     )
-  }, [bugs]);
+  }, [saveArr]);
 
   return (
     <div>
       <p className='mb-2'>If you have properly logged in, click the button for an updated bugList!</p>
       <button onClick={() => 
-        setBugs(saveArr.data)
+        setGenListBool(true)
       }>
         Generate List
       </button>
