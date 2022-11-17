@@ -6,7 +6,10 @@ function LoadBugList() {
 
     let obj1 = finalArr['0'];
     console.log(obj1);
-    console.log(obj1.title);
+
+    if (obj1.title){
+      console.log(obj1.title);
+    }
 
     if (x > 0) {
       return (
