@@ -93,6 +93,7 @@ button {
 
 .card {
   border: 1.2px solid #000 !important;
+  max-width: 540px
 }
 
 code {

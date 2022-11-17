@@ -1,10 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import { finalArr } from './bugList';
 import RenderNavbar from './navbar';
-import "../index.css"
+import bugIcon from '../images/bugIcon.png'
 
+import "../index.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
+
 
 
 function LoadBugList() { 
@@ -22,8 +24,13 @@ function LoadBugList() {
       return <div>
       
               <div className="card ms-4 me-4 mb-4">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src={bugIcon} class="card-img" alt="Bug Icon"></img>
+                </div>
+                <div class="col-md-8">
 
-                <div className="container mt-3">
+                <div className="card-body mt-3">
                   <h3>Reported Bug No. 001</h3>
                   <h4><b>Title: {obj1.title}</b></h4><br/>
                   <p>Assigned To: {obj1.assignedToUserName}</p>
@@ -32,7 +39,8 @@ function LoadBugList() {
                   <p>Reproduction Steps: {obj1.reproductionSteps}</p>
                   <p>bugID: {obj1._id}</p>
                 </div>
-
+              </div>
+              </div>
               </div>
                     
               <div className="card ms-4 me-4 mb-4">
