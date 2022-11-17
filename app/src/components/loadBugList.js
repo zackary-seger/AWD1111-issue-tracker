@@ -2,7 +2,7 @@ import { finalArr } from './bugList';
 
 let x = 0;
 
-const LoadBugList = props => { 
+function LoadBugList() { 
 
     let obj1 = finalArr['0'];
     console.log(obj1);
