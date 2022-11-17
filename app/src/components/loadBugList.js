@@ -1,3 +1,4 @@
+import * as ReactDOM from 'react-dom';
 import { finalArr } from './bugList';
 
 function LoadBugList() { 
