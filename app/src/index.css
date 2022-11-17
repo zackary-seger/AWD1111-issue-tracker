@@ -96,6 +96,18 @@ button {
   max-width: 540px
 }
 
+#img1div {
+  width: 44% !important;
+}
+
+#cardBodyDiv {
+  width: 56% !important;
+}
+
+#img1 {
+  height: 20em;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

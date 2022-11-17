@@ -25,10 +25,10 @@ function LoadBugList() {
       
               <div className="card ms-4 me-4 mb-4">
               <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img src={bugIcon} class="card-img" alt="Bug Icon"></img>
+                <div id="img1div" class="col-md-4">
+                  <img id='img1' src={bugIcon} class="card-img ps-3" alt="Bug Icon"></img>
                 </div>
-                <div class="col-md-8">
+              <div id="cardBodyDiv" class="col-md-8">
 
                 <div className="card-body mt-3">
                   <h3>Reported Bug No. 001</h3>
