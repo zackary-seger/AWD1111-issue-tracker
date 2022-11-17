@@ -70,6 +70,10 @@ h1 {
   font-size: 1.25em;
 }
 
+#btnLogin {
+  border-radius: 17%;
+}
+
 label {
   font-weight: 500
 }
