@@ -28,11 +28,11 @@ function LoadBugList() {
                 <div id="img1div" class="col-md-4">
                   <img id='img1' src={bugIcon} class="card-img ps-3" alt="Bug Icon"></img>
                 </div>
-              <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3 pt-2">
+              <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3 pt-1">
 
                 <div className="card-body mt-3">
                   <h3>Reported Bug No. 001</h3>
-                  <h4><b>Title: {obj1.title}</b></h4><br/>
+                  <h4>Title: <b>{obj1.title}</b></h4><br/>
                   <p>Assigned To: {obj1.assignedToUserName}</p>
                   <p>Classification: {obj1.classification}</p>
                   <p>Description: {obj1.description}</p>
