@@ -24,8 +24,6 @@ function LoadBugList() {
       )
     }
 
-    x++;
-
 }
 
 export default LoadBugList
