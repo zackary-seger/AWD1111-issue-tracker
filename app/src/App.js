@@ -27,7 +27,7 @@ function App() {
       <RenderNavbar />
 
         <body id="container1" className='container-fluid'>
-          <Switch> 
+          <Switch className='mb-2'> 
 
             <Route exact path = { ["/"] } component = { LoginForm } > 
             </Route>

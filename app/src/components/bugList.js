@@ -41,7 +41,7 @@ const BugList = props => {
   return (
     <div>
 
-      <p className='mb-2 text-danger'>Unauthorized: You must be signed in to view this page..</p>
+      <b><p id='U401' className='mb-2 text-danger'>Unauthorized: You must be signed in to view this page..</p></b>
 
       <a className='mb-2' href="/">
         <button>

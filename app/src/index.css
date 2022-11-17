@@ -66,6 +66,10 @@ h1 {
   font-family: 'Poppins', sans-serif;
 }
 
+#U401 {
+  font-size: 1.25em;
+}
+
 label {
   font-weight: 500
 }
