@@ -3,6 +3,7 @@ import { finalArr } from './bugList';
 const LoadBugList = props => { 
 
     let obj1 = finalArr['0'];
+    console.log(obj1);
 
     return (
 

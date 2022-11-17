@@ -29,7 +29,7 @@ const BugList = props => {
 
   React.useEffect(() => {
 
-    <LoadBugList />
+    LoadBugList();
 
   }, [saveArr]);
 
