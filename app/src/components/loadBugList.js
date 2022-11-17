@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import { finalArr } from './bugList';
+import RenderNavbar from './navbar';
 
 function LoadBugList() { 
 
@@ -20,13 +21,13 @@ function LoadBugList() {
     
     }
 
+    const root = ReactDOM.createRoot(document.getElementById('root')); 
+    root.render(<RenderNavbar />);
+    
     if (obj1) {
 
       console.log(obj1.title);
-
-      const root = ReactDOM.createRoot(document.getElementById('root')); 
       root.render(<RenderCard />)
-
       
     }
 
