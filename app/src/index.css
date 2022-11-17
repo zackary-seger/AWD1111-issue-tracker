@@ -93,19 +93,21 @@ button {
 
 .card {
   border: 1.2px solid #000 !important;
-  max-width: 540px
+  max-width: 620px
 }
 
 #img1div {
-  width: 44% !important;
+  width: 50% !important;
 }
 
 #cardBodyDiv {
-  width: 56% !important;
+  width: 50% !important;
 }
 
 #img1 {
   height: 20em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 code {
