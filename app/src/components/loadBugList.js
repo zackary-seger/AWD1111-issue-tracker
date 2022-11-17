@@ -1,6 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import { finalArr } from './bugList';
 import RenderNavbar from './navbar';
+import "../index.css"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';

@@ -82,6 +82,10 @@ button {
   border-radius: 10%;
 }
 
+.card {
+  border: 2px solid black;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
