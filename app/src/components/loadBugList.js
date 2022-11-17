@@ -20,11 +20,11 @@ function LoadBugList() {
       
       return <div>
       
-              <div className="card ms-2 me-2">
+              <div className="card ms-4 me-4 mb-4">
 
-                <div class="container">
+                <div className="container mt-3">
                   <h3>Reported Bug No. 001</h3>
-                  <h4><b>Title: {obj1.title}</b></h4>
+                  <h4><b>Title: {obj1.title}</b></h4><br/>
                   <p>Assigned To: {obj1.assignedToUserName}</p>
                   <p>Classification: {obj1.classification}</p>
                   <p>Description: {obj1.description}</p>
@@ -34,11 +34,11 @@ function LoadBugList() {
 
               </div>
                     
-              <div className="card ms-2 me-2">
+              <div className="card ms-4 me-4 mb-4">
 
-                <div class="container">
+                <div className="container mt-3">
                   <h3>Reported Bug No. 002</h3>
-                  <h4><b>Title: {obj2.title}</b></h4>
+                  <h4><b>Title: {obj2.title}</b></h4><br/>
                   <p>Assigned To: {obj2.assignedToUserName}</p>
                   <p>Classification: {obj2.classification}</p>
                   <p>Description: {obj2.description}</p>
@@ -49,11 +49,11 @@ function LoadBugList() {
               </div>
 
                     
-              <div className="card ms-2 me-2">
+              <div className="card ms-4 me-4 mb-4">
 
-                <div class="container">
+                <div className="container mt-3">
                   <h3>Reported Bug No. 003</h3>
-                  <h4><b>Title: {obj3.title}</b></h4>
+                  <h4><b>Title: {obj3.title}</b></h4><br/>
                   <p>Assigned To: {obj3.assignedToUserName}</p>
                   <p>Classification: {obj3.classification}</p>
                   <p>Description: {obj3.description}</p>
@@ -64,11 +64,11 @@ function LoadBugList() {
               </div>
 
                     
-              <div className="card ms-2 me-2">
+              <div className="card ms-4 me-4 mb-4">
 
-                <div class="container">
+                <div className="container mt-3">
                   <h3>Reported Bug No. 004</h3>
-                  <h4><b>Title: {obj4.title}</b></h4>
+                  <h4><b>Title: {obj4.title}</b></h4><br/>
                   <p>Assigned To: {obj4.assignedToUserName}</p>
                   <p>Classification: {obj4.classification}</p>
                   <p>Description: {obj4.description}</p>
@@ -79,11 +79,11 @@ function LoadBugList() {
               </div>
 
                     
-              <div className="card ms-2 me-2">
+              <div className="card ms-4 me-4 mb-4">
 
-                <div class="container">
+                <div className="container mt-3">
                   <h3>Reported Bug No. 005</h3>
-                  <h4><b>Title: {obj5.title}</b></h4>
+                  <h4><b>Title: {obj5.title}</b></h4><br/>
                   <p>Assigned To: {obj5.assignedToUserName}</p>
                   <p>Classification: {obj5.classification}</p>
                   <p>Description: {obj5.description}</p>
