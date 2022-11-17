@@ -7,7 +7,7 @@ function LoadBugList() {
     let obj1 = finalArr['0'];
     console.log(obj1);
 
-    if (obj1.title !== undefined){
+    if (obj1){
       console.log(obj1.title);
     }
 
