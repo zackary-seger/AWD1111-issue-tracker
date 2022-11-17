@@ -35,8 +35,6 @@ const BugList = props => {
 
   }, [saveArr]);
 
-  const navigate = useNavigate();
-
   console.log('saveArr: ' + saveArr);
   console.log(saveArr);
   finalArr = saveArr;

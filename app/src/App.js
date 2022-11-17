@@ -35,12 +35,6 @@ function App() {
             <Route exact path = { ["/bug/list"] } component = { bugList } > 
             </Route>
 
-            <Route path = "/bug/:bugId/" component = { bugById } > 
-            </Route> 
-
-            <Route path = "/createBug" component = { createBug } >
-            </Route> 
-
           </Switch>
         </body>
 
