@@ -1,5 +1,4 @@
 import React, {useState, useCallback, useEffect } from 'react' 
-import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import BugDataService from "../services/bugDataService" 
 import LoadBugList from "./loadBugList"
@@ -41,10 +40,15 @@ const BugList = props => {
 
   return (
     <div>
+
       <p className='mb-2 text-danger'>Unauthorized: You must be signed in to view this page..</p>
-      <link to="/"><button>
-        Go To Login
-      </button></link>
+
+      <a href="/">
+        <button>
+          Go To Login
+        </button>
+      </a>
+
     </div>
   );
 
