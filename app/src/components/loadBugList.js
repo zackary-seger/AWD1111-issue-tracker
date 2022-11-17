@@ -1,17 +1,14 @@
 import { finalArr } from './bugList';
 
-let x = 0; // Save as state instead..
-
 function LoadBugList() { 
 
     let obj1 = finalArr['0'];
     console.log(obj1);
 
-    if (obj1){
-      console.log(obj1.title);
-    }
+    if (obj1) {
 
-    if (x > 0) {
+      console.log(obj1.title);
+
       return (
 
           <div className="card">
