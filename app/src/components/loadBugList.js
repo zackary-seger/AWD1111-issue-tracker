@@ -28,7 +28,7 @@ function LoadBugList() {
                 <div id="img1div" class="col-md-4">
                   <img id='img1' src={bugIcon} class="card-img ps-3" alt="Bug Icon"></img>
                 </div>
-              <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3">
+              <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3 pt-2">
 
                 <div className="card-body mt-3">
                   <h3>Reported Bug No. 001</h3>
