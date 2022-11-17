@@ -1,4 +1,6 @@
 import React, {useState, useCallback, useEffect } from 'react' 
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+
 import BugDataService from "../services/bugDataService" 
 import LoadBugList from "./loadBugList"
 
@@ -33,18 +35,18 @@ const BugList = props => {
 
   }, [saveArr]);
 
+  const navigate = useNavigate();
+
   console.log('saveArr: ' + saveArr);
   console.log(saveArr);
   finalArr = saveArr;
 
   return (
     <div>
-      <p className='mb-2'>If you have properly logged in, click the button for an updated bugList!</p>
-      <button onClick={() => 
-        setGenListBool(true)
-      }>
-        Generate List
-      </button>
+      <p className='mb-2 text-danger'>Unauthorized: You must be signed in to view this page..</p>
+      <link to="/"><button>
+        Go To Login
+      </button></link>
     </div>
   );
 
