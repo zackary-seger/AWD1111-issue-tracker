@@ -21,87 +21,157 @@ function LoadBugList() {
 
     function RenderCard() { 
       
-      return <div>
+      return <div className='container'>
+
+              <div className='row'>
       
-              <div className="card ms-4 me-4 mb-4">
-              <div class="row no-gutters">
-                <div id="img1div" class="col-md-4">
-                  <img id='img1' src={bugIcon} class="card-img ps-3" alt="Bug Icon"></img>
-                </div>
-              <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3 pt-1">
+                <div className="col-sm card ms-4 me-4 mb-4">
+                <div class="row no-gutters">
 
-                <div className="card-body mt-3">
-                  <h3>Reported Bug No. 001</h3>
-                  <h4>Title: <b>{obj1.title}</b></h4><br/>
-                  <p>Assigned To: {obj1.assignedToUserName}</p>
-                  <p>Classification: {obj1.classification}</p>
-                  <p>Description: {obj1.description}</p>
-                  <p>Reproduction Steps: {obj1.reproductionSteps}</p>
-                  <p>bugID: {obj1._id}</p>
+                  <div id="img1div" class="col-md-4">
+                    <img id='img1' src={bugIcon} class="card-img ps-3" alt="Bug Icon"></img>
+                  </div>
+
+                  <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3 pt-1">
+
+                    <div className="card-body mt-3">
+                      <h3>Reported Bug No. 001</h3>
+                      <h4>Title: <b>{obj1.title}</b></h4><br/>
+                      <p>Assigned To: {obj1.assignedToUserName}</p>
+                      <p>Classification: {obj1.classification}</p>
+                      <p>Description: {obj1.description}</p>
+                      <p>Reproduction Steps: {obj1.reproductionSteps}</p>
+                      <p>bugID: {obj1._id}</p>
+                    </div>
+                  </div>
                 </div>
+
+                </div>
+                      
+                      
+<div className="col-sm card ms-4 me-4 mb-4">
+                <div class="row no-gutters">
+                  
+                  <div id="img1div" class="col-md-4">
+                    <img id='img1' src={bugIcon} class="card-img ps-3" alt="Bug Icon"></img>
+                  </div>
+
+                  <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3 pt-1">
+
+                    <div className="card-body mt-3">
+                      <h3>Reported Bug No. 002</h3>
+                      <h4>Title: <b>{obj2.title}</b></h4><br/>
+                      <p>Assigned To: {obj2.assignedToUserName}</p>
+                      <p>Classification: {obj2.classification}</p>
+                      <p>Description: {obj2.description}</p>
+                      <p>Reproduction Steps: {obj2.reproductionSteps}</p>
+                      <p>bugID: {obj2._id}</p>
+                    </div>
+                  </div>
+                </div>
+
+                </div>
+
+                      
+                <div className="col-sm card ms-4 me-4 mb-4">
+                <div class="row no-gutters">
+                  
+                  <div id="img1div" class="col-md-4">
+                    <img id='img1' src={bugIcon} class="card-img ps-3" alt="Bug Icon"></img>
+                  </div>
+
+                  <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3 pt-1">
+
+                    <div className="card-body mt-3">
+                      <h3>Reported Bug No. 003</h3>
+                      <h4>Title: <b>{obj3.title}</b></h4><br/>
+                      <p>Assigned To: {obj3.assignedToUserName}</p>
+                      <p>Classification: {obj3.classification}</p>
+                      <p>Description: {obj3.description}</p>
+                      <p>Reproduction Steps: {obj3.reproductionSteps}</p>
+                      <p>bugID: {obj3._id}</p>
+                    </div>
+                  </div>
+                </div>
+
+                </div>
+
               </div>
-              </div>
-              </div>
+
+              <div className='row'>
+
+              <div className="col-sm card ms-4 me-4 mb-4">
+                <div class="row no-gutters">
+                  
+                  <div id="img1div" class="col-md-4">
+                    <img id='img1' src={bugIcon} class="card-img ps-3" alt="Bug Icon"></img>
+                  </div>
+
+                  <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3 pt-1">
+
+                    <div className="card-body mt-3">
+                      <h3>Reported Bug No. 004</h3>
+                      <h4>Title: <b>{obj4.title}</b></h4><br/>
+                      <p>Assigned To: {obj4.assignedToUserName}</p>
+                      <p>Classification: {obj4.classification}</p>
+                      <p>Description: {obj4.description}</p>
+                      <p>Reproduction Steps: {obj4.reproductionSteps}</p>
+                      <p>bugID: {obj4._id}</p>
+                    </div>
+                  </div>
+                </div>
+
+                </div>
+
                     
-              <div className="card ms-4 me-4 mb-4">
+                <div className="col-sm card ms-4 me-4 mb-4">
+                <div class="row no-gutters">
+                  
+                  <div id="img1div" class="col-md-4">
+                    <img id='img1' src={bugIcon} class="card-img ps-3" alt="Bug Icon"></img>
+                  </div>
 
-                <div className="container mt-3">
-                  <h3>Reported Bug No. 002</h3>
-                  <h4><b>Title: {obj2.title}</b></h4><br/>
-                  <p>Assigned To: {obj2.assignedToUserName}</p>
-                  <p>Classification: {obj2.classification}</p>
-                  <p>Description: {obj2.description}</p>
-                  <p>Reproduction Steps: {obj2.reproductionSteps}</p>
-                  <p>bugID: {obj2._id}</p>
+                  <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3 pt-1">
+
+                    <div className="card-body mt-3">
+                      <h3>Reported Bug No. 005</h3>
+                      <h4>Title: <b>{obj5.title}</b></h4><br/>
+                      <p>Assigned To: {obj5.assignedToUserName}</p>
+                      <p>Classification: {obj5.classification}</p>
+                      <p>Description: {obj5.description}</p>
+                      <p>Reproduction Steps: {obj5.reproductionSteps}</p>
+                      <p>bugID: {obj5._id}</p>
+                    </div>
+                  </div>
                 </div>
 
-              </div>
-
-                    
-              <div className="card ms-4 me-4 mb-4">
-
-                <div className="container mt-3">
-                  <h3>Reported Bug No. 003</h3>
-                  <h4><b>Title: {obj3.title}</b></h4><br/>
-                  <p>Assigned To: {obj3.assignedToUserName}</p>
-                  <p>Classification: {obj3.classification}</p>
-                  <p>Description: {obj3.description}</p>
-                  <p>Reproduction Steps: {obj3.reproductionSteps}</p>
-                  <p>bugID: {obj3._id}</p>
                 </div>
 
-              </div>
+                <div className="col-sm card ms-4 me-4 mb-4">
+                <div class="row no-gutters">
+                  
+                  <div id="img1div" class="col-md-4">
+                    <img id='img1' src={bugIcon} class="card-img ps-3" alt="Bug Icon"></img>
+                  </div>
 
-                    
-              <div className="card ms-4 me-4 mb-4">
+                  <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3 pt-1">
 
-                <div className="container mt-3">
-                  <h3>Reported Bug No. 004</h3>
-                  <h4><b>Title: {obj4.title}</b></h4><br/>
-                  <p>Assigned To: {obj4.assignedToUserName}</p>
-                  <p>Classification: {obj4.classification}</p>
-                  <p>Description: {obj4.description}</p>
-                  <p>Reproduction Steps: {obj4.reproductionSteps}</p>
-                  <p>bugID: {obj4._id}</p>
+                    <div className="card-body mt-3">
+                      <h3>Reported Bug No. 006</h3>
+                      <h4>Title: <b>Test Update Title 06</b></h4><br/>
+                      <p>Assigned To: {obj1.assignedToUserName}</p>
+                      <p>Classification: {obj1.classification}</p>
+                      <p>Description: {obj1.description}</p>
+                      <p>Reproduction Steps: {obj1.reproductionSteps}</p>
+                      <p>bugID: {obj1._id}</p>
+                    </div>
+                  </div>
                 </div>
 
-              </div>
-
-                    
-              <div className="card ms-4 me-4 mb-4">
-
-                <div className="container mt-3">
-                  <h3>Reported Bug No. 005</h3>
-                  <h4><b>Title: {obj5.title}</b></h4><br/>
-                  <p>Assigned To: {obj5.assignedToUserName}</p>
-                  <p>Classification: {obj5.classification}</p>
-                  <p>Description: {obj5.description}</p>
-                  <p>Reproduction Steps: {obj5.reproductionSteps}</p>
-                  <p>bugID: {obj5._id}</p>
                 </div>
 
-              </div>
-
+              
+             </div>
              </div>
     }
 
