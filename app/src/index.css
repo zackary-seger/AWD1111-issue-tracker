@@ -125,7 +125,7 @@ button {
   width: fit-content
 }
 
-#bugListH2a:hover {
+#bugListH2div:hover {
   border: 1.5px solid navy;
 }
 
