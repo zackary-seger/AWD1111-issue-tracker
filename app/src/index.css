@@ -114,7 +114,16 @@ button {
     border-radius: 5px;
     padding: 0.5em;
     margin-left: 1.32em;
-    width: fit-content
+    width: fit-content;
+    color: navy;
+}
+
+#bugListH2 {
+  border: 2.5px solid black;
+  border-radius: 5px;
+  padding: 0.5em;
+  margin-left: 1.32em;
+  width: fit-content
 }
 
 code {
