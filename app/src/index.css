@@ -110,6 +110,7 @@ button {
 }
 
 #bugListH1 {
+    display: inline;
     border: 2.5px solid black;
     border-radius: 5px;
     padding: 0.5em;
@@ -119,6 +120,7 @@ button {
 }
 
 #bugListH2 {
+  display: inline;
   border: 2.5px solid black;
   border-radius: 5px;
   padding: 0.5em;
