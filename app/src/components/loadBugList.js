@@ -21,9 +21,9 @@ function LoadBugList() {
 
     function RenderCard() { 
       
-      return <div className='container'>
+      return <div className='container-fluid'>
 
-              <div className='row'>
+              <div className='row ms-3 me-3'>
       
                 <div className="col-sm card ms-4 me-4 mb-4">
                 <div class="row no-gutters">
@@ -49,7 +49,7 @@ function LoadBugList() {
                 </div>
                       
                       
-<div className="col-sm card ms-4 me-4 mb-4">
+              <div className="col-sm card ms-4 me-4 mb-4">
                 <div class="row no-gutters">
                   
                   <div id="img1div" class="col-md-4">
@@ -98,7 +98,7 @@ function LoadBugList() {
 
               </div>
 
-              <div className='row'>
+              <div className='row  ms-3 me-3'>
 
               <div className="col-sm card ms-4 me-4 mb-4">
                 <div class="row no-gutters">
