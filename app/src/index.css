@@ -122,7 +122,8 @@ button {
   border-radius: 5px;
   padding: 0.5em;
   margin-left: 1.32em;
-  width: fit-content
+  width: fit-content;
+  width: 17.22em;
 }
 
 .lowerNavLink:hover {
