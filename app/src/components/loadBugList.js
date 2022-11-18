@@ -180,7 +180,7 @@ function LoadBugList() {
     if (obj1) {
 
       console.log(obj1.title);
-      root.render(<div><RenderNavbar /><h1 id='bugListH1' className='text-primary mt-2 mb-4'>Latest Bug List</h1><RenderCard /></div>)
+      root.render(<div><RenderNavbar /><h1 id='bugListH1' className='text-primary mt-2 mb-4'>LATEST BUGS :: UPDATE WITH REFRESH / F5</h1><RenderCard /></div>)
       
     }
 
