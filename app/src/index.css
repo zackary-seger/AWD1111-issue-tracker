@@ -117,7 +117,16 @@ button {
     color: navy;
 }
 
-#bugListH2 {
+#bugListH201 {
+  display: inline;
+  border-radius: 5px;
+  padding: 0.5em;
+  margin-left: 1.32em;
+  width: fit-content;
+  width: 17.22em;
+}
+
+#bugListH202 {
   display: inline;
   border-radius: 5px;
   padding: 0.5em;
