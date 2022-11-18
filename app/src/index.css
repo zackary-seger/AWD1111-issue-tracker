@@ -140,6 +140,10 @@ button {
   height: 2.5em
 }
 
+.d-inline-block {
+  width: 17.5em;
+}
+
 #lowerNav {
   margin-bottom: 2.8em;
   margin-left: 0;
