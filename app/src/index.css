@@ -125,6 +125,10 @@ button {
   width: fit-content
 }
 
+#bugListH2a:hover {
+  border: 1.5px solid navy;
+}
+
 #lowerNav {
   margin-bottom: 2.8em;
   margin-left: 0;
