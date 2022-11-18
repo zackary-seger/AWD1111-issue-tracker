@@ -180,7 +180,7 @@ function LoadBugList() {
     if (obj1) {
 
       console.log(obj1.title);
-      root.render(<div><RenderNavbar /><RenderCard /></div>)
+      root.render(<div><RenderNavbar /><h1 className='text-primary mt-2 mb-2'>Latest Bug List</h1><RenderCard /></div>)
       
     }
 
