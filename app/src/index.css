@@ -125,8 +125,10 @@ button {
   width: fit-content
 }
 
-#bugListH2div:hover {
+.lowerNavLink:hover {
   border: 1.5px solid navy;
+  width: 17.22em;
+  height: 2.5em
 }
 
 #lowerNav {

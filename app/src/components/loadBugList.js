@@ -189,16 +189,18 @@ function LoadBugList() {
 
           <h1 id='bugListH1' className='mt-2 mb-4 me-1'>LATEST BUGS</h1>
 
-          <div id='bugListH2div' className='d-block'>
+          <div className='d-inline-block lowerNavLink'>
             <a href='/bug/list'>
               <h2 id='bugListH2' className='text-primary mt-2 mb-4 me-2'>UPDATE LIST</h2>
             </a>
           </div>
 
-          <a id='bugListH2a' href='/bug/list'>
-            <h2 id='bugListH2' className='text-primary mt-2 mb-4 me-2'>FILTER LIST ▼</h2>
-          </a>
-
+          <div className='d-inline-block lowerNavLink'>
+            <a id='bugListH2a' href='/bug/list'>
+              <h2 id='bugListH2' className='text-primary mt-2 mb-4 me-2'>FILTER LIST ▼</h2>
+            </a>
+          </div>
+          
         </div>
 
         <RenderCard />
