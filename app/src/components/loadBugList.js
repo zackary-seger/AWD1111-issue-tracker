@@ -1,6 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import { finalArr } from './bugList';
 import RenderNavbar from './navbar';
+import RenderLowerNavbar from './lowerNav';
 import bugIcon from '../images/bugIcon.png'
 
 import "../index.css"
@@ -181,28 +182,11 @@ function LoadBugList() {
 
       console.log(obj1.title);
       root.render(
+        
       <div>
 
         <RenderNavbar />
-
-        <div id="lowerNav" className='container'>
-
-          <h1 id='bugListH1' className='mt-2 mb-4 me-1'>LATEST BUGS</h1>
-
-          <div className='d-inline-block lowerNavLink'>
-            <a href='/bug/list'>
-              <h2 id='bugListH201' className='text-primary mt-2 mb-4 me-2'>UPDATE LIST</h2>
-            </a>
-          </div>
-
-          <div className='d-inline-block lowerNavLink'>
-            <a id='bugListH2a' href='/bug/list'>
-              <h2 id='bugListH202' className='text-primary mt-2 mb-4 me-2'>FILTER LIST ▼</h2>
-            </a>
-          </div>
-
-        </div>
-
+        <RenderLowerNavbar />
         <RenderCard />
       
       </div>)
