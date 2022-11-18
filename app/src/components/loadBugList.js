@@ -193,6 +193,10 @@ function LoadBugList() {
             <h2 id='bugListH2' className='text-primary mt-2 mb-4 me-2'>UPDATE LIST</h2>
           </a>
 
+          <a href='/bug/list'>
+            <h2 id='bugListH2' className='text-primary mt-2 mb-4 me-2'>FILTER LIST ▼</h2>
+          </a>
+
         </div>
 
         <RenderCard />
