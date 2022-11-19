@@ -16,7 +16,7 @@ function RenderNavbar() {
   return (
     <div className="">
       <Navbar id="navbar" collapseOnSelect expand="lg" bg="dark" variant="dark" className="pe-4 pb-2 pt-2">
-      <Navbar.Brand href="/" id="navTitle" className="me-3">
+      <Navbar.Brand href="/" id="navTitle" className="me-3 ms-2">
         <Logo
           alt="BoatBorrowers.com Logo, Black, Blue, & White"
           className="me-3 mb-2"
