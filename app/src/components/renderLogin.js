@@ -128,7 +128,7 @@ class LoginForm extends React.Component {
 
           </Form.Group>
 
-          <a className='d-block pt-2 pb-2' href='/#'>Forgot your password?</a> 
+          <a className='d-block pt-2 ps-1' href='/#'>Forgot your password?</a> 
 
           <Form.Group className="mb-3" controlId="renderLogin.loginButton">
 
