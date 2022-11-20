@@ -43,11 +43,11 @@ router.get('/:bugId/comment/:commentId', hasAnyRole(), validId('bugId'), validId
   const bugId = req.bugId;
   const commentId = req.commentId;
 
-  const foundBug = await dbModule.findAllCommentsByCommentIdAndBugId(dbModule.newId(commentId), dbModule.newId(bugId));
-  if (!foundBug){
+  const foundComment = await dbModule.findAllCommentsByCommentIdAndBugId(dbModule.newId(commentId), dbModule.newId(bugId));
+  if (!foundComment){
     res.status(404).json({ error: 'Bug not found..'})
   } else {
-    res.status(200).json(foundBug);
+    res.status(200).json(JSON.stringify(foundComment));
   }
 
 } else {
