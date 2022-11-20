@@ -12,4 +12,4 @@ function hasAnyRole() {
   };
 }
 
-export default {hasAnyRole}
+export default { hasAnyRole }
