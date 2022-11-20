@@ -1,7 +1,7 @@
 import config from 'config';
 import Debug from 'debug';
 import jwt from 'jsonwebtoken';
-import dbModule from '../database.js'
+import * as dbModule from '../database.js'
 const debugMain = Debug('app:routes:user');
 
 const hasAnyRole = () => {
