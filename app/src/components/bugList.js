@@ -8,7 +8,6 @@ let finalArr
 
 const BugList = props => { 
 
-  const [bugs, setBugs] = useState([]) 
   const [saveArr, setSaveArr] = useState([])
   const [genListBool, setGenListBool] = useState([])
 

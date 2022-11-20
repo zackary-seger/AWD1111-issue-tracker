@@ -12,9 +12,9 @@ const UserList = props => {
 
   React.useEffect(() => {  
 
-    const bds = new UserDataService();
+    const uds = new UserDataService();
     
-    bds.UserList().then( response => { 
+    uds.UserList().then( response => { 
 
       console.log(response.data);
       setSaveArr(response.data);
