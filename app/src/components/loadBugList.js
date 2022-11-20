@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import { finalArr } from './bugList';
 import RenderNavbar from './navbar';
-import RenderLowerNavbar from './lowerNav';
+import RenderLowerNavbar from './bugListLowerNav';
 import bugIcon from '../images/bugIcon.png'
 
 import "../index.css"

@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import { finalArr } from './userList';
 import RenderNavbar from './navbar';
-import RenderLowerNavbar from './lowerNav';
+import RenderLowerNavbar from './userListLowerNav';
 import bugIcon from '../images/profileHeadshot100dpi.png'
 
 import "../index.css"
@@ -22,11 +22,11 @@ function LoadBugList() {
     if (obj1) {
       role = obj1.role;
     }
-    
+
     if (role) {
       if (role[0]) {
-        if (role !== null && role[1]){
-          role = `${role[0]} && ${role[1]}`
+        if (role[1]){
+          role = `${role[0]} & ${role[1]}`
         } else {
           role = role[0];
         }
