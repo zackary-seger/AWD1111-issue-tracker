@@ -30,7 +30,6 @@ function hasRole(...allowedRoles) {
             }
           }
         }
-      }
 
       // user is not in any of the allowed groups
       return res.status(403).json({ error: 'You do not have an allowed role!' });
