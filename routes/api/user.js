@@ -833,7 +833,6 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
 
           });
           
-
         }
 
         const authPayload = { 
@@ -876,7 +875,6 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
         const authMaxAge = parseInt(config.get('auth.cookieMaxAge'));
 
         res.cookie('authToken', authToken, { maxAge: authMaxAge, secure: true });
-        req.auth.role = user.role;
 
         debugMain(req.cookies);
         console.log('\n');
