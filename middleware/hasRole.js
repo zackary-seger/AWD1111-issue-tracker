@@ -21,7 +21,7 @@ function hasRole(...allowedRoles) {
       return res.status(403).json({ error: 'You have not been assigned a role!' });
     } else {
       for (const allowedRole of allowedRoles) {
-        for (const role of role) {
+        for (const role of user.role) {
           if (role === allowedRole) {
           return next();
           }
