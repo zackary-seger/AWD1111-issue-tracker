@@ -1,3 +1,4 @@
+import config from 'config';
 import Debug from 'debug';
 const debugMain = Debug('app:routes:user');
 
