@@ -16,6 +16,7 @@ import { isLoggedIn } from '../../middleware/isLoggedIn.js';
 import { auth } from '../../middleware/auth.js';
 
 const canEditUserRoles = ['CEO', 'Technical Manager', 'Data Analyst'];
+const canDeleteUserRoles = ['CEO', 'Technical Manager', 'Data Analyst'];
 
 // Create & Export Router
 const router = express.Router();
