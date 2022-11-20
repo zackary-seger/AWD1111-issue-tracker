@@ -20,12 +20,12 @@ function hasRole(...allowedRoles) {
     } else if (user.role === null) {
       return res.status(403).json({ error: 'You have not been assigned a role!' });
     } else {
-      for (const allowedRole of allowedRoles) {
-        for (const role of user.role) {
-          debugMain({role: role});
-          debugMain({allowedRole: allowedRole});
-          if (role == allowedRole) {
-            return next();
+      for (const allowedRole of allowedRoles) {       // All I have to say about this idea is lol 😅
+        for (const singleRole of allowedRole) {
+          for (const role of user.role) {
+            if (singleRole == role) {
+              return next();
+            }
           }
         }
       }
