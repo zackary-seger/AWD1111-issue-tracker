@@ -20,9 +20,11 @@ function hasRole(...allowedRoles) {
     } else if (user.role === null) {
       return res.status(403).json({ error: 'You have not been assigned a role!' });
     } else {
-      for (const role of allowedRoles) {
-        if (role.includes(role)) {
+      for (const allowedRole of allowedRoles) {
+        for (const role of role) {
+          if (role === allowedRole) {
           return next();
+          }
         }
       }
       // user is not in any of the allowed groups
