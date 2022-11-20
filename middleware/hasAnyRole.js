@@ -1,5 +1,6 @@
 import config from 'config';
 import Debug from 'debug';
+import jwt from 'jsonwebtoken';
 const debugMain = Debug('app:routes:user');
 
 const hasAnyRole = () => {
