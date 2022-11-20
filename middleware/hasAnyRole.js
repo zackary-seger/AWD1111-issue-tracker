@@ -7,8 +7,6 @@ const debugMain = Debug('app:routes:user');
 const hasAnyRole = () => {
   return async (req, res, next) => {
 
-    debugMain(req.auth);
-
     const secret = config.get('auth.secret');
     const token = req.cookies.authToken;
 

@@ -8,6 +8,7 @@ import config from 'config';
 import jwt from 'jsonwebtoken';
 import { validId } from '../../middleware/validId.js';
 import { validBody } from '../../middleware/validBody.js';
+import { hasAnyRole } from '../../middleware/hasAnyRole.js';
 
 // Create Router
 const router = express.Router();
@@ -17,7 +18,7 @@ const newCommentSchema = Joi.object({
   content: Joi.string().required()
 });
 
-router.get('/:bugId/comment/list', validId('bugId'), async (req, res, next) => {
+router.get('/:bugId/comment/list', hasAnyRole(), validId('bugId'), async (req, res, next) => {
   
   if (req.cookies.authToken != undefined) {
 
@@ -34,7 +35,7 @@ router.get('/:bugId/comment/list', validId('bugId'), async (req, res, next) => {
 
 });
 
-router.get('/:bugId/comment/:commentId', validId('bugId'), validId('commentId'), async (req, res, next) => {
+router.get('/:bugId/comment/:commentId', hasAnyRole(), validId('bugId'), validId('commentId'), async (req, res, next) => {
 
  if (req.cookies.authToken != undefined) {
 
@@ -55,7 +56,7 @@ router.get('/:bugId/comment/:commentId', validId('bugId'), validId('commentId'),
 
 });
 
-router.put('/:bugId/comment/new', validId('bugId'), validBody(newCommentSchema), async (req, res, next) => {
+router.put('/:bugId/comment/new', hasAnyRole(),  validId('bugId'), validBody(newCommentSchema), async (req, res, next) => {
   
   if (req.cookies.authToken != undefined) {
 
