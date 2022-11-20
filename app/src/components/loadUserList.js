@@ -148,7 +148,7 @@ function LoadBugList() {
                   <div id="cardBodyDiv" class="col-md-8 ps-3 pe-3 pt-1">
 
                     <div className="card-body mt-3">
-                    <h3>User No. 001</h3>
+                      <h3>User No. 001</h3>
                       <h4>Full Name: {obj1.firstName} {obj1.lastName}</h4><br/>
                       <p>Role: {obj1.role}</p>
                       <p>Email: {obj1.email}</p>
