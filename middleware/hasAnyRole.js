@@ -2,16 +2,26 @@ import Debug from 'debug';
 const debugMain = Debug('app:routes:user');
 
 const hasAnyRole = () => {
-  return (req, res, next) => {
+  return async (req, res, next) => {
+
     debugMain(req.auth);
-    if (!req.auth.role) {
+
+    const secret = config.get('auth.secret');
+    const token = req.cookies.authToken;
+
+    const payload = jwt.verify(token, secret);
+    let user = await dbModule.readUserByEmail(payload.email);
+
+    if (!user) {
       return res.status(401).json({ error: 'You are not logged in!' });
-    } else if (req.auth.role === null) {     // edit: added to handle nulls that are default..
+    } else if (user.role === null) {     // edit: added to handle nulls that are default..
       return res.status(403).json({ error: 'You have not been assigned a role!' });
-    } else if (req.auth.role && typeof req.auth.role === 'string') {
+    } else if (user.role && typeof req.auth.role === 'string') {
       return next();
-    } else if (req.auth.role && req.auth.role[0]) {
+    } else if (user.role && user.role[0]) {
       return next();
+    } else {
+      return res.status(403).json({ error: 'You have not been assigned a role!' });
     }
   };
 }
