@@ -1,3 +1,4 @@
+
 const hasAnyRole = () => {
   return (req, res, next) => {
     if (!req.auth) {
@@ -12,4 +13,4 @@ const hasAnyRole = () => {
   };
 }
 
-export default { hasAnyRole } 
+export { hasAnyRole } 

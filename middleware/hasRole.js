@@ -23,4 +23,4 @@ function hasRole(...allowedRoles) {
   };
 }
 
-export default {hasRole}
+export {hasRole}

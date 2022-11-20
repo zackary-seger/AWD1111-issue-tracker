@@ -8,4 +8,4 @@ function isLoggedIn() {
   };
 }
 
-export default {isLoggedIn}
+export {isLoggedIn}

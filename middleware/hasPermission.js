@@ -15,4 +15,4 @@ function hasPermission(...requiredPermissions) {
   };
 }
 
-export default {hasPermission}
+export {hasPermission}
