@@ -17,11 +17,11 @@ const hasAnyRole = () => {
 
     if (!user) {
       return res.status(401).json({ error: 'You are not logged in!' });
-    } else if (user.role === null) {     // edit: added to handle nulls that are default..
+    } else if (user.role == null) {     // edit: added to handle nulls that are default..
       return res.status(403).json({ error: 'You have not been assigned a role!' });
-    } else if (user.role && typeof req.auth.role === 'string') {
+    } else if (user.role && typeof user.role === 'string') {
       return next();
-    } else if (user.role && user.role[0]) {
+    } else if (user.role != null && user.role[0]) {
       return next();
     } else {
       return res.status(403).json({ error: 'You have not been assigned a role!' });
