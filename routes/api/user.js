@@ -55,6 +55,10 @@ router.get('/list', hasAnyRole(), async (req, res, next) => {
 
       const users = await dbModule.findAllUsers();
 
+      users.forEach(user => {
+        delete user.password;
+      });
+
       // I created the newDbConn() function on my own accord for _db use here..
       // You can do super neat one liners on this sheet if you do it this way..
 
