@@ -1,4 +1,4 @@
-// ,bhimport Debug from 'debug';
+import Debug from 'debug';
 const debugMain = Debug('app:routes:user');
 const debugReg = Debug('app:routes:user - reg');
 import * as dbModule from '../../database.js';
