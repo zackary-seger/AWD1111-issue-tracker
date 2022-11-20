@@ -14,8 +14,8 @@ function LoadBugList() {
 
     let obj1 = finalArr['0'];
     let role;
-    
-    if (obj1.role) {
+
+    if (obj1) {
       role = obj1.role;
     }
 
