@@ -1,3 +1,9 @@
+import config from 'config';
+import Debug from 'debug';
+import jwt from 'jsonwebtoken';
+import * as dbModule from '../database.js'
+const debugMain = Debug('app:routes:user');
+
 function hasRole(...allowedRoles) {
   return async (req, res, next) => {
 
