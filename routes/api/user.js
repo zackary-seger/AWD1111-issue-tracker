@@ -742,6 +742,7 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
         let canCreateBug = false;
         let canEditAnyBug = false;
         let canCloseAnyBug = false;
+        let canClassifyAnyBug = false;
         let canReassignAnyBug = false;
         let canAddComments = false;
         let canAddTestCase = false;
