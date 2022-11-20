@@ -12,14 +12,18 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 
 function LoadBugList() { 
 
-    let obj1 = finalArr['0'];
+    let obj1;
     let role;
+
+    if (finalArr !== []) {
+      obj1 = finalArr['0'];
+    }
 
     if (obj1) {
       role = obj1.role;
     }
 
-    if (role != null && role[1]){
+    if (role !== null && role[1]){
       role = `${role[0]} && ${role[1]}`
     } else {
       role = role[0];
