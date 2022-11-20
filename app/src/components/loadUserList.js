@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import { finalArr } from './userList';
 import RenderNavbar from './navbar';
 import RenderLowerNavbar from './lowerNav';
-import bugIcon from '../images/bugIcon.png'
+import bugIcon from '../images/img_avatar.png'
 
 import "../index.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
