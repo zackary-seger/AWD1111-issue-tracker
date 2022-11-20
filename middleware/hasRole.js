@@ -15,9 +15,7 @@ function hasRole(...allowedRoles) {
 
     if (!user) {
       return res.status(401).json({ error: 'You are not logged in!' });
-    } else if (!user.role) {
-      return res.status(403).json({ error: 'You have not been assigned a role!' });
-    } else if (user.role === null) {
+    } else if (!user.role || user.role === null) {
       return res.status(403).json({ error: 'You have not been assigned a role!' });
     } else {
       
