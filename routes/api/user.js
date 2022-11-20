@@ -43,7 +43,7 @@ const loginSchema = Joi.object({
 
 // Find all Users
 
-router.get('/list', async (req, res, next) => {
+router.get('/list', hasAnyRole(), async (req, res, next) => {
 
   if (req.cookies.authToken != undefined) {
     
@@ -426,7 +426,7 @@ router.get('/list', async (req, res, next) => {
 
 });
 
-// Load Logged In User Profile
+// Get Logged In User Profile
 
 router.get('/me', async (req, res, next) => {
 
@@ -599,7 +599,27 @@ router.put('/register', validBody(newUserSchema), async (req, res, next) => {
 
         // Now we need to issue a new JWT token.
 
-        const authPayload = { "userId": `${user._id}`, "firstName": `${user.firstName}`, "email": `${user.email}`};
+        const authPayload = { 
+
+          "userId": `${user._id}`, 
+          "firstName": `${user.firstName}`, 
+          "email": `${user.email}`,
+          "permissions": {
+            canEditUser: false,
+            canAssignRoles: false,
+            canViewData: false,
+            canEditAnyBug: false,
+            canAssignAnyBug: false,
+            canReassignAnyBug: false,
+            canAddComments: false,
+            canAddTestCase: false,
+            canEditTestCase: false,
+            canExecuteTestCase: false,
+            canDeleteTestCase: false
+          }
+        
+        };
+
         const authSecret = config.get('auth.secret');
         const authExpiresIn = config.get('auth.tokenExpiresIn');
         const authToken = jwt.sign(authPayload, authSecret, { expiresIn: authExpiresIn });
@@ -711,11 +731,127 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
             •  The JWT is then used by the application server, to identify the user and allow access to the resource.
           */
 
-        // We haven't actually needed the authPayload for anything so far, so nothing has been added to it.
+        // Here below, we create all of our permissions, and set each of their default values to false.    
 
-        const authPayload = { "userId": `${user._id}`, "firstName": `${user.firstName}`, "email": `${user.email}`};
+        let canEditUser = false;
+        let canAssignRoles = false;
+        let canViewData = false;
+        let canCreateBug = false;
+        let canEditAnyBug = false;
+        let canCloseAnyBug = false;
+        let canReassignAnyBug = false;
+        let canAddComments = false;
+        let canAddTestCase = false;
+        let canEditTestCase = false;
+        let canExecuteTestCase = false;
+        let canDeleteTestCase = false;
 
-        // Above, we haven't actually needed the authPayload for anything so far, so nothing has been added to it. 
+        // Here, instead of wasting a bunch of time and effort pulling roles from the database,
+        // I wrote a simple foreach which will check each role and set each corresponding permission
+        // to true.
+        
+        if (user.role) {
+
+          let role = user.role;
+
+          role.forEach(role => {
+            
+            if (role == 'CEO') {
+
+              canEditUser = true;
+              canAssignRoles = true;
+              canViewData = true;
+              canCreateBug = true;
+              canCloseAnyBug = true;
+              canReassignAnyBug = true;
+              canAddComments = true;
+              canAddTestCase = true;
+              canEditTestCase = true;
+              canExecuteTestCase = true;
+              canDeleteTestCase = true;
+  
+            } else if (role == 'Developer'){
+  
+              canViewData = true;
+              canCreateBug = true;
+              canAddComments = true;
+  
+            } else if (role == 'Quality Analyst'){
+  
+              canViewData = true;
+              canCreateBug = true;
+              canAddComments = true;
+              canAddTestCase = true;
+              canEditTestCase = true;
+              canExecuteTestCase = true;
+              canDeleteTestCase = true;
+  
+            } else if (role == 'Business Analyst'){
+              
+              canViewData = true;
+              canCreateBug = true;
+              canEditAnyBug = true;
+              canCloseAnyBug = true;
+              canReassignAnyBug = true;
+              canAddComments = true;
+  
+            } else if (role == 'Data Analyst'){
+  
+              canViewData = true;
+              canCreateBug = true;
+              canEditAnyBug = true;
+              canCloseAnyBug = true;
+              canClassifyAnyBug = true;
+              canReassignAnyBug = true;
+              canAddComments = true;
+              
+            } else if (role == 'Project Manager'){
+  
+              canViewData = true;
+              canCreateBug = true;
+              canAddComments = true;
+              canAddTestCase = true;
+              canEditTestCase = true;
+              canExecuteTestCase = true;
+              canDeleteTestCase = true;
+              
+            } else if (role == 'Technical Manager'){
+              
+              canViewData = true;
+              canCreateBug = true;
+              canReassignAnyBug = true;
+              canAddComments = true;
+              canAddTestCase = true;
+              canEditTestCase = true;
+              canExecuteTestCase = true;
+              canDeleteTestCase = true;
+  
+            } 
+
+          });
+          
+
+        }
+
+        const authPayload = { 
+          "userId": `${user._id}`, 
+          "firstName": `${user.firstName}`, 
+          "email": `${user.email}`,
+          "permissions": {
+            canEditUser: canEditUser,
+            canAssignRoles: canAssignRoles,
+            canViewData: canViewData,
+            canCreateBug: canCreateBug,
+            canEditAnyBug: canEditAnyBug,
+            canCloseAnyBug: canCloseAnyBug,
+            canReassignAnyBug: canReassignAnyBug,
+            canAddComments: canAddComments,
+            canAddTestCase: canAddTestCase,
+            canEditTestCase: canEditTestCase,
+            canExecuteTestCase: canExecuteTestCase,
+            canDeleteTestCase: canDeleteTestCase
+          }
+        };
         
         // Below, we save authSecret and authExpiresIn variables by deep access of our .env variables. Our .env file is used as 
         // a buffer between our database keys, and malicious actors on gitHub. The .env file has been added to our .gitignore
