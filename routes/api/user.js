@@ -6,7 +6,7 @@ import Joi from 'joi';
 import bcrypt from 'bcrypt';
 import config from 'config';
 import jwt from 'jsonwebtoken';
-import express from 'express';gtz_P 
+import express from 'express'; 
 import _ from 'lodash';
 import { validId } from '../../middleware/validId.js';
 import { validBody } from '../../middleware/validBody.js';
