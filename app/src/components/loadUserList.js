@@ -13,10 +13,14 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 function LoadBugList() { 
 
     let obj1 = finalArr['0'];
-    let obj2 = finalArr['1'];
-    let obj3 = finalArr['2'];
-    let obj4 = finalArr['3'];
-    let obj5 = finalArr['4'];
+    let role = obj1.role;
+
+    if (role != null && role[1]){
+      role = `${role[0]} && ${role[1]}`
+    } else {
+      role = role[0];
+    }
+
 
     console.log(obj1);
 
@@ -37,8 +41,8 @@ function LoadBugList() {
 
                     <div className="card-body mt-3">
                       <h3>User No. 001</h3>
-                      <h4>Full Name: {obj1.firstName} & {obj1.lastName}</h4><br/>
-                      <p>Role: {obj1.role}</p>
+                      <h4>Full Name: {obj1.firstName} {obj1.lastName}</h4><br/>
+                      <p>Role: {role}</p>
                       <p>Email: {obj1.email}</p>
                       <p>Profile Creation Date: {obj1.createdDateTime}</p>
                     </div>
