@@ -22,8 +22,10 @@ function hasRole(...allowedRoles) {
     } else {
       for (const allowedRole of allowedRoles) {
         for (const role of user.role) {
-          if (role === allowedRole) {
-          return next();
+          if (role == allowedRole) {
+            debugMain({role: role});
+            debugMain({allowedRole: allowedRole});
+            return next();
           }
         }
       }
