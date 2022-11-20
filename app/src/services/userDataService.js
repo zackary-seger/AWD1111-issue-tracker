@@ -10,7 +10,7 @@ class UserDataService extends React.Component{
 
   async UserList(){ 
     console.log('Running Axios GET request..')
-    return await axios.get(`/user/list`) 
+    return await axios.get(`/api/user/list`) 
   } 
 }
 
