@@ -15,8 +15,6 @@ import { hasRole } from '../../middleware/hasRole.js';
 import { isLoggedIn } from '../../middleware/isLoggedIn.js';
 import { auth } from '../../middleware/auth.js';
 
-const canEditUserRoles = ['CEO', 'Technical Manager', 'Data Analyst'];
-const canDeleteUserRoles = ['CEO', 'Technical Manager', 'Data Analyst'];
 
 // Create & Export Router
 const router = express.Router();
@@ -904,7 +902,7 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
 // updateOne({ $set: {...update} }) operation, where update is equal to the req.body, which, in this case, is
 // equal to data that conforms to the updateUserSchema, as prescribed by our validBody() middleware function.
 
-router.put('/:userId', hasRole(canEditUserRoles), validId('userId'), validBody(updateUserSchema),  async (req, res, next) => {
+router.put('/:userId', hasRole('CEO', 'Technical Manager', 'Data Analyst'), validId('userId'), validBody(updateUserSchema),  async (req, res, next) => {
 
   if (req.cookies.authToken != undefined) {
   
@@ -951,7 +949,7 @@ router.put('/:userId', hasRole(canEditUserRoles), validId('userId'), validBody(u
 
 // Delete User
 
-router.delete('/:userId', hasRole(canDeleteUserRoles), validId('userId'), async (req, res, next) => {
+router.delete('/:userId', hasRole('CEO', 'Technical Manager', 'Data Analyst'), validId('userId'), async (req, res, next) => {
  
   if (req.cookies.authToken != undefined) {
 

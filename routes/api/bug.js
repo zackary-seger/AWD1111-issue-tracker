@@ -10,12 +10,6 @@ import { validBody } from '../../middleware/validBody.js';
 import { hasAnyRole } from '../../middleware/hasAnyRole.js';
 import { hasRole } from '../../middleware/hasRole.js';
 
-const canClassifyAnyBugRoles = ['CEO', 'Business Analyst', 'Data Analyst'];
-const canCloseAnyBugRoleRoles = ['CEO', 'Business Analyst', 'Data Analyst'];
-const canAddTestCaseRoles = ['CEO', 'Quality Analyst'];
-const canEditTestCaseRoles = ['CEO', 'Quality Analyst'];
-const canDeleteTestCaseRoles = ['CEO', 'Quality Analyst'];
-
 // Create Usable debugMain() function to act as prettier console.log()
 
   const debugMain = Debug('app:routes:bug');
@@ -638,7 +632,7 @@ const canDeleteTestCaseRoles = ['CEO', 'Quality Analyst'];
 
     });
 
-    router.put('/:bugId/classify', hasRole(canClassifyAnyBugRoles), validId('bugId'), validBody(classifySchema), async (req, res, next) => {
+    router.put('/:bugId/classify', hasRole('CEO', 'Business Analyst', 'Data Analyst'), validId('bugId'), validBody(classifySchema), async (req, res, next) => {
       
       if (req.cookies.authToken != undefined) {
 
@@ -757,7 +751,7 @@ const canDeleteTestCaseRoles = ['CEO', 'Quality Analyst'];
 
     });
 
-    router.put('/:bugId/close', hasRole(canCloseAnyBugRoleRoles), validId('bugId'), async (req, res, next) => {
+    router.put('/:bugId/close', hasRole('CEO', 'Business Analyst', 'Data Analyst'), validId('bugId'), async (req, res, next) => {
 
       if (req.cookies.authToken != undefined) {
 
@@ -856,7 +850,7 @@ const canDeleteTestCaseRoles = ['CEO', 'Quality Analyst'];
 
   // Create Test Case (100% Complete/Working):
 
-    router.put('/:bugId/test/new', hasRole(canAddTestCaseRoles), validId('bugId'), validBody(newTestCaseSchema), async (req, res, next) => {
+    router.put('/:bugId/test/new', hasRole('CEO', 'Quality Analyst'), validId('bugId'), validBody(newTestCaseSchema), async (req, res, next) => {
       
       if (req.cookies.authToken != undefined) {
 
@@ -896,7 +890,7 @@ const canDeleteTestCaseRoles = ['CEO', 'Quality Analyst'];
   
   // Update Test Case (Complete):
 
-    router.put('/:bugId/test/:testId', hasRole(canEditTestCaseRoles), validId('bugId'), validId('testId'), validBody(updateTestCaseSchema), async (req, res, next) => {
+    router.put('/:bugId/test/:testId', hasRole('CEO', 'Quality Analyst'), validId('bugId'), validId('testId'), validBody(updateTestCaseSchema), async (req, res, next) => {
       
       if (req.cookies.authToken != undefined) {
 
@@ -944,7 +938,7 @@ const canDeleteTestCaseRoles = ['CEO', 'Quality Analyst'];
 
   // Delete Test Case (100% Complete/Working):
 
-    router.delete('/:bugId/test/:testId', hasRole(canDeleteTestCaseRoles), validId('bugId'), validId('testId'), async (req, res, next) => {
+    router.delete('/:bugId/test/:testId', hasRole('CEO', 'Quality Analyst'), validId('bugId'), validId('testId'), async (req, res, next) => {
     
       if (req.cookies.authToken != undefined) {
 

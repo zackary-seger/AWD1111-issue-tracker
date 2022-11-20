@@ -22,10 +22,9 @@ function hasRole(...allowedRoles) {
     } else {
       
       debugMain(allowedRoles);
-
-      for (const allowedRole of allowedRoles) {       // All I have to say about this idea is lol 😅 It may seem crazy,
-        for (const singleRole of allowedRole) {       // but it literally never has to make a search through more than 
-          for (const role of user.role) {             // 20 array elements, so it will be fast no matter what this way. 
+                                                        
+        for (const singleRole of allowedRoles) {       
+          for (const role of user.role) {              
             if (singleRole == role) {
               return next();
             }
