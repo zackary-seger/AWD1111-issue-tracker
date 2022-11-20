@@ -41,7 +41,7 @@ router.get('/:bugId/comment/:commentId', hasAnyRole(), validId('bugId'), validId
 
   // Get bugs from bugs array and send response as JSON;
   const bugId = req.bugId;
-  const commentId = req.commentId;
+  const commentId = req.commentId; 
 
   const foundComment = await dbModule.findAllCommentsByCommentIdAndBugId(dbModule.newId(commentId), dbModule.newId(bugId));
   if (!foundComment){
