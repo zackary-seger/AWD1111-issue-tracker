@@ -10,9 +10,9 @@ import express from 'express';
 import _ from 'lodash';
 import { validId } from '../../middleware/validId.js';
 import { validBody } from '../../middleware/validBody.js';
-import { hasAnyRole } from '../../middleware/hasAnyRole';
-import { hasRole } from '../../middleware/hasRole';
-import { isLoggedIn } from '../../middleware/isLoggedIn';
+import { hasAnyRole } from '../../middleware/hasAnyRole.js';
+import { hasRole } from '../../middleware/hasRole.js';
+import { isLoggedIn } from '../../middleware/isLoggedIn.js';
 import { auth } from '../../middleware/auth.js';
 
 // Create & Export Router
