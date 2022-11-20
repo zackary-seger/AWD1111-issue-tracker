@@ -1,6 +1,9 @@
+import Debug from 'debug';
+const debugMain = Debug('app:routes:user');
 
 const hasAnyRole = () => {
   return (req, res, next) => {
+    debugMain(req.auth);
     if (!req.auth) {
       return res.status(401).json({ error: 'You are not logged in!' });
     } else if (req.auth.role === 'null') {     // edit: added to handle nulls that are default..
