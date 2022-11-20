@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import { finalArr } from './userList';
 import RenderNavbar from './navbar';
 import RenderLowerNavbar from './lowerNav';
-import bugIcon from '../images/img_avatar.png'
+import bugIcon from '../images/profileHeadshot100dpi.png'
 
 import "../index.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -37,7 +37,7 @@ function LoadBugList() {
 
                     <div className="card-body mt-3">
                       <h3>User No. 001</h3>
-                      <h4>Full Name: {obj1.firstName} {obj1.lastName}</h4><br/>
+                      <h4>Full Name: {obj1.firstName} & {obj1.lastName}</h4><br/>
                       <p>Role: {obj1.role}</p>
                       <p>Email: {obj1.email}</p>
                       <p>Profile Creation Date: {obj1.createdDateTime}</p>
