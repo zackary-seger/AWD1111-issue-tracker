@@ -20,17 +20,22 @@ function hasRole(...allowedRoles) {
     } else if (user.role === null) {
       return res.status(403).json({ error: 'You have not been assigned a role!' });
     } else {
-      for (const allowedRole of allowedRoles) {       // All I have to say about this idea is lol 😅
-        for (const singleRole of allowedRole) {
-          for (const role of user.role) {
+      
+      debugMain(allowedRoles);
+
+      for (const allowedRole of allowedRoles) {       // All I have to say about this idea is lol 😅 It may seem crazy,
+        for (const singleRole of allowedRole) {       // but it literally never has to make a search through more than 
+          for (const role of user.role) {             // 20 array elements, so it will be fast no matter what this way. 
             if (singleRole == role) {
               return next();
             }
           }
         }
       }
+
       // user is not in any of the allowed groups
       return res.status(403).json({ error: 'You do not have an allowed role!' });
+
     }
   };
 }
