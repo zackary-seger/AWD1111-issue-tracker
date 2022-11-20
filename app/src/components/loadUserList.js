@@ -22,13 +22,17 @@ function LoadBugList() {
     if (obj1) {
       role = obj1.role;
     }
+    
+    if (role) {
+      if (role[0]) {
+        if (role !== null && role[1]){
+          role = `${role[0]} && ${role[1]}`
+        } else {
+          role = role[0];
+        }
+      }
 
-    if (role !== null && role[1]){
-      role = `${role[0]} && ${role[1]}`
-    } else {
-      role = role[0];
     }
-
 
     console.log(obj1);
 
