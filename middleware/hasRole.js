@@ -13,7 +13,7 @@ function hasRole(...allowedRoles) {
     let payload;
 
     if (token) {
-      payload = jwt.verify(token, secret);
+      payload = jwt.verify(token, secret)
     }
     
     let user = await dbModule.readUserByEmail(payload.email);
