@@ -10,7 +10,12 @@ function hasRole(...allowedRoles) {
     const secret = config.get('auth.secret');
     const token = req.cookies.authToken;
 
-    const payload = jwt.verify(token, secret);
+    let payload;
+
+    if (token) {
+      payload = jwt.verify(token, secret);
+    }
+    
     let user = await dbModule.readUserByEmail(payload.email);
 
     if (!user) {
