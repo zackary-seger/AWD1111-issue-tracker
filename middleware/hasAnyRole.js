@@ -10,6 +10,8 @@ const hasAnyRole = () => {
     const secret = config.get('auth.secret');
     const token = req.cookies.authToken;
 
+    let payload;
+
     if (token) {
       payload = jwt.verify(token, secret)
     }
