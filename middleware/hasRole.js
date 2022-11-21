@@ -23,7 +23,7 @@ function hasRole(...allowedRoles) {
     } else if (!user.role || user.role === null) {
       return res.status(403).json({ error: 'You have not been assigned a role!' });
     } else {
-      
+       
       debugMain(allowedRoles);
                                                         
         for (const singleRole of allowedRoles) {       
