@@ -14,9 +14,9 @@ function hasRole(...allowedRoles) {
 
     if (token) {
       payload = jwt.verify(token, secret)
+      let user = await dbModule.readUserByEmail(payload.email);
     }
-    
-    let user = await dbModule.readUserByEmail(payload.email);
+  
 
     if (!user) {
       return res.status(401).json({ error: 'You are not logged in!' });
