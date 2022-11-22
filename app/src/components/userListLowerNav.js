@@ -2,9 +2,9 @@ import * as React from "react";
 import '../index.css';
 import MyXYControlledModal from "./userListFilterModal";
 
-function RenderLowerNavbar() {
+function RenderLowerNavbar(e) {
 
-  function buttonClicked(e) { e.preventDefault()
+  const ButtonClicked = (e) => { e.preventDefault()
                                  return <MyXYControlledModal 
                                           onHide={e => e.stopPropagation()}
                                         />  
@@ -23,7 +23,7 @@ function RenderLowerNavbar() {
     </div>
 
     <div className='d-inline-block lowerNavLink'>
-      <a onClick={buttonClicked()} id='bugListH2a' href='/bug/list'>
+      <a onClick={(evt) => ButtonClicked(evt)} id='bugListH2a' href='/bug/list'>
         <h2 id='bugListH202' className='text-primary mt-2 mb-4 me-2'>FILTER LIST ▼</h2>
       </a>
     </div>
