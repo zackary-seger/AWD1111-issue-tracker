@@ -30,7 +30,7 @@ function MyXYControlledModal(props) {
             aria-label="search bar"
             aria-describedby="basic-addon1"
           />
-          <InputGroup.Button id="searchInputButton"></InputGroup.Button>
+          <Button id="searchInputButton">Search</Button>
         </InputGroup>
 
       </Modal.Body>
