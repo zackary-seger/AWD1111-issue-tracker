@@ -25,12 +25,12 @@ function MyXYControlledModal(props) {
       <Modal.Body>
 
         <InputGroup className="mb-3">
-          <InputGroup.Text id="basic-addon1">Search Users</InputGroup.Text>
+          <InputGroup.Text id="searchInputTxt">Search Users</InputGroup.Text>
           <Form.Control
-            placeholder="Username"
-            aria-label="Username"
+            aria-label="search bar"
             aria-describedby="basic-addon1"
           />
+          <InputGroup.Button id="searchInputButton"></InputGroup.Button>
         </InputGroup>
 
       </Modal.Body>

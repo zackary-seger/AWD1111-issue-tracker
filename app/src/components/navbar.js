@@ -1,7 +1,6 @@
 import * as React from "react";
 import '../index.css';
 
-import { FaSignInAlt } from "react-icons/fa"; 
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { FaAlignJustify } from "react-icons/fa";
