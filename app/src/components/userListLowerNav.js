@@ -23,7 +23,7 @@ function RenderLowerNavbar(e) {
     </div>
 
     <div className='d-inline-block lowerNavLink'>
-      <a onClick={(evt) => ButtonClicked(evt)} id='bugListH2a' href='/bug/list'>
+      <a onClick={(evt) => {evt.preventDefault(); ButtonClicked(evt)}} id='bugListH2a' href='/bug/list'>
         <h2 id='bugListH202' className='text-primary mt-2 mb-4 me-2'>FILTER LIST ▼</h2>
       </a>
     </div>
