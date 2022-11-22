@@ -27,8 +27,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Register Middleware Application Wide:
-
 // Im not exactly sure what lines 49-52 do, or why it is here. I wrote it here because our
 // lab assignment required students to, 'register auth middleware application wide'. I am 
 // about to do a local test with this code commented out, and will note what happens in
@@ -48,10 +46,6 @@ app.use(cookieParser());
 // it would need to be deleted from the code because the user would never have the secret. I am 
 // going to leave it here this way for now because it doesn't seem to harm anything.
 
-app.use('./middleware/auth', (req, res, next) => {
-  debugMain('Auth Middleware Moving..');
-  next();
-} );
 
 // Register Routes:
 

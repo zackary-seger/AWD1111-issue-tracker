@@ -1,5 +1,6 @@
 import * as React from "react";
 import '../index.css';
+import MyXYControlledModal from "./userListFilterModal";
 
 function RenderLowerNavbar() {
 
@@ -16,7 +17,7 @@ function RenderLowerNavbar() {
     </div>
 
     <div className='d-inline-block lowerNavLink'>
-      <a id='bugListH2a' href='/bug/list'>
+      <a onClick={MyXYControlledModal()} id='bugListH2a' href='/bug/list'>
         <h2 id='bugListH202' className='text-primary mt-2 mb-4 me-2'>FILTER LIST ▼</h2>
       </a>
     </div>
