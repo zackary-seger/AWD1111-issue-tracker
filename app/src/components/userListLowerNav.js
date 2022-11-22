@@ -1,13 +1,15 @@
 import * as React from "react";
 import '../index.css';
-import renderMyXYControlledModal from "./renderUserListFilterModal";
+import MyXYControlledModal from "./userListFilterModal";
 
 function RenderLowerNavbar() {
 
   const ButtonClicked = (e) => {
                                   e.preventDefault();  
                                   console.log('Modal Attempts..');
-                                  <renderMyXYControlledModal />
+                                  <MyXYControlledModal 
+                                    onHide={ e => e.stopPropagation() } 
+                                  />
                                }
 
   return ( 

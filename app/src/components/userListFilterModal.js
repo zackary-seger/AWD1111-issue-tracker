@@ -4,8 +4,6 @@ import Modal from 'react-bootstrap/Modal';
 
 function MyXYControlledModal(props) {
 
-
-
   return (
 
     <Modal
