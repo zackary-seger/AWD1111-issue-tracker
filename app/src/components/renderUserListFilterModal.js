@@ -1,9 +1,11 @@
 import MyXYControlledModal from "./userListFilterModal"
 
 const RenderMyXYControlledModal = () => {
-  return <MyXYControlledModal 
+  return ( 
+        <MyXYControlledModal 
             onHide={e => e.stopPropagation()}
-         />
+        />
+  )
 }
 
 export default RenderMyXYControlledModal

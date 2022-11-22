@@ -6,7 +6,7 @@ function RenderLowerNavbar() {
 
   const ButtonClicked = (e) => {
                                   e.preventDefault();  
-                                  console.log('Modal Attempt');
+                                  console.log('Modal Attempts..');
                                   <renderMyXYControlledModal />
                                }
 
