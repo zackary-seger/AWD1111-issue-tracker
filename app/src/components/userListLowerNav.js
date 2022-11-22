@@ -30,7 +30,7 @@ function RenderLowerNavbar() {
       </a>
     </div>
 
-    <MyXYControlledModal show={modalShow} onHide={ e => { setModalShow(false); e.stopPropagation()} } />
+    <MyXYControlledModal show={modalShow} onHide={ e => { setModalShow(false); e.stopPropagation() } } />
 
    </div>
 

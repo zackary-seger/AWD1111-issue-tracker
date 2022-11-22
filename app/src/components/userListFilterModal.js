@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 function MyXYControlledModal(props) {
 
@@ -22,12 +24,14 @@ function MyXYControlledModal(props) {
 
       <Modal.Body>
 
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
+        <InputGroup className="mb-3">
+          <InputGroup.Text id="basic-addon1">Search Users</InputGroup.Text>
+          <Form.Control
+            placeholder="Username"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
 
       </Modal.Body>
 

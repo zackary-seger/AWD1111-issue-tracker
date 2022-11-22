@@ -95,6 +95,12 @@ button {
   max-width: 620px
 }
 
+#contained-modal-title-vcenter {
+  font-family: 'Poppins', sans-serif;
+  color: rgb(0, 109, 199);
+  font-size: large;
+}
+
 #img1div {
   width: 50% !important;
 }
