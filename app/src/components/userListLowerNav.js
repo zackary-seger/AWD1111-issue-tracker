@@ -4,7 +4,7 @@ import MyXYControlledModal from "./userListFilterModal";
 
 function RenderLowerNavbar() {
 
-  const buttonClicked = (e) => { e.preventDefault()
+  function buttonClicked(e) { e.preventDefault()
                                  return <MyXYControlledModal 
                                           onHide={e => e.stopPropagation()}
                                         />  
