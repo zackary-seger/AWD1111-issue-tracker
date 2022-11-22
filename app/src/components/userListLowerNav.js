@@ -5,9 +5,11 @@ import MyXYControlledModal from "./userListFilterModal";
 function RenderLowerNavbar() {
 
   const ButtonClicked = (e) => {
-                                 return <MyXYControlledModal 
-                                          onHide={e => e.stopPropagation()}
-                                        />  
+                                //  return <MyXYControlledModal 
+                                //           onHide={e => e.stopPropagation()}
+                                //         />
+                                e.preventDefault();  
+                                console.log('button clicked');
                                }
 
   return ( 
@@ -23,7 +25,7 @@ function RenderLowerNavbar() {
     </div>
 
     <div className='d-inline-block lowerNavLink'>
-      <a onClick={(evt) => {evt.preventDefault(); ButtonClicked(evt)}} id='bugListH2a' href='/bug/list'>
+      <a onClick={(evt) => ButtonClicked(evt)} id='bugListH2a' href='/bug/list'>
         <h2 id='bugListH202' className='text-primary mt-2 mb-4 me-2'>FILTER LIST ▼</h2>
       </a>
     </div>
