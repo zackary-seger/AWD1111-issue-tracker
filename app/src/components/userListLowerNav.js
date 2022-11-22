@@ -1,15 +1,15 @@
 import * as React from "react";
 import '../index.css';
-import MyXYControlledModal from "./userListFilterModal";
+import MyXYControlledModal from "./userListFilterModal.js";
 
 function RenderLowerNavbar() {
+
+  const [modalShow, setModalShow] = React.useState(false);
 
   const ButtonClicked = (e) => {
                                   e.preventDefault();  
                                   console.log('Modal Attempts..');
-                                  <MyXYControlledModal 
-                                    onHide={ e => e.stopPropagation() } 
-                                  />
+                                  setModalShow(true);                                     
                                }
 
   return ( 
@@ -29,6 +29,8 @@ function RenderLowerNavbar() {
         <h2 id='bugListH202' className='text-primary mt-2 mb-4 me-2'>FILTER LIST ▼</h2>
       </a>
     </div>
+
+    <MyXYControlledModal show={modalShow} onHide={ e => { setModalShow(false); e.stopPropagation()} } />
 
    </div>
 
