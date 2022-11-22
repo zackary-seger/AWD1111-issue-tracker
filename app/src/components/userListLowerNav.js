@@ -34,4 +34,4 @@ function RenderLowerNavbar() {
 
 }
 
-export default RenderLowerNavbar;
+export default RenderLowerNavbar

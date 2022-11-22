@@ -41,4 +41,4 @@ function MyXYControlledModal(props) {
   );
 }
 
-export default MyXYControlledModal;
+export default MyXYControlledModal

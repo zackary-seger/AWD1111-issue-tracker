@@ -8,4 +8,4 @@ const RenderMyXYControlledModal = () => {
   )
 }
 
-export default RenderMyXYControlledModal
+export default RenderMyXYControlledModal;
