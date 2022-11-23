@@ -29,7 +29,7 @@ const validationOptions = {
   // stripUnknown: true  // remove unknown keys from the validated data
 };
 
-class registerForm extends React.Component {
+class RegisterForm extends React.Component {
   
   constructor(props) {
     
@@ -117,8 +117,6 @@ class registerForm extends React.Component {
 
   // Render HTML:
   render() {
-    if (this.props){
-      if (this.props.isNewUser) {
 
         return (
           <div>
@@ -166,10 +164,9 @@ class registerForm extends React.Component {
           </body>
           </div>  
   
-        );
-      }
+      );
     }
   }
-}
+
  
-export default registerForm;
+export default RegisterForm;

@@ -8,7 +8,8 @@ import CreateValidator from './validate.js';
 import '../index.css';
 
 import BugDataService from "../services/bugDataService";
-import { registerForm } from "./register.js";
+import RegisterForm from "./register.js";
+
 import { FaSignInAlt } from "react-icons/fa";
 
 let x = 1;
@@ -80,7 +81,7 @@ class LoginForm extends React.Component {
     return (
       <div>
       
-      <registerForm isNewUser={this.props.isNewUser} />
+      <RegisterForm isNewUser={this.props.isNewUser} />
 
       <body className=''>
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
