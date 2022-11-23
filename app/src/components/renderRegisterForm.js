@@ -40,12 +40,14 @@ function RenderRF(...props) {
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
     if (x !== 1) {
-      FocusInput.current.focus();
+      if (FocusInput.current) {
+        FocusInput.current.focus();
+      }
     } else {
       x++;
     }
   }
-  
+
   FocusInput = FocusInput.bind(this);
 
   const RegisterUser = async (event, props, ref) => { 
