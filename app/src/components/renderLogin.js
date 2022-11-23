@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
 
     this.emailInput = React.createRef();
     this.passwordInput = React.createRef();
-    this.isNewUser = false;
+    this._isNewUser = false;
 
     this.focusInput = this.focusInput.bind(this);
 
@@ -68,8 +68,9 @@ class LoginForm extends React.Component {
     
   } 
 
-  setIsNewUser = (bool) => {
-    this.isNewUser = bool;
+  set IsNewUser(bool) {
+    this._isNewUser = bool;
+    console.log(`this._isNewUser set to: ${this.isNewUser}`)
   }
 
   // Render HTML:
@@ -77,11 +78,12 @@ class LoginForm extends React.Component {
   render() {
 
     const validator = CreateValidator;
+    console.log(`renderLogin isNewUser Prop Entry: ${this._isNewUser}`)
     
     return (
       <div>
       
-      <RegisterForm isNewUser={this.isNewUser} />
+      <RegisterForm isNewUser={this._isNewUser} />
 
       <body className=''>
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
@@ -100,7 +102,7 @@ class LoginForm extends React.Component {
 
           <a className='pb-2 ps-1' href='/#'>Forgot your password?</a>         
           <p className='d-block mb-0 mt-2 ps-1'>New to boatborrowers.com?</p>
-          <a className='ms-2 mb-2 ps-1' onClick={e => {e.preventDefault(); this.setIsNewUser(true); }} href='/#'>
+          <a className='ms-2 mb-2 ps-1' onClick={e => {e.preventDefault(); this._IsNewUser(true); }} href='/#'>
             Register Here!
           </a> 
 
