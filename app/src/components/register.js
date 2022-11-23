@@ -2,14 +2,9 @@ import '../index.css';
 
 import React from 'react';
 import Joi from "joi"
-import Cookies from 'js-cookie';
 import * as ReactDOM from 'react-dom/client';
 import RenderRF from './renderRegisterForm';
 import UserDataService from "../services/userDataService";
-
-import { FaSignInAlt } from "react-icons/fa";
-
-let x = 1;
 
 const registerSchema = Joi.object().keys({
 
@@ -20,6 +15,8 @@ const registerSchema = Joi.object().keys({
   lastName: Joi.string().min(1).trim().required()
 
 });
+
+let x = 1;
 
 const validationOptions = {
   abortEarly: false  // abort after the last validation error
