@@ -118,7 +118,7 @@ class RegisterForm extends React.Component {
 
   // Render HTML:
   render() {
-      if (this.isNewUser){
+      if (this.isNewUser === true){
 
         return (
 
@@ -144,9 +144,7 @@ class RegisterForm extends React.Component {
                 <Form.Label className="font-weight-bold mt-2 ps-1">Last Name</Form.Label>
                 <Form.Control className="pb-2" type="text" controlId="lastNameInput" id="lastNameTxt" ref={ this.lastNameInput } />
     
-              </Form.Group>
-    
-              <a className='d-block pb-2 ps-1' href='/#'>Forgot your password?</a>           
+              </Form.Group>      
     
               <Form.Group className="mb-3" controlId="renderLogin.loginButton">
     
@@ -157,7 +155,7 @@ class RegisterForm extends React.Component {
                   className="mt-2 mb-4"
                   id="loginBtn"
                 >
-                  Login
+                  Register
                 </Button> 
                 
               </Form.Group>
