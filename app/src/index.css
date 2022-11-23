@@ -101,6 +101,15 @@ button {
   font-size: xx-large;
 }
 
+.modal-dialog-centered {
+  align-items: start;
+  margin-top: 9.7em;
+}
+
+.modal-content {
+  margin-left: 8em;
+}
+
 #img1div {
   width: 50% !important;
 }
