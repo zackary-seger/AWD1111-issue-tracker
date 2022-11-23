@@ -117,7 +117,7 @@ class registerForm extends React.Component {
 
   // Render HTML:
   render() {
-
+    if (this.props){
       if (this.props.show) {
 
         return (
@@ -167,10 +167,8 @@ class registerForm extends React.Component {
           </div>  
   
         );
-
       }
-     
-
+    }
   }
 }
  
