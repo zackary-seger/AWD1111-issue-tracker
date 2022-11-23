@@ -39,7 +39,7 @@ function RenderRF(...props) {
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
     if (x !== 1) {
-      this.focusInput.current.focus();
+      this.FocusInput.current.focus();
     } else {
       x++;
     }
@@ -73,7 +73,7 @@ function RenderRF(...props) {
 
                 <h1 className="pt-3 ms-3">User Registration</h1>
             
-                <Form className="mt-3 ms-3 me-3" onSubmit={ RegisterUser() }>
+                <Form className="mt-3 ms-3 me-3" onSubmit={ evt => {RegisterUser(evt)} }>
             
                   <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
             
