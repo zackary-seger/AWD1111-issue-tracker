@@ -84,7 +84,7 @@ class LoginForm extends React.Component {
       <div>
 
       <rfInstance 
-        isNewUser={this.isNewUser}
+        show={props.isNewUser}
       />
 
       <body className=''>
@@ -103,9 +103,10 @@ class LoginForm extends React.Component {
           </Form.Group>
 
           <a className='d-block pb-2 ps-1' href='/#'>Forgot your password?</a>
-            
+          
+          <p>New to boatborrowers.com?</p>
           <a className='d-block pb-2 ps-1' onClick={e => {e.preventDefault(); this.setIsNewUser(true); }} href='/register'>
-            New to boatborrowers.com? Register Here!
+            Register Here!
           </a> 
 
           <Form.Group className="mb-3" controlId="renderLogin.loginButton">
