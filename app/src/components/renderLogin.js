@@ -68,11 +68,6 @@ class LoginForm extends React.Component {
     
   } 
 
-  set _IsNewUser(bool) {
-    this._IsNewUser = bool;
-    console.log(`this._IsNewUser set to: ${this._IsNewUser}`)
-  }
-
   // Render HTML:
 
   render() {
