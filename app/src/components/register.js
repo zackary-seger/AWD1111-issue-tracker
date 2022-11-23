@@ -124,7 +124,7 @@ class RegisterForm extends React.Component {
 
           <div>
     
-          <body className=''>
+          <body className='mb-2'>
   
             <h1 className="pt-3 ms-3">User Registration  <FaSignInAlt id="register1" className="ms-2"/></h1>
     
