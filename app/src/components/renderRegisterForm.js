@@ -24,17 +24,20 @@ function RenderRF(...props) {
 
   const [isNewUser, setIsNewUser] = useState([]);
   const [isCancelled, setIsCancelled] = useState([]);
+  
   const emailInputRef = React.createRef();
   const passwordInputRef = React.createRef();
   const firstNameInputRef = React.createRef();
   const lastNameInputRef = React.createRef();
+
+  let FocusInput = React.createRef();
 
   setIsNewUser(props.isNewUser);
   setIsCancelled(false);
 
   console.log(`isNewUser prop: ${isNewUser}`)
 
-  const FocusInput = () => {
+  FocusInput = () => {
 
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
