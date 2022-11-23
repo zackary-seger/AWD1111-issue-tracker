@@ -20,7 +20,7 @@ const registerSchema = Joi.object().keys({
 
 let x = 1;
 
-function RenderRF(...props) {
+function RenderRF(props) {
 
   const [isNewUser, setIsNewUser] = useState([]);
   const [isCancelled, setIsCancelled] = useState([]);
@@ -30,8 +30,8 @@ function RenderRF(...props) {
   const firstNameInputRef = React.createRef();
   const lastNameInputRef = React.createRef();
 
-  setIsNewUser(props.isNewUser);
-  setIsCancelled(false);
+  setIsNewUser(() => { return props.isNewUser });
+  setIsCancelled(() => { return false });
 
   console.log(`isNewUser prop: ${isNewUser}`)
 
@@ -110,7 +110,7 @@ function RenderRF(...props) {
 
                     <Button 
                       variant="primary" 
-                      onClick={ setIsCancelled(true) }
+                      onClick={ setIsCancelled(() => { return true }) }
                       className="d-inline-block mt-2 mb-4"
                       id="cancelBtn"
                     >
