@@ -68,6 +68,10 @@ class LoginForm extends React.Component {
     
   } 
 
+  set_IsNewUser() {
+    return this._IsNewUser = true
+  }
+
   // Render HTML:
 
   render() {
@@ -98,7 +102,7 @@ class LoginForm extends React.Component {
 
           <a className='pb-2 ps-1' href='/#'>Forgot your password?</a>         
           <p className='d-block mb-0 mt-2 ps-1'>New to boatborrowers.com?</p>
-          <a className='ms-2 mb-2 ps-1' onClick={e => {e.preventDefault(); console.log(this._IsNewUser); return this._IsNewUser = true}} href='/#'>
+          <a className='ms-2 mb-2 ps-1' onClick={e => {e.preventDefault(); console.log(this._IsNewUser); set_IsNewUser()}} href='/#'>
             Register Here!
           </a> 
 
