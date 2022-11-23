@@ -101,11 +101,13 @@ button {
   font-size: xx-large;
 }
 
-.modal-dialog-centered {
-  align-items: start;
-  margin-top: 9.7em;
+@media screen and (max-width: 1300px){
+  .modal{
+    align-items: start!important;
+    margin-top: 9.7em!important;
+    margin-right: 53em!important;
+  }
 }
-
 .modal-content {
   margin-left: 8em;
 }
