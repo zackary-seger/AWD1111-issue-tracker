@@ -119,7 +119,7 @@ class RegisterForm extends React.Component {
   // Render HTML:
   render() {
       console.log(this._isNewUser)
-      if (this._isNewUser === true){
+      if (this._isNewUser == true){
 
         return (
 
