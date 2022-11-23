@@ -3,7 +3,7 @@ import '../index.css';
 import React from 'react';
 import Joi from "joi"
 import * as ReactDOM from 'react-dom/client';
-import RenderRF from './renderRegisterForm';
+import RegisterUser from './renderRegisterForm';
 import UserDataService from "../services/userDataService";
 
 const registerSchema = Joi.object().keys({
@@ -116,9 +116,7 @@ class RegisterForm extends React.Component {
       console.log(this._isNewUser)
       const root = ReactDOM.createRoot(document.getElementById('root'));
 
-      if (this._isNewUser) {
-        return root.render(<RenderRF isNewUser={true}/> );
-      } 
+      return root.render(<RegisterUser isNewUser={true}/> );
 
   }
 }
