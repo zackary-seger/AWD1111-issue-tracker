@@ -169,7 +169,7 @@ class RegisterForm extends React.Component {
   render() {
       console.log(this._isNewUser)
       const root = ReactDOM.createRoot(document.getElementById('root')); 
-      return root.render(<this.renderRF isNewUser={this._isNewUser}/> );
+      return root.render(<this.renderRF isNewUser={false}/> );
   }
 }
  
