@@ -104,11 +104,30 @@ button {
 .modal-dialog {
   align-items: start!important;
   margin-top: 9.7em!important;
+  margin-right: 0;
 }
 
-@media screen and (min-width: 1576px){
+@media screen and (max-width: 576px){
+  .modal-dialog {
+    margin-right: 0!important;
+    margin-left: 0!important;
+  }
+  .modal-lg, .modal-xl {
+    --bs-modal-width: 800px!important;
+  }
+}
+
+@media screen and (max-width: 1226px){
+  .modal-dialog {
+     margin-right: 0!important;
+     margin-left: 0!important;
+   }
+ }
+
+@media screen and (min-width: 1400px){
  .modal-dialog {
-    margin-right: 53em!important;
+    margin-right: 0!important;
+    margin-left: 28em!important;
   }
 }
 
