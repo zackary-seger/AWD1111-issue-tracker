@@ -101,10 +101,13 @@ button {
   font-size: xx-large;
 }
 
-@media screen and (min-width: 1500px){
+.modal-dialog {
+  align-items: start!important;
+  margin-top: 9.7em!important;
+}
+
+@media screen and (min-width: 1576px){
  .modal-dialog {
-    align-items: start!important;
-    margin-top: 9.7em!important;
     margin-right: 53em!important;
   }
 }
