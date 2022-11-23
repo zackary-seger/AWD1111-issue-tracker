@@ -115,7 +115,7 @@ class RegisterForm extends React.Component {
 
   } 
 
-  renderRF(...props) {
+  RenderRF(...props) {
 
     const isNewUser = props.isNewUser;
 
@@ -167,9 +167,14 @@ class RegisterForm extends React.Component {
 
   // Render HTML:
   render() {
+      
       console.log(this._isNewUser)
-      const root = ReactDOM.createRoot(document.getElementById('root')); 
-      return root.render(<this.renderRF isNewUser={false}/> );
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+
+      if (this._isNewUser) {
+        return root.render(<this.renderRF isNewUser={true}/> );
+      } 
+
   }
 }
  
