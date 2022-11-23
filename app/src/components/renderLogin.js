@@ -8,8 +8,7 @@ import CreateValidator from './validate.js';
 import '../index.css';
 
 import BugDataService from "../services/bugDataService";
-import registerForm from "./register.js";
-
+import { registerForm } from "./register.js";
 import { FaSignInAlt } from "react-icons/fa";
 
 let x = 1;
