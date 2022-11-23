@@ -74,7 +74,7 @@ class LoginForm extends React.Component {
 
   // Render HTML:
 
-  render(props) {
+  render() {
 
     const validator = CreateValidator;
     
@@ -84,7 +84,7 @@ class LoginForm extends React.Component {
       <div>
 
       <rfInstance 
-        show={props.isNewUser}
+        show={this.props.isNewUser}
       />
 
       <body className=''>
