@@ -30,14 +30,12 @@ function RenderRF(...props) {
   const firstNameInputRef = React.createRef();
   const lastNameInputRef = React.createRef();
 
-  let FocusInput = React.createRef();
-
   setIsNewUser(props.isNewUser);
   setIsCancelled(false);
 
   console.log(`isNewUser prop: ${isNewUser}`)
 
-  FocusInput = () => {
+  let FocusInput = () => {
 
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
@@ -47,6 +45,8 @@ function RenderRF(...props) {
       x++;
     }
   }
+  
+  FocusInput = FocusInput.bind(this);
 
   const RegisterUser = async (event, props, ref) => { 
 
