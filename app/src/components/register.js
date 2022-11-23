@@ -42,6 +42,7 @@ class RegisterForm extends React.Component {
     this.firstNameInput = React.createRef();
     this.lastNameInput = React.createRef();
 
+    this.isNewUser = this.props.isNewUser;
     this.validObj = null;
 
     this.focusInput = this.focusInput.bind(this);
@@ -117,8 +118,7 @@ class RegisterForm extends React.Component {
 
   // Render HTML:
   render() {
-    if (this.props){
-      if (this.props.isNewUser){
+      if (this.isNewUser){
 
         return (
 
@@ -168,10 +168,8 @@ class RegisterForm extends React.Component {
           </div>  
   
       );
-      }
     }
   }
 }
-
  
 export default RegisterForm;
