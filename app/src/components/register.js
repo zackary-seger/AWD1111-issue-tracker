@@ -15,7 +15,7 @@ let x = 1;
 
 const registerSchema = Joi.object().keys({
 
-  email: Joi.string().email({ minDomainSegments: 2 }).trim().required(),
+  email: Joi.string().email({ tlds: { allow: false } , minDomainSegments: 2 }).trim().required(),
   password: Joi.string().trim().min(8).required().min(8).max(25)
                   .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,'password'),
   firstName: Joi.string().min(1).trim().required(),
