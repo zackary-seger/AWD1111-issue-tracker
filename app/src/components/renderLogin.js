@@ -81,7 +81,7 @@ class LoginForm extends React.Component {
     return (
       <div>
       
-      <RegisterForm isNewUser={this.props.isNewUser} />
+      <RegisterForm isNewUser={`${this.props.isNewUser}`} />
 
       <body className=''>
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
