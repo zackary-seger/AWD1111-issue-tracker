@@ -117,8 +117,11 @@ class RegisterForm extends React.Component {
 
   // Render HTML:
   render() {
+    if (this.props){
+      if (this.props.isNewUser){
 
         return (
+
           <div>
     
           <body className=''>
@@ -165,8 +168,10 @@ class RegisterForm extends React.Component {
           </div>  
   
       );
+      }
     }
   }
+}
 
  
 export default RegisterForm;

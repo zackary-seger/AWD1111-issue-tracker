@@ -77,12 +77,12 @@ class LoginForm extends React.Component {
   render() {
 
     const validator = CreateValidator;
-    let isNewUserBool = this.props.isNewUser;
+    let isNewUser = this.props.isNewUser;
     
     return (
       <div>
       
-      <RegisterForm isNewUser={isNewUserBool} />
+      <RegisterForm isNewUser />
 
       <body className=''>
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
