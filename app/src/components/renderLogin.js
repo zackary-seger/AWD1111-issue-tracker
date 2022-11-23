@@ -106,7 +106,9 @@ class LoginForm extends React.Component {
           <a className='ms-2 mb-2 ps-1' onClick={e => {   
 
                                                           e.preventDefault(); console.log(this._IsNewUser); 
-                                                          this.set_IsNewUser(); this.render();
+                                                          this.set_IsNewUser(); rf = new RegisterForm();
+                                                          rf.renderConditionalRegister();
+
                                                       }} href='/#'>
             Register Here!
           </a> 

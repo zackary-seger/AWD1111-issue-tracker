@@ -39,9 +39,15 @@ class RegisterForm extends React.Component {
 
     this._isNewUser = bool;
     this._validObj = null;
+    this._resp = {};
 
     this.focusInput = this.focusInput.bind(this);
 
+  }
+
+  renderConditionalRegister() {
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    return root.render(<RegisterUser isNewUser={true}/> );
   }
 
   focusInput() {
@@ -103,7 +109,8 @@ class RegisterForm extends React.Component {
     let uds = new UserDataService(userRegistrationObj); 
 
     uds.Register.then( response => { 
-      return response;
+      this._resp = response;
+      console.log(response);
     }).catch( e =>{ 
       console.log(e); 
     }) 
@@ -113,10 +120,7 @@ class RegisterForm extends React.Component {
   // Render HTML:
   render() {
       
-      console.log(this._isNewUser)
-      const root = ReactDOM.createRoot(document.getElementById('root'));
-
-      return root.render(<RegisterUser isNewUser={true}/> );
+      return console.log(this._isNewUser)
 
   }
 }

@@ -22,7 +22,7 @@ class UserDataService extends React.Component{
 
   async Register(udsInput){
     console.log('canRunAxiosRequest: TRUE')
-    console.log(`udsInput: ${udsInput}`)
+    return console.log(`udsInput: ${udsInput}`)
   }
 
   async UserList(){ 
