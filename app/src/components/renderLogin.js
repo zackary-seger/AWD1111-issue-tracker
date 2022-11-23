@@ -13,6 +13,7 @@ import RegisterForm from "./register.js";
 import { FaSignInAlt } from "react-icons/fa";
 
 let x = 1;
+let isNewUserSave;
 
 const loginSchema = Joi.object().keys({
   username: Joi.string().required(),
@@ -105,11 +106,14 @@ class LoginForm extends React.Component {
           <p className='d-block mb-0 mt-2 ps-1'>New to boatborrowers.com?</p>
           <a className='ms-2 mb-2 ps-1' onClick={e => {   
 
-                                                          e.preventDefault(); console.log(this._IsNewUser); 
-                                                          this.set_IsNewUser(); rf = new RegisterForm();
-                                                          rf.renderConditionalRegister();
-
-                                                      }} href='/#'>
+                                                          e.preventDefault(); 
+                                                          console.log(this._IsNewUser); 
+                                                          this.set_IsNewUser();
+                                                          isNewUserSave = this._IsNewUser;
+                                                          rf = new RegisterForm().renderConditionalRegister() 
+                                                          
+                                                      }
+                                                      } href='/#'>
             Register Here!
           </a> 
 
@@ -134,5 +138,6 @@ class LoginForm extends React.Component {
 
   }
 }
- 
+
+export { isNewUserSave };
 export default LoginForm;

@@ -5,6 +5,7 @@ import Joi from "joi"
 import * as ReactDOM from 'react-dom/client';
 import RegisterUser from './renderRegisterForm';
 import UserDataService from "../services/userDataService";
+import { isNewUserSave } from './renderLogin';
 
 const registerSchema = Joi.object().keys({
 
@@ -47,7 +48,7 @@ class RegisterForm extends React.Component {
 
   renderConditionalRegister() {
     const root = ReactDOM.createRoot(document.getElementById('root'));
-    return root.render(<RegisterUser isNewUser={true}/> );
+    return root.render(<RegisterUser isNewUser={isNewUserSave}/> );
   }
 
   focusInput() {
