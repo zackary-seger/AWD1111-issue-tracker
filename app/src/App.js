@@ -28,7 +28,7 @@ function App() {
         <body id="container1" className='container-fluid'>
           <Switch className='mb-2'> 
 
-            <Route exact path = { ["/"] } component = {< LoginForm isNewUser={false} /> } > 
+            <Route exact path = { ["/"] } component = { LoginForm } > 
             </Route>
 
             <Route exact path = { ["/user/list"] } component = { UserList } > 

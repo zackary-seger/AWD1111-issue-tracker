@@ -31,7 +31,7 @@ const validationOptions = {
 
 class RegisterForm extends React.Component {
   
-  constructor(props) {
+  constructor(isNewUser, props) {
     
     super(props);
 
@@ -42,7 +42,7 @@ class RegisterForm extends React.Component {
     this.firstNameInput = React.createRef();
     this.lastNameInput = React.createRef();
 
-    this.isNewUser = this.props.isNewUser;
+    this.isNewUser = this.props.isNewUser || isNewUser;
     this.validObj = null;
 
     this.focusInput = this.focusInput.bind(this);
