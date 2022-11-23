@@ -37,6 +37,11 @@ function App() {
             <Route exact path = { ["/bug/list"] } component = { bugList } > 
             </Route>
 
+            <Route exact path = { ["/register"] }       />
+            <Route exact path = { ["/bug/:bugId"] }     />
+            <Route exact path = { ["/user/:userId"] }   />
+            <Route exact path = { ["*"] }               />
+
           </Switch>
         </body>
 

@@ -8,6 +8,7 @@ import CreateValidator from './validate.js';
 import '../index.css';
 
 import BugDataService from "../services/bugDataService";
+import registerForm from "./register.js";
 
 import { FaSignInAlt } from "react-icons/fa";
 
@@ -28,6 +29,7 @@ class LoginForm extends React.Component {
 
     this.emailInput = React.createRef();
     this.passwordInput = React.createRef();
+    this.isNewUser = false;
 
     this.focusInput = this.focusInput.bind(this);
 
@@ -43,25 +45,11 @@ class LoginForm extends React.Component {
       x++;
     }
 
-    // this.emailInput.current.focus();
-    // this.passwordInput.current.focus();
-
   }
 
   async loginUser(event, props, ref) { 
 
     event.preventDefault();
-
-    // const formData = new FormData();
-
-    // console.log('this.emailInput object: ' + JSON.stringify(this.emailInput));
-
-    // formData.append('email', this.emailInput.current.value);
-    // formData.append('password', this.passwordInput.current.value);
-
-    // loginCreds = Object.fromEntries(formData.entries());
-
-    // console.log('credentials object: ' + JSON.stringify(loginCreds));    
 
     let emailTxt = this.emailInput.current.value;
     let passTxt = this.passwordInput.current.value;
@@ -74,44 +62,35 @@ class LoginForm extends React.Component {
 
     let bds = new BugDataService(joiObj.value['email'], joiObj.value['password']); 
 
-    let bdsResp = bds.login().then( response => { 
-
-      console.log('response: ' + response); 
+    bds.login().then( response => { 
       return response;
-
     }).catch( e =>{ 
       console.log(e); 
     }) 
 
-    console.log('response/savedToken: ' + bdsResp); 
-
     this.state = { authToken: Cookies.get() }
-    console.log(this.state);
-
-    // if (this.state) {
-    //   if (typeof window !== 'undefined') {
-    //     window.location.href = "https://www.boatborrowers.com/bug/list";
-    //   }
-    // }
-
-    // if ( bdsResp !== null ) {
-    //   history("/bugList", { replace: true });
-    // } else {
-    //   console.log({ error: 'Invalid Credentials. Please Try Again.. (' + x + ' attempts remaining)' });
-    //   x--;
-    // }
     
   } 
-  
+
+  setIsNewUser = (bool) => {
+    this.isNewUser = bool;
+  }
 
   // Render HTML:
-  
-  render() {
 
-    const validator = CreateValidator; 
+  render(props) {
 
+    const validator = CreateValidator;
+    
+    let rfInstance = new registerForm();
+    const renderRF = rfInstance.render();
+    
     return (
       <div>
+
+      <renderRF 
+        isNewUser={this.isNewUser}
+      />
 
       <body className=''>
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
@@ -128,7 +107,11 @@ class LoginForm extends React.Component {
 
           </Form.Group>
 
-          <a className='d-block pb-2 ps-1' href='/#'>Forgot your password?</a> 
+          <a className='d-block pb-2 ps-1' href='/#'>Forgot your password?</a>
+            
+          <a className='d-block pb-2 ps-1' onClick={e => {e.preventDefault(); rfInstance.setIsNewUser(true); }} href='/register'>
+            New to <div className='text-dark'>boat</div>borrowers.com? Register Here!
+          </a> 
 
           <Form.Group className="mb-3" controlId="renderLogin.loginButton">
 
@@ -148,6 +131,7 @@ class LoginForm extends React.Component {
       </body>
       </div>  
     );
+
   }
 }
  

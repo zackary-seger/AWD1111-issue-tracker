@@ -2,7 +2,6 @@ import React from 'react'
 import axios from "axios"; 
 import validate from 'react-joi-validation';
 
-
 class BugDataService extends React.Component{ 
 
   constructor(email, pass, props) {
