@@ -79,11 +79,12 @@ class LoginForm extends React.Component {
     const validator = CreateValidator;
     let isNewUserBool = this._IsNewUser;
     console.log(`renderLogin isNewUser Prop Entry: ${isNewUserBool}`)
+
+    let rf = new RegisterForm(isNewUserBool);
+    rf.render();
     
     return (
       <div>
-      
-      <RegisterForm isNewUser={isNewUserBool} />
 
       <body className=''>
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
@@ -102,8 +103,11 @@ class LoginForm extends React.Component {
 
           <a className='pb-2 ps-1' href='/#'>Forgot your password?</a>         
           <p className='d-block mb-0 mt-2 ps-1'>New to boatborrowers.com?</p>
-          <a className='ms-2 mb-2 ps-1' onClick={e => {e.preventDefault(); console.log(this._IsNewUser); 
-                                                          this.set_IsNewUser(); this.render();}} href='/#'>
+          <a className='ms-2 mb-2 ps-1' onClick={e => {   
+
+                                                          e.preventDefault(); console.log(this._IsNewUser); 
+                                                          this.set_IsNewUser(); this.render();
+                                                      }} href='/#'>
             Register Here!
           </a> 
 
