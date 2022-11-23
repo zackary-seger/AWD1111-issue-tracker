@@ -79,13 +79,11 @@ class LoginForm extends React.Component {
     const validator = CreateValidator;
     
     let rfInstance = new registerForm();
+    <rfInstance show={this.props.isNewUser}/>
+    rfInstance.render();
     
     return (
       <div>
-
-      <rfInstance 
-        show={this.props.isNewUser}
-      />
 
       <body className=''>
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
@@ -102,10 +100,9 @@ class LoginForm extends React.Component {
 
           </Form.Group>
 
-          <a className='d-block pb-2 ps-1' href='/#'>Forgot your password?</a>
-          
-          <p>New to boatborrowers.com?</p>
-          <a className='d-block pb-2 ps-1' onClick={e => {e.preventDefault(); this.setIsNewUser(true); }} href='/register'>
+          <a className='pb-2 ps-1' href='/#'>Forgot your password?</a>         
+          <p className='pb-2 ps-1'>New to boatborrowers.com?</p>
+          <a className='pb-2 ps-1' onClick={e => {e.preventDefault(); this.setIsNewUser(true); }} href='/#'>
             Register Here!
           </a> 
 
