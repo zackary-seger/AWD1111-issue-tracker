@@ -104,8 +104,8 @@ class LoginForm extends React.Component {
 
           <a className='d-block pb-2 ps-1' href='/#'>Forgot your password?</a>
             
-          <a className='d-block pb-2 ps-1' onClick={e => {e.preventDefault(); rfInstance.setIsNewUser(true); }} href='/register'>
-            New to <div className='text-dark'>boat</div>borrowers.com? Register Here!
+          <a className='d-block pb-2 ps-1' onClick={e => {e.preventDefault(); this.setIsNewUser(true); }} href='/register'>
+            New to boatborrowers.com? Register Here!
           </a> 
 
           <Form.Group className="mb-3" controlId="renderLogin.loginButton">
