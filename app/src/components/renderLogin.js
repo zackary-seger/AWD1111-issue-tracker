@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
 
     this.emailInput = React.createRef();
     this.passwordInput = React.createRef();
-    this._isNewUser = false;
+    this._IsNewUser = false;
 
     this.focusInput = this.focusInput.bind(this);
 
@@ -68,9 +68,9 @@ class LoginForm extends React.Component {
     
   } 
 
-  set IsNewUser(bool) {
-    this._isNewUser = bool;
-    console.log(`this._isNewUser set to: ${this.isNewUser}`)
+  set _IsNewUser(bool) {
+    this._IsNewUser = bool;
+    console.log(`this._IsNewUser set to: ${this._IsNewUser}`)
   }
 
   // Render HTML:
@@ -78,12 +78,13 @@ class LoginForm extends React.Component {
   render() {
 
     const validator = CreateValidator;
-    console.log(`renderLogin isNewUser Prop Entry: ${this._isNewUser}`)
+    let isNewUserBool = this._IsNewUser;
+    console.log(`renderLogin isNewUser Prop Entry: ${newBool}`)
     
     return (
       <div>
       
-      <RegisterForm isNewUser={this._isNewUser} />
+      <RegisterForm isNewUser={isNewUserBool} />
 
       <body className=''>
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
