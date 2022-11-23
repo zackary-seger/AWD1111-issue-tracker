@@ -29,9 +29,6 @@ function RenderRF(...props) {
   const firstNameInputRef = React.createRef();
   const lastNameInputRef = React.createRef();
 
-  const registerUser = RegisterUser.bind(this);
-  const focusInput = FocusInput.bind(this);
-
   setIsNewUser(props.isNewUser);
   setIsCancelled(false);
 
@@ -76,7 +73,7 @@ function RenderRF(...props) {
 
                 <h1 className="pt-3 ms-3">User Registration</h1>
             
-                <Form className="mt-3 ms-3 me-3" onSubmit={ registerUser() }>
+                <Form className="mt-3 ms-3 me-3" onSubmit={ RegisterUser() }>
             
                   <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
             
@@ -99,7 +96,7 @@ function RenderRF(...props) {
                     <Button 
                       variant="primary" 
                       type="submit"
-                      onClick={ focusInput() }
+                      onClick={ FocusInput() }
                       className="d-inline-block mt-2 mb-4"
                       id="registerBtn"
                     >
