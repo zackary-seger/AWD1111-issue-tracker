@@ -39,7 +39,7 @@ function RenderRF(...props) {
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
     if (x !== 1) {
-      this.FocusInput.current.focus();
+      FocusInput.current.focus();
     } else {
       x++;
     }
