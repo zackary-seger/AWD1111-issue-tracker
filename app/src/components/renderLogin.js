@@ -69,7 +69,7 @@ class LoginForm extends React.Component {
   } 
 
   setIsNewUser = (bool) => {
-    this.isNewUser = bool;
+    this.props.isNewUser = bool;
   }
 
   // Render HTML:
@@ -77,11 +77,12 @@ class LoginForm extends React.Component {
   render() {
 
     const validator = CreateValidator;
+    let isNewUserBool = this.props.isNewUser;
     
     return (
       <div>
       
-      <RegisterForm isNewUser={`${this.props.isNewUser}`} />
+      <RegisterForm isNewUser={isNewUserBool} />
 
       <body className=''>
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
