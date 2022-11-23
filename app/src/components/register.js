@@ -4,9 +4,7 @@ import React from 'react';
 import Joi from "joi"
 import Cookies from 'js-cookie';
 import * as ReactDOM from 'react-dom/client';
-import Form from 'react-bootstrap/Form'; 
-import Button from 'react-bootstrap/Button'; 
-import CreateValidator from './validate.js';
+import RenderRF from './renderRegisterForm';
 import UserDataService from "../services/userDataService";
 
 import { FaSignInAlt } from "react-icons/fa";
@@ -113,58 +111,7 @@ class RegisterForm extends React.Component {
       console.log(e); 
     }) 
 
-  } 
-
-  RenderRF(...props) {
-
-    const isNewUser = props.isNewUser;
-    console.log(`isNewUser prop: ${isNewUser}`)
-
-    if (isNewUser) {
-
-      return <body className='mb-2'>
-  
-          <h1 className="pt-3 ms-3">User Registration  <FaSignInAlt id="register1" className="ms-2"/></h1>
-      
-          <Form className="mt-3 ms-3 me-3" onSubmit={ this.registerUser }>
-      
-            <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
-      
-              <Form.Label className='font-weight-bold ps-1'>Email Address</Form.Label>
-              <Form.Control className="mb-1" type="email" placeholder="name@example.com" controlId="emailInput" ref={ this.emailInput } />
-      
-              <Form.Label className="font-weight-bold mt-2 ps-1">Password</Form.Label>
-              <Form.Control className="pb-2" type="password" controlId="passwordInput" id="passwordTxt" ref={ this.passwordInput } />
-      
-              <Form.Label className="font-weight-bold mt-2 ps-1">First Name</Form.Label>
-              <Form.Control className="pb-2" type="text" controlId="firstNameInput" id="firstNameTxt" ref={ this.firstNameInput } />
-      
-              <Form.Label className="font-weight-bold mt-2 ps-1">Last Name</Form.Label>
-              <Form.Control className="pb-2" type="text" controlId="lastNameInput" id="lastNameTxt" ref={ this.lastNameInput } />
-      
-            </Form.Group>      
-      
-            <Form.Group className="mb-3" controlId="renderLogin.loginButton">
-      
-              <Button 
-                variant="primary" 
-                type="submit"
-                onClick={this.focusInput}
-                className="mt-2 mb-4"
-                id="loginBtn"
-              >
-                Register
-              </Button> 
-              
-            </Form.Group>
-      
-          </Form>
-  
-      </body>
-
-    }
-
-  }  
+  }   
 
   // Render HTML:
   render() {
@@ -173,7 +120,7 @@ class RegisterForm extends React.Component {
       const root = ReactDOM.createRoot(document.getElementById('root'));
 
       if (this._isNewUser) {
-        return root.render(<this.renderRF isNewUser='true'/> );
+        return root.render(<RenderRF isNewUser={true}/> );
       } 
 
   }
