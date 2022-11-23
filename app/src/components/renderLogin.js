@@ -101,12 +101,12 @@ class LoginForm extends React.Component {
           </Form.Group>
 
           <a className='pb-2 ps-1' href='/#'>Forgot your password?</a>         
-          <p className='pb-2 ps-1'>New to boatborrowers.com?</p>
-          <a className='pb-2 ps-1' onClick={e => {e.preventDefault(); this.setIsNewUser(true); }} href='/#'>
+          <p className='d-block mb-0 mt-2 ps-1'>New to boatborrowers.com?</p>
+          <a className='ms-2 mb-2 ps-1' onClick={e => {e.preventDefault(); this.setIsNewUser(true); }} href='/#'>
             Register Here!
           </a> 
 
-          <Form.Group className="mb-3" controlId="renderLogin.loginButton">
+          <Form.Group className="mt-2 mb-3" controlId="renderLogin.loginButton">
 
             <Button 
               variant="primary" 
