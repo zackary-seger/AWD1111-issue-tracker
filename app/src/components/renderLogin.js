@@ -56,10 +56,6 @@ class LoginForm extends React.Component {
     
     let joiObj = loginSchema.validate({email: emailTxt, password: passTxt});
 
-    console.log('\n');
-    console.log('emailTxt: ' + joiObj.value['email'] + '  |  passTxt: ' + joiObj.value['password']);
-    console.log('\n');
-
     let bds = new BugDataService(joiObj.value['email'], joiObj.value['password']); 
 
     bds.login().then( response => { 
@@ -83,12 +79,11 @@ class LoginForm extends React.Component {
     const validator = CreateValidator;
     
     let rfInstance = new registerForm();
-    const renderRF = rfInstance.render();
     
     return (
       <div>
 
-      <renderRF 
+      <rfInstance 
         isNewUser={this.isNewUser}
       />
 
