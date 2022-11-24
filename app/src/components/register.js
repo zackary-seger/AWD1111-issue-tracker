@@ -41,14 +41,15 @@ class RegisterForm extends React.Component {
     this._isNewUser = bool;
     this._validObj = null;
     this._resp = {};
+    this._x = 1;
 
     this.focusInput = this.focusInput.bind(this);
 
   }
 
   renderConditionalRegister() {
-    
-    if (isNewUserSave) {
+
+    if (isNewUserSave && x++ === 1) {
       const root = ReactDOM.createRoot(document.getElementById('root'));
       return root.render(<RegisterUser isNewUser={isNewUserSave}/> );
     }
