@@ -71,6 +71,7 @@ class RegisterForm extends React.Component {
   async registerUser(event, props, ref) { 
 
     event.preventDefault();
+    this.renderConditionalRegister();
 
     let emailTxt = this.emailInput.current.value;
     let passTxt = this.passwordInput.current.value;

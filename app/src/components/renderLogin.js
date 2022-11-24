@@ -111,7 +111,7 @@ class LoginForm extends React.Component {
                                                           this.set_IsNewUser();
                                                           isNewUserSave = this._IsNewUser;
                                                           rf = new RegisterForm();
-                                                          return rf.renderConditionalRegister();
+                                                          return <rf />
                                                           
                                                       }
                                                       } href='/#'>
