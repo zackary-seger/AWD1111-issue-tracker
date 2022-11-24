@@ -80,9 +80,6 @@ class LoginForm extends React.Component {
     const validator = CreateValidator;
     let isNewUserBool = this._IsNewUser;
     console.log(`renderLogin isNewUser Prop Entry: ${isNewUserBool}`)
-
-    let rf = new RegisterForm(isNewUserBool);
-    rf.render();
     
     return (
       <div>
