@@ -19,11 +19,13 @@ const registerSchema = Joi.object().keys({
 });
 
 let x = 1;
+let isRenderedSave;
 
 function RenderRF(props) {
 
   const [isNewUser, setIsNewUser] = useState([]);
   const [isCancelled, setIsCancelled] = useState([]);
+  const [isRendered, setIsRendered] = useState([]);
   
   const emailInputRef = React.createRef();
   const passwordInputRef = React.createRef();
@@ -52,6 +54,8 @@ function RenderRF(props) {
 
   const RegisterUser = async (event, props, ref) => { 
 
+    setIsRendered(() => { return isRendered + 1 });
+    isRenderedSave = isRendered;
     event.preventDefault();
 
     let emailTxt = emailInputRef;
@@ -131,4 +135,5 @@ function RenderRF(props) {
 
 }
 
+export {isRenderedSave}
 export default RenderRF
