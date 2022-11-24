@@ -25,7 +25,7 @@ function RenderRF(props) {
 
   const [isNewUser, setIsNewUser] = useState([]);
   const [isCancelled, setIsCancelled] = useState([]);
-  const [isRendered, setIsRendered] = useState(1);
+  const [isRendered, setIsRendered] = useState(0);
   
   const emailInputRef = React.createRef();
   const passwordInputRef = React.createRef();
