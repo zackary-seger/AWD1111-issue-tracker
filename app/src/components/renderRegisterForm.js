@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import UserDataService from '../services/userDataService';
 import LoginForm from './renderLogin';
 import Joi from "joi"
+import { isNewUserSave } from './renderLogin';
 
 import CreateValidator from './validate.js';
 
@@ -76,7 +77,7 @@ function RenderRF(props) {
     
   } 
 
-  if (isNewUser) {
+  if (isNewUserSave) {
 
     return ( <body className='mb-2'>
 
