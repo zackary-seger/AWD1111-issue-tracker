@@ -47,8 +47,12 @@ class RegisterForm extends React.Component {
   }
 
   renderConditionalRegister() {
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    return root.render(<RegisterUser isNewUser={isNewUserSave}/> );
+    
+    if (isNewUserSave) {
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      return root.render(<RegisterUser isNewUser={isNewUserSave}/> );
+    }
+
   }
 
   focusInput() {
