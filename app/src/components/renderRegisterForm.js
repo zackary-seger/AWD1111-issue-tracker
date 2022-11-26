@@ -21,6 +21,7 @@ const registerSchema = Joi.object().keys({
 
 let y = 0;
 let x = 1;
+
 let isCancelledSave = false;
 let isRendered = false;
 
@@ -38,6 +39,10 @@ function RenderRF() {
   console.log(`isNewUser prop: ${isNewUser}`);
   console.log(`isCancelled prop: ${isCancelled}`);
   console.log('\n');
+
+  if (z > 1) {
+    setIsCancelled(true);
+  }
 
   let FocusInput = () => {
 
