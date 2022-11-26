@@ -3,7 +3,7 @@ import '../index.css';
 import React from 'react';
 import Joi from "joi"
 import * as ReactDOM from 'react-dom/client';
-import RegisterUser from './renderRegisterForm';
+import RenderUserRegistration from './renderRegisterForm';
 import UserDataService from "../services/userDataService";
 import { isNewUserSave } from './renderLogin';
 import { isRenderedSave } from './renderRegisterForm';
@@ -61,13 +61,15 @@ class RegisterForm extends React.Component {
       console.log('Conditional Render Function return root.render() Commencing..');
       
       isNewUserSave = false;
-      const root = ReactDOM.createRoot(document.getElementById('root'));
-      return root.render(<RegisterUser isNewUser={isNewUserSave}/> );
+      const body = ReactDOM.createRoot(document.getElementById('body'));
+      return body.render(<RenderUserRegistration /> );
     
     }
 
-    console.log('Conditional Render Function End..');
-
+    console.log('\n');
+    console.log('Conditional Render Function Complete..');
+    console.log('\n');
+    
   }
 
   focusInput() {

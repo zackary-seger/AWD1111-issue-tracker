@@ -20,7 +20,7 @@ class UserDataService extends React.Component{
     this.lastNameInput = lastNameInput || defaultInputs.lastNameInput;
   }
 
-  async Register(udsInput){
+  async RegisterUser(udsInput){
     console.log('canRunAxiosRequest: TRUE')
     return console.log(`udsInput: ${udsInput}`)
   }

@@ -7,8 +7,6 @@ import LoginForm from './renderLogin';
 import Joi from "joi"
 import { isNewUserSave } from './renderLogin';
 
-import CreateValidator from './validate.js';
-
 const registerSchema = Joi.object().keys({
 
   email: Joi.string().email({ tlds: { allow: false } , minDomainSegments: 2 }).trim().required(),
@@ -33,10 +31,13 @@ function RenderRF(props) {
   const firstNameInputRef = React.createRef();
   const lastNameInputRef = React.createRef();
 
-  setIsNewUser(() => { return props.isNewUser });
+  setIsNewUser(() => { return isNewUserSave });
   setIsCancelled(() => { return false });
-
-  console.log(`isNewUser prop: ${isNewUser}`)
+  
+  console.log('\n');
+  console.log(`isNewUser prop: ${isNewUser}`);
+  console.log(`isCancelled prop: ${isCancelled}`);
+  console.log('\n');
 
   let FocusInput = () => {
 
@@ -57,83 +58,88 @@ function RenderRF(props) {
 
     setIsRendered(() => { return isRendered + 1 });
     isRenderedSave = isRendered;
-    event.preventDefault();
+  
+    if (isRenderedSave === 1) {
+  
+      return ( <body className='mb-2'>
+  
+                  <h1 className="pt-3 ms-3">User Registration</h1>
+              
+                  <Form className="mt-3 ms-3 me-3" onSubmit={ evt => {SubmitRegistration(evt)} }>
+              
+                    <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
+              
+                      <Form.Label className='font-weight-bold ps-1'>Email Address</Form.Label>
+                      <Form.Control className="mb-1" type="email" placeholder="name@example.com" controlId="emailInput" ref={ emailInputRef } />
+              
+                      <Form.Label className="font-weight-bold mt-2 ps-1">Password</Form.Label>
+                      <Form.Control className="pb-2" type="password" controlId="passwordInput" id="passwordTxt" ref={ passwordInputRef } />
+              
+                      <Form.Label className="font-weight-bold mt-2 ps-1">First Name</Form.Label>
+                      <Form.Control className="pb-2" type="text" controlId="firstNameInput" id="firstNameTxt" ref={ firstNameInputRef } />
+              
+                      <Form.Label className="font-weight-bold mt-2 ps-1">Last Name</Form.Label>
+                      <Form.Control className="pb-2" type="text" controlId="lastNameInput" id="lastNameTxt" ref={ lastNameInputRef } />
+              
+                    </Form.Group>      
+              
+                    <Form.Group className="mb-3" controlId="renderLogin.loginButton">
+              
+                      <Button 
+                        variant="primary" 
+                        type="submit"
+                        onClick={ FocusInput() }
+                        className="d-inline-block mt-2 mb-4"
+                        id="registerBtn"
+                      >
+                        Register
+                      </Button> 
+  
+                      <Button 
+                        variant="primary" 
+                        onClick={ setIsCancelled(() => { return true }) }
+                        className="d-inline-block mt-2 mb-4"
+                        id="cancelBtn"
+                      >
+                        Cancel
+                      </Button> 
+                      
+                    </Form.Group>
+              
+                  </Form>
+  
+      </body>
+  
+    )}
+  
+    if (isCancelled) {
+      <LoginForm isNewUser={false} />
+    }
 
-    let emailTxt = emailInputRef;
-    let passTxt = passwordInputRef;
-    let firstNameTxt = firstNameInputRef;
-    let lastNameTxt = lastNameInputRef;
+    const SubmitRegistration = () => {
 
-    let joiObj = registerSchema.validate({email: emailTxt, password: passTxt, firstName: firstNameTxt, lastName: lastNameTxt});
+      let emailTxt = emailInputRef;
+      let passTxt = passwordInputRef;
+      let firstNameTxt = firstNameInputRef;
+      let lastNameTxt = lastNameInputRef;
+  
+      let joiObj = registerSchema.validate({email: emailTxt, password: passTxt, firstName: firstNameTxt, lastName: lastNameTxt});
+      
+      let uds = new UserDataService(joiObj.value['email'], joiObj.value['password'],  joiObj.value['firstName'], joiObj.value['lastName']); 
+      
+      if (uds) {
+        uds.RegisterUser(uds).then( response => { 
+          return response;
+        }).catch( e =>{ 
+          console.log(e); 
+        }) 
+      }
 
-    let uds = new UserDataService(joiObj.value['email'], joiObj.value['password'],  joiObj.value['firstName'], joiObj.value['lastName']); 
-
-    uds.registerUser(uds).then( response => { 
-      return response;
-    }).catch( e =>{ 
-      console.log(e); 
-    }) 
+    }
     
   } 
-
-  if (isNewUserSave) {
-
-    return ( <body className='mb-2'>
-
-                <h1 className="pt-3 ms-3">User Registration</h1>
-            
-                <Form className="mt-3 ms-3 me-3" onSubmit={ evt => {RegisterUser(evt)} }>
-            
-                  <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
-            
-                    <Form.Label className='font-weight-bold ps-1'>Email Address</Form.Label>
-                    <Form.Control className="mb-1" type="email" placeholder="name@example.com" controlId="emailInput" ref={ emailInputRef } />
-            
-                    <Form.Label className="font-weight-bold mt-2 ps-1">Password</Form.Label>
-                    <Form.Control className="pb-2" type="password" controlId="passwordInput" id="passwordTxt" ref={ passwordInputRef } />
-            
-                    <Form.Label className="font-weight-bold mt-2 ps-1">First Name</Form.Label>
-                    <Form.Control className="pb-2" type="text" controlId="firstNameInput" id="firstNameTxt" ref={ firstNameInputRef } />
-            
-                    <Form.Label className="font-weight-bold mt-2 ps-1">Last Name</Form.Label>
-                    <Form.Control className="pb-2" type="text" controlId="lastNameInput" id="lastNameTxt" ref={ lastNameInputRef } />
-            
-                  </Form.Group>      
-            
-                  <Form.Group className="mb-3" controlId="renderLogin.loginButton">
-            
-                    <Button 
-                      variant="primary" 
-                      type="submit"
-                      onClick={ FocusInput() }
-                      className="d-inline-block mt-2 mb-4"
-                      id="registerBtn"
-                    >
-                      Register
-                    </Button> 
-
-                    <Button 
-                      variant="primary" 
-                      onClick={ setIsCancelled(() => { return true }) }
-                      className="d-inline-block mt-2 mb-4"
-                      id="cancelBtn"
-                    >
-                      Cancel
-                    </Button> 
-                    
-                  </Form.Group>
-            
-                </Form>
-
-    </body>
-
-  )}
-
-  if (isCancelled) {
-    <LoginForm isNewUser={false} />
-  }
 
 }
 
 export {isRenderedSave}
-export default RenderRF
+export default RenderRF.RegisterUser();
