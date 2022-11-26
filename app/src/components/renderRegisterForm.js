@@ -20,7 +20,7 @@ const registerSchema = Joi.object().keys({
 });
 
 let x = 1;
-let isRenderedSave;
+let isRenderedSave = 1;
 
 function RenderRF(props) {
 
@@ -64,7 +64,6 @@ function RenderRF(props) {
     let firstNameTxt = firstNameInputRef;
     let lastNameTxt = lastNameInputRef;
 
-    const validator = CreateValidator;
     let joiObj = registerSchema.validate({email: emailTxt, password: passTxt, firstName: firstNameTxt, lastName: lastNameTxt});
 
     let uds = new UserDataService(joiObj.value['email'], joiObj.value['password'],  joiObj.value['firstName'], joiObj.value['lastName']); 
