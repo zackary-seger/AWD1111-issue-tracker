@@ -128,7 +128,8 @@ function RenderRF() {
 
   if (isCancelled && y++ === 0) {
     setIsNewUser(() => { return false; });
-    LoginForm();
+    const lf = new LoginForm();
+    lf.reRender();
   }
 
   isCancelledSave = isCancelled;
