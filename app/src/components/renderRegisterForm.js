@@ -7,7 +7,6 @@ import UserDataService from '../services/userDataService';
 import LoginForm from './renderLogin';
 import Joi from "joi"
 import { isNewUserSave } from './renderLogin';
-import { z } from './register';
 
 const registerSchema = Joi.object().keys({
 
@@ -55,7 +54,7 @@ function RenderRF() {
   }
   FocusInput = FocusInput.bind(this);
 
-  if ( z > 0 || ( isRendered === false && isCancelled === false )) {
+  if ( isNewUserSave || ( isRendered === false && isCancelled === false )) {
 
     const body = ReactDOM.createRoot(document.getElementById('body'));
     return body.render( 
