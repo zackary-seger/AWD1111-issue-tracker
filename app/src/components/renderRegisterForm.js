@@ -17,6 +17,7 @@ const registerSchema = Joi.object().keys({
 
 });
 
+let y = 0;
 let x = 1;
 let isCancelledSave = false;
 let isRendered = false;
@@ -125,7 +126,7 @@ function RenderRF() {
 
   } 
 
-  if (isCancelled) {
+  if (isCancelled && y++ === 0) {
     setIsNewUser(() => { return false; });
     return <LoginForm />
   }
