@@ -48,7 +48,12 @@ class RegisterForm extends React.Component {
   }
 
   renderConditionalUserRegistration() {
+    
     console.log('Conditional Render Function Begin..');
+    console.log('\n');
+    console.log(`isRenderedSave: ${isRenderedSave}`);
+    console.log(`isNewUserSave: ${isNewUserSave}`);
+    console.log(`this._isNewUser: ${this._isNewUser}`);
 
     if (isNewUserSave && isRenderedSave === 1) {
       console.log('Conditional Render Function return root.render() Commencing..');
