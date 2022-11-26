@@ -19,6 +19,7 @@ const registerSchema = Joi.object().keys({
 
 });
 
+let y = 0;
 let x = 1;
 let isCancelledSave = false;
 let isRendered = false;
