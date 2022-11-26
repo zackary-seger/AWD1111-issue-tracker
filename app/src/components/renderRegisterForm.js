@@ -51,7 +51,7 @@ function RenderRF() {
   }
   FocusInput = FocusInput.bind(this);
 
-  if (isRendered === false) {
+  if (isRendered === false && isCancelled === false) {
 
     return ( <body className='mb-2'>
 
