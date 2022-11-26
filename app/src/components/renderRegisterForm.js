@@ -20,19 +20,16 @@ const registerSchema = Joi.object().keys({
 let x = 1;
 let isRenderedSave = 1;
 
-function RenderRF(props) {
+function RenderRF() {
 
-  const [isNewUser, setIsNewUser] = useState([]);
-  const [isCancelled, setIsCancelled] = useState([]);
+  const [isNewUser, setIsNewUser] = useState(isNewUserSave);
+  const [isCancelled, setIsCancelled] = useState(false);
   const [isRendered, setIsRendered] = useState(0);
   
   const emailInputRef = React.createRef();
   const passwordInputRef = React.createRef();
   const firstNameInputRef = React.createRef();
   const lastNameInputRef = React.createRef();
-
-  setIsNewUser(() => { return isNewUserSave });
-  setIsCancelled(() => { return false });
   
   console.log('\n');
   console.log(`isNewUser prop: ${isNewUser}`);
@@ -41,25 +38,23 @@ function RenderRF(props) {
 
   let FocusInput = () => {
 
-    // Explicitly focus the text input using the raw DOM API
-    // Note: we're accessing "current" to get the DOM node
-    if (x !== 1) {
-      if (FocusInput.current) {
-        FocusInput.current.focus();
-      }
-    } else {
-      x++;
-    }
-  }
+      // ??? Explicitly focus the text input using the raw DOM API
+      // Note: we're accessing "current" to get the DOM node.. ???
 
+      if (x !== 1) {
+        if (FocusInput.current) {
+          FocusInput.current.focus();
+        }
+      } else {
+        x++;
+      }
+  }
   FocusInput = FocusInput.bind(this);
 
-  const RegisterUser = async (event, props, ref) => { 
+  let RenderRegisterUser = () => { 
 
-    setIsRendered(() => { return isRendered + 1 });
     isRenderedSave = isRendered;
-  
-    if (isRenderedSave === 1) {
+    if (isRenderedSave === 0) {
   
       return ( <body className='mb-2'>
   
@@ -111,10 +106,6 @@ function RenderRF(props) {
       </body>
   
     )}
-  
-    if (isCancelled) {
-      <LoginForm isNewUser={false} />
-    }
 
     const SubmitRegistration = () => {
 
@@ -124,7 +115,7 @@ function RenderRF(props) {
       let lastNameTxt = lastNameInputRef;
   
       let joiObj = registerSchema.validate({email: emailTxt, password: passTxt, firstName: firstNameTxt, lastName: lastNameTxt});
-      
+
       let uds = new UserDataService(joiObj.value['email'], joiObj.value['password'],  joiObj.value['firstName'], joiObj.value['lastName']); 
       
       if (uds) {
@@ -135,11 +126,17 @@ function RenderRF(props) {
         }) 
       }
 
-    }
-    
+    } 
   } 
 
+  RenderRegisterUser();
+  setIsRendered(() => { return isRendered + 1 });
+
+  if (isCancelled) {
+    setIsNewUser(() => { return false; });
+    return <LoginForm />
+  }
 }
 
 export {isRenderedSave}
-export default RenderRF.RegisterUser();
+export default RenderRF;
