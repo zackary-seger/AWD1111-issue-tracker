@@ -152,5 +152,6 @@ class RegisterForm extends React.Component {
 
   }
 }
- 
+
+export {z}
 export default RegisterForm;

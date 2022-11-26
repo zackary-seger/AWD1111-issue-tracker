@@ -7,6 +7,7 @@ import UserDataService from '../services/userDataService';
 import LoginForm from './renderLogin';
 import Joi from "joi"
 import { isNewUserSave } from './renderLogin';
+import { z } from './register';
 
 const registerSchema = Joi.object().keys({
 
@@ -20,7 +21,6 @@ const registerSchema = Joi.object().keys({
 
 let x = 1;
 let y = 0;
-let z = 0;
 let isCancelledSave = false;
 let isRendered = false;
 
