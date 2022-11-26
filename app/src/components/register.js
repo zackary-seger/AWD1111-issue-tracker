@@ -60,7 +60,7 @@ class RegisterForm extends React.Component {
     console.log(`isCancelledSave: ${isCancelledSave}`);
     console.log(z);
 
-    if ( this._y > 1 || ( this._isNewUser && isCancelledSave === false && isRendered === false )) { 
+    if ( this._y > 0 || ( this._isNewUser && isCancelledSave === false && isRendered === false )) { 
       
       z++;
       console.log('Conditional Render Function return root.render() Commencing..');
