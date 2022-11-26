@@ -53,9 +53,8 @@ function RenderRF() {
   }
   FocusInput = FocusInput.bind(this);
 
-  if (( isRendered === false && isCancelled === false) || z > 0 ) {
+  if (isRendered === false && isCancelled === false) {
 
-    z++;
     return ( <body className='mb-2'>
 
                 <h1 className="pt-3 ms-3">User Registration</h1>
