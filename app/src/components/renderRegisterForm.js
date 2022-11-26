@@ -106,7 +106,7 @@ function RenderRF() {
 
               </body>
             )
-  } else if (isRendered === false && isCancelled === false && z > 0) {
+  } else if (isRendered === false && isCancelled === false && z !== 0) {
 
     const body = ReactDOM.createRoot(document.getElementById('body'));
     return body.render( 
