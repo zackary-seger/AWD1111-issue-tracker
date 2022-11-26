@@ -80,7 +80,7 @@ function RenderRF() {
                       variant="primary" 
                       type="submit"
                       onClick={ FocusInput() }
-                      className="d-inline-block mt-2 mb-4"
+                      className="d-inline-block mt-2 mb-4 me-2"
                       id="registerBtn"
                     >
                       Register
