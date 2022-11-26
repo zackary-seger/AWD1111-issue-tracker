@@ -17,8 +17,9 @@ const registerSchema = Joi.object().keys({
 
 });
 
-let y = 0;
 let x = 1;
+let y = 0;
+let z = 0;
 let isCancelledSave = false;
 let isRendered = false;
 
@@ -52,8 +53,9 @@ function RenderRF() {
   }
   FocusInput = FocusInput.bind(this);
 
-  if (isRendered === false && isCancelled === false) {
+  if (( isRendered === false && isCancelled === false) || z > 0 ) {
 
+    z++;
     return ( <body className='mb-2'>
 
                 <h1 className="pt-3 ms-3">User Registration</h1>
