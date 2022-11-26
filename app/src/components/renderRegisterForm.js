@@ -90,7 +90,7 @@ function RenderRF() {
 
                     <Button 
                       variant="primary" 
-                      onClick={ () => { isRendered = true; setIsCancelled(true); }}
+                      onClick={ () => { isRendered = true; setIsCancelled(true);}}
                       className="d-inline-block mt-2 mb-4"
                       id="cancelBtn"
                     >
