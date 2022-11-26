@@ -3,7 +3,7 @@ import '../index.css';
 import React from 'react';
 import Joi from "joi"
 import * as ReactDOM from 'react-dom/client';
-import RenderUserRegistration from './renderRegisterForm';
+import RenderUserRegistration, { isCancelledSave } from './renderRegisterForm';
 import UserDataService from "../services/userDataService";
 import { isNewUserSave } from './renderLogin';
 import { isRendered } from './renderRegisterForm';
@@ -56,7 +56,7 @@ class RegisterForm extends React.Component {
     console.log(`isRenderedSave: ${isRendered}`);
     console.log(`isNewUserSave: ${isNewUserSave}`);
 
-    if (isNewUserSave && isRendered === false) {
+    if (isNewUserSave && isCancelledSave === false && isRendered === false) {
       
       console.log('Conditional Render Function return root.render() Commencing..');
       

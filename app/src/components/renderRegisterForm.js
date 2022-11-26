@@ -18,6 +18,7 @@ const registerSchema = Joi.object().keys({
 });
 
 let x = 1;
+let isCancelledSave = false;
 let isRendered = false;
 
 function RenderRF() {
@@ -129,7 +130,8 @@ function RenderRF() {
     return <LoginForm />
   }
 
+  isCancelledSave = isCancelled;
 }
 
-export {isRendered}
+export {isRendered, isCancelledSave}
 export default RenderRF;
