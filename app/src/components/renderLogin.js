@@ -17,7 +17,6 @@ import { isCancelledSave } from './renderRegisterForm.js';
 let x = 1;
 let isNewUserSave;
 let rendered = true;
-let reRenderReady = false;
 
 const loginSchema = Joi.object().keys({
   username: Joi.string().required(),
