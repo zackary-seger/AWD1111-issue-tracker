@@ -79,12 +79,15 @@ class LoginForm extends React.Component {
 
     const validator = CreateValidator;
     let isNewUserBool = this._IsNewUser;
+    let rf = new RegisterForm(isNewUserSave);
     console.log(`renderLogin isNewUser Prop Entry: ${isNewUserBool}`)
     
     return (
       <div>
 
       <body className=''>
+        <rf className='pt-3'/>
+
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
 
         <Form className="mt-3 ms-3 me-3" onSubmit={ this.loginUser }>
@@ -106,9 +109,7 @@ class LoginForm extends React.Component {
                                                           e.preventDefault(); 
                                                           console.log(this._IsNewUser); 
                                                           this.set_IsNewUser();
-                                                          isNewUserSave = this._IsNewUser;
-                                                          let rf = new RegisterForm();
-                                                          return <rf />
+                                                          isNewUserSave = this._IsNewUser;                                                        
                                                           
                                                       }
                                                       } href='/#'>
