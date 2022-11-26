@@ -21,7 +21,6 @@ let y = 0;
 let x = 1;
 let isCancelledSave = false;
 let isRendered = false;
-let ifAlreadyRendered = false;
 
 function RenderRF() {
 
@@ -129,7 +128,6 @@ function RenderRF() {
 
   if (isCancelled && y++ === 0) {
     setIsNewUser(() => { return false; });
-    ifAlreadyRendered = true;
     const lf = new LoginForm();
     lf.reRender();
   }
@@ -137,5 +135,5 @@ function RenderRF() {
   isCancelledSave = isCancelled;
 }
 
-export {isRendered, isCancelledSave, ifAlreadyRendered}
+export {isRendered, isCancelledSave}
 export default RenderRF;

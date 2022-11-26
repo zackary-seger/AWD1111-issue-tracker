@@ -19,7 +19,7 @@ const registerSchema = Joi.object().keys({
 });
 
 let x = 1;
-let y = 1;
+let z = 0;
 
 const validationOptions = {
   abortEarly: false  // abort after the last validation error
@@ -57,8 +57,9 @@ class RegisterForm extends React.Component {
     console.log(`isRenderedSave: ${isRendered}`);
     console.log(`isNewUserSave: ${isNewUserSave}`);
 
-    if (isNewUserSave && isCancelledSave === false && (isRendered === false || ifAlreadyRendered === true) ) { 
+    if (isNewUserSave && isCancelledSave === false && (isRendered === false || z > 0) ) { 
       
+      z++;
       console.log('Conditional Render Function return root.render() Commencing..');
       
       isNewUserSave = false;
