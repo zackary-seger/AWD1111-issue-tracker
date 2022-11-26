@@ -3,7 +3,7 @@ import '../index.css';
 import React from 'react';
 import Joi from "joi"
 import * as ReactDOM from 'react-dom/client';
-import RenderUserRegistration, { isCancelledSave } from './renderRegisterForm';
+import RenderUserRegistration, { isCancelledSave, ifAlreadyRendered } from './renderRegisterForm';
 import UserDataService from "../services/userDataService";
 import LoginForm, { isNewUserSave } from './renderLogin';
 import { isRendered } from './renderRegisterForm';
@@ -19,6 +19,7 @@ const registerSchema = Joi.object().keys({
 });
 
 let x = 1;
+let y = 1;
 
 const validationOptions = {
   abortEarly: false  // abort after the last validation error
@@ -56,7 +57,7 @@ class RegisterForm extends React.Component {
     console.log(`isRenderedSave: ${isRendered}`);
     console.log(`isNewUserSave: ${isNewUserSave}`);
 
-    if (isNewUserSave && isCancelledSave === false && isRendered === false ) {
+    if (isNewUserSave && isCancelledSave === false && (isRendered === false || ifAlreadyRendered === true) ) { 
       
       console.log('Conditional Render Function return root.render() Commencing..');
       
