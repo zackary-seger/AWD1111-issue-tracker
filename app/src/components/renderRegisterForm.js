@@ -40,10 +40,6 @@ function RenderRF() {
   console.log(`isCancelled prop: ${isCancelled}`);
   console.log('\n');
 
-  if (z > 1) {
-    setIsCancelled(true);
-  }
-
   let FocusInput = () => {
 
       // ??? Explicitly focus the text input using the raw DOM API
@@ -59,7 +55,7 @@ function RenderRF() {
   }
   FocusInput = FocusInput.bind(this);
 
-  if ( z > 1 || ( isRendered === false && isCancelled === false )) {
+  if ( z === 1 || ( isRendered === false && isCancelled === false )) {
 
     const body = ReactDOM.createRoot(document.getElementById('body'));
     return body.render( 
