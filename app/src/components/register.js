@@ -29,7 +29,7 @@ const validationOptions = {
 
 class RegisterForm extends React.Component {
   
-  constructor(bool, props) {
+  constructor(bool, y, props) {
     
     super(props);
 
@@ -43,6 +43,7 @@ class RegisterForm extends React.Component {
     this._isNewUser = bool;
     this._validObj = null;
     this._resp = {};
+    this._y = y;
 
     this.focusInput = this.focusInput.bind(this);
 
@@ -59,7 +60,7 @@ class RegisterForm extends React.Component {
     console.log(`isCancelledSave: ${isCancelledSave}`);
     console.log(z);
 
-    if ( isNewUserSave || ( this._isNewUser && isCancelledSave === false && isRendered === false )) { 
+    if ( this._y > 1 || ( this._isNewUser && isCancelledSave === false && isRendered === false )) { 
       
       z++;
       console.log('Conditional Render Function return root.render() Commencing..');

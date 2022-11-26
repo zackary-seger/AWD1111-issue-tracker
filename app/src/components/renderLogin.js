@@ -15,6 +15,7 @@ import { FaSignInAlt } from "react-icons/fa";
 import { isCancelledSave } from './renderRegisterForm.js';
 
 let x = 1;
+let y = 0;
 let isNewUserSave;
 let rendered = true;
 
@@ -171,12 +172,12 @@ class LoginForm extends React.Component {
           <a className='pb-2 ps-1' href='/#'>Forgot your password?</a>         
           <p className='d-block mb-0 mt-2 ps-1'>New to boatborrowers.com?</p>
           <a className='ms-2 mb-2 ps-1' onClick={e => {   
-
+                                                          y++;
                                                           e.preventDefault(); 
                                                           console.log(this._IsNewUser); 
                                                           this.set_IsNewUser();
                                                           isNewUserSave = this._IsNewUser;
-                                                          let rf = new RegisterForm(isNewUserSave);                                                        
+                                                          let rf = new RegisterForm(isNewUserSave, y);                                                        
                                                           rf.renderConditionalUserRegistration();
                                                       }
                                                       } href='/#'>
