@@ -36,6 +36,7 @@ function RenderRF() {
   
   console.log('\n');
   console.log(`isNewUser prop: ${isNewUser}`);
+  console.log(`isRendered prop: ${isRendered}`);
   console.log(`isCancelled prop: ${isCancelled}`);
   console.log('\n');
 
