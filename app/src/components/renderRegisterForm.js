@@ -18,13 +18,12 @@ const registerSchema = Joi.object().keys({
 });
 
 let x = 1;
-let isRenderedSave = 1;
+let isRendered = false;
 
 function RenderRF() {
 
   const [isNewUser, setIsNewUser] = useState(isNewUserSave);
   const [isCancelled, setIsCancelled] = useState(false);
-  const [isRendered, setIsRendered] = useState(0);
   
   const emailInputRef = React.createRef();
   const passwordInputRef = React.createRef();
@@ -51,10 +50,7 @@ function RenderRF() {
   }
   FocusInput = FocusInput.bind(this);
 
-
-
-  isRenderedSave = isRendered;
-  if (isRenderedSave === 0) {
+  if (isRendered === false) {
 
     return ( <body className='mb-2'>
 
@@ -92,7 +88,7 @@ function RenderRF() {
 
                     <Button 
                       variant="primary" 
-                      onClick={ setIsCancelled(true) }
+                      onClick={ () => { isRendered = true; }}
                       className="d-inline-block mt-2 mb-4"
                       id="cancelBtn"
                     >
@@ -103,9 +99,8 @@ function RenderRF() {
             
                 </Form>
 
-    </body>
-
-    )
+              </body>
+            )
   }
 
   const SubmitRegistration = () => {
@@ -129,15 +124,12 @@ function RenderRF() {
 
   } 
 
-  setIsRendered(() => { return isRendered + 1 });
-
   if (isCancelled) {
     setIsNewUser(() => { return false; });
     return <LoginForm />
   }
 
-  
 }
 
-export {isRenderedSave}
+export {isRendered}
 export default RenderRF;

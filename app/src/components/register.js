@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom/client';
 import RenderUserRegistration from './renderRegisterForm';
 import UserDataService from "../services/userDataService";
 import { isNewUserSave } from './renderLogin';
-import { isRenderedSave } from './renderRegisterForm';
+import { isRendered } from './renderRegisterForm';
 
 const registerSchema = Joi.object().keys({
 
@@ -53,10 +53,10 @@ class RegisterForm extends React.Component {
     console.log('Conditional Render Function Begin..');
     console.log('\n');
 
-    console.log(`isRenderedSave: ${isRenderedSave}`);
+    console.log(`isRenderedSave: ${isRendered}`);
     console.log(`isNewUserSave: ${isNewUserSave}`);
 
-    if (isNewUserSave && isRenderedSave === 1) {
+    if (isNewUserSave && isRendered === false) {
       
       console.log('Conditional Render Function return root.render() Commencing..');
       
