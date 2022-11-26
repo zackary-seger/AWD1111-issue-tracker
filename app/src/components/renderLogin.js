@@ -78,15 +78,11 @@ class LoginForm extends React.Component {
   render() {
 
     const validator = CreateValidator;
-    let isNewUserBool = this._IsNewUser;
-    let rf = new RegisterForm(isNewUserSave);
-    console.log(`renderLogin isNewUser Prop Entry: ${isNewUserBool}`)
     
     return (
       <div>
 
       <body className=''>
-        <rf className='pt-3'/>
 
         <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
 
@@ -109,8 +105,9 @@ class LoginForm extends React.Component {
                                                           e.preventDefault(); 
                                                           console.log(this._IsNewUser); 
                                                           this.set_IsNewUser();
-                                                          isNewUserSave = this._IsNewUser;                                                        
-                                                          
+                                                          isNewUserSave = this._IsNewUser;
+                                                          let rf = new RegisterForm(isNewUserSave);                                                        
+                                                          rf.renderConditionalUserRegistration();
                                                       }
                                                       } href='/#'>
             Register Here!
