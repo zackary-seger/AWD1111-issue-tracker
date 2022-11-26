@@ -19,9 +19,8 @@ const registerSchema = Joi.object().keys({
 
 });
 
-let y = 0;
 let x = 1;
-
+let y = 0;
 let isCancelledSave = false;
 let isRendered = false;
 
@@ -55,7 +54,7 @@ function RenderRF() {
   }
   FocusInput = FocusInput.bind(this);
 
-  if ( z === 1 || ( isRendered === false && isCancelled === false )) {
+  if ( isRendered === false && isCancelled === false ) {
 
     const body = ReactDOM.createRoot(document.getElementById('body'));
     return body.render( 
