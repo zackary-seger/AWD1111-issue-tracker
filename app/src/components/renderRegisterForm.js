@@ -91,7 +91,7 @@ function RenderRF() {
             variant="primary" 
             type="submit"
             onClick={ FocusInput() }
-            className="d-inline-block mt-2 mb-4 me-2"
+            className="d-inline-block mt-2 mb-2 me-2 vw-100"
             id="registerBtn"
           >
             Register
@@ -100,7 +100,7 @@ function RenderRF() {
           <Button 
             variant="primary" 
             href='/'
-            className="d-inline-block mb-4"
+            className="d-inline-block mb-4 vw-100"
             id="cancelBtn"
           >
             Cancel
