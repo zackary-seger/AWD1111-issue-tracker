@@ -107,8 +107,8 @@ button {
   margin-right: 0;
 }
 
-button {
-  min-width: 85%!important;
+.registrationButtons {
+  width: 95%!important;
 }
 
 @media screen and (max-width: 576px){
