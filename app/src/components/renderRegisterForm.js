@@ -96,6 +96,15 @@ function RenderRF() {
           >
             Register
           </Button> 
+  
+          <Button 
+            variant="primary" 
+            href='/'
+            className="d-inline-block mt-2 mb-4"
+            id="cancelBtn"
+          >
+            Cancel
+          </Button> 
           
         </Form.Group>
   
@@ -165,7 +174,6 @@ function RenderRF() {
         </body>
   
       );
-      
     }
 
   } 
