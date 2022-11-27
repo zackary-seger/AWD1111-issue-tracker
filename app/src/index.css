@@ -61,7 +61,6 @@ h1 {
 }
 
 #responsive-navbar-nav {
-  padding-top: 0.45em;
   justify-content: end;
   padding-right: 2em;
   font-family: 'Poppins', sans-serif;
@@ -86,6 +85,14 @@ nav {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 1.25em;
   margin-bottom: .75em;
+}
+
+.navbar-collapse {
+  padding-top: 0.45em!important;
+}
+
+#navTitle {
+  margin-top: 0!important;
 }
 
 button {
@@ -113,8 +120,6 @@ button {
   width: 6.95em!important;
   height: 2.5em;
 }
-
-
 #cancelBtn {
   padding-top: 0.475em;
 }
@@ -228,6 +233,9 @@ code {
     font-size: .75em;
     padding-top: 0rem!important;
   }
+  #navTitle {
+    margin-top: 0.5rem!important;
+  }
   #responsive-navbar-nav {
     font-size: 1.2em;
   }
@@ -236,6 +244,7 @@ code {
 @media screen and (max-width: 800px) {
   #navTitle {
     font-size: 2em;
+    margin-top: 0.5rem!important;
   }
   #navbar {
     font-size: .75em;
@@ -248,10 +257,14 @@ code {
     margin-bottom: .75em;
     padding-top: 0rem!important;
   }
+  #navTitle {
+    margin-top: 0.5rem!important;
+  }
 }
 
 @media screen and (max-width: 434px) {
   #navTitle {
+    margin-top: 0.5rem!important;
     font-size: 1.25em;
   }
   #navbar {
