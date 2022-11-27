@@ -108,7 +108,7 @@ button {
 }
 
 button {
-  width: 95%;
+  min-width: 85%!important;
 }
 
 @media screen and (max-width: 576px){
