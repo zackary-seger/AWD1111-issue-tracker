@@ -98,7 +98,8 @@ function RenderRF() {
           </Button> 
   
           <Button 
-            variant="primary" 
+            variant="primary"
+            onClick={ () => { console.log('2nd Cancel.. Refreshing..') } } 
             href='/'
             className="d-inline-block mb-4 mt-4 registrationButtons"
             id="cancelBtn"
