@@ -69,7 +69,7 @@ function RenderRF() {
   
         <Form className="mt-3 ms-3 me-3" onSubmit={ evt => {SubmitRegistration(evt)} }>
   
-        <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
+        <Form.Group className="me-3" controlId="renderLogin.userCredentials">
   
           <Form.Label className='font-weight-bold ps-1'>Email Address</Form.Label>
           <Form.Control className="mb-1" type="email" placeholder="name@example.com" controlId="emailInput" ref={ emailInputRef } />
@@ -100,7 +100,7 @@ function RenderRF() {
           <Button 
             variant="primary" 
             href='/'
-            className="d-inline-block mb-4 mt-3 registrationButtons"
+            className="d-inline-block mb-4 mt-4 registrationButtons"
             id="cancelBtn"
           >
             Cancel
@@ -123,7 +123,7 @@ function RenderRF() {
   
         <Form className="mt-3 ms-3 me-3" onSubmit={ evt => {SubmitRegistration(evt)} }>
   
-        <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
+        <Form.Group className="me-3" controlId="renderLogin.userCredentials">
   
           <Form.Label className='font-weight-bold ps-1'>Email Address</Form.Label>
           <Form.Control className="mb-1" type="email" placeholder="name@example.com" controlId="emailInput" ref={ emailInputRef } />
@@ -161,7 +161,7 @@ function RenderRF() {
                               }       
                             }
                     }
-            className="d-inline-block mb-4 mt-3 registrationButtons"
+            className="d-inline-block mb-4 mt-4 registrationButtons"
             id="cancelBtn"
           >
             Cancel
