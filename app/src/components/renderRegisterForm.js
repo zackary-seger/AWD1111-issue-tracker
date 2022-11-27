@@ -56,7 +56,7 @@ function RenderRF() {
   }
   FocusInput = FocusInput.bind(this);
 
-  if ( isRendered === false && isCancelled === false ) {
+  if ( z > 1 || ( isRendered === false && isCancelled === false )) {
 
     const body = ReactDOM.createRoot(document.getElementById('body'));
     return body.render( 
