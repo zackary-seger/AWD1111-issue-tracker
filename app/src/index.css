@@ -53,6 +53,7 @@ h1 {
 
 #loginBtn {
   font-weight: 300;
+  width: 5em!important;
 }
 
 #navbar {
@@ -111,6 +112,7 @@ button {
   width: 6.95em!important;
   height: 2.5em;
 }
+
 
 #cancelBtn {
   padding-top: 0.475em;
