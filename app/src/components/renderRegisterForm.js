@@ -100,7 +100,7 @@ function RenderRF() {
           <Button 
             variant="primary" 
             href='/'
-            className="d-inline-block mt-2 mb-4"
+            className="d-inline-block mb-4"
             id="cancelBtn"
           >
             Cancel
