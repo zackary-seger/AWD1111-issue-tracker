@@ -24,7 +24,7 @@ function RenderNavbar() {
         boatborrowers.com
         </Navbar.Brand>
 
-        <Navbar.Toggle className="mb-2 mt-3" aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle id="collapsedBtn" className="mb-2 mt-3" aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
 
           <Nav className="mr-auto"></Nav>
