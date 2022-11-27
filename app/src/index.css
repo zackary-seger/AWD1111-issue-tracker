@@ -218,15 +218,14 @@ code {
     display: none !important;
   }
   #navbar {
-    font-size: .75em;
-    padding-top: 1rem!important;
+    padding-top: 0rem!important;
   }
 }
 
 @media screen and (max-width: 991px) {
   #navbar {
     font-size: .75em;
-    padding-top: 1rem!important;
+    padding-top: 0rem!important;
   }
   #responsive-navbar-nav {
     font-size: 1.2em;
@@ -239,14 +238,14 @@ code {
   }
   #navbar {
     font-size: .75em;
-    padding-top: 1rem!important;
+    padding-top: 0rem!important;
   }
 }
 
 @media screen and (max-width: 450px) {
   #navbar {
     margin-bottom: .75em;
-    padding-top: 1rem!important;
+    padding-top: 0rem!important;
   }
 }
 
