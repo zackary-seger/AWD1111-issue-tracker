@@ -237,6 +237,7 @@ code {
 @media screen and (max-width: 450px) {
   #navbar {
     margin-bottom: .75em;
+    padding-top: 1rem!important;
   }
 }
 
