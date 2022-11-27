@@ -217,20 +217,29 @@ code {
   #navIcons {
     display: none !important;
   }
-}
-
-@media screen and (max-width: 800px) {
-  #navTitle {
-    font-size: 2em;
+  #navbar {
+    font-size: .75em;
+    padding-top: 1rem!important;
   }
 }
 
 @media screen and (max-width: 991px) {
   #navbar {
     font-size: .75em;
+    padding-top: 1rem!important;
   }
   #responsive-navbar-nav {
     font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #navTitle {
+    font-size: 2em;
+  }
+  #navbar {
+    font-size: .75em;
+    padding-top: 1rem!important;
   }
 }
 
@@ -244,6 +253,9 @@ code {
 @media screen and (max-width: 434px) {
   #navTitle {
     font-size: 1.25em;
+  }
+  #navbar {
+    padding-top: 0!important;
   }
 }
 
