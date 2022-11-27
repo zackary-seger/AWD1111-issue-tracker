@@ -90,50 +90,51 @@ class LoginForm extends React.Component {
         <div>
   
         <body id='body' className=''>
-  
+
           <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
-  
+
           <Form className="mt-3 ms-3 me-3" onSubmit={ this.loginUser }>
-  
+
             <Form.Group className="mb-3 me-3" controlId="renderLogin.userCredentials">
-  
+
               <Form.Label className='font-weight-bold ps-1'>Email Address</Form.Label>
               <Form.Control onChange={ validator.updateEmail } className="mb-1" type="email" placeholder="name@example.com" controlId="emailInput" ref={ this.emailInput } />
-  
+
               <Form.Label className="font-weight-bold mt-2 ps-1">Password</Form.Label>
               <Form.Control onChange={ validator.updatePassword } className="pb-2" type="password" controlId="passwordInput" id="passwordTxt" ref={ this.passwordInput } />
-  
+
             </Form.Group>
-  
-            <a className='pb-2 ps-1' href='/#'>Forgot your password?</a>         
-            <p className='d-block mb-0 mt-2 ps-1'>New to boatborrowers.com?</p>
-            <a className='ms-2 mb-2 ps-1' onClick={e => {   
-  
-                                                            e.preventDefault(); 
-                                                            console.log(this._IsNewUser); 
-                                                            this.set_IsNewUser();
-                                                            isNewUserSave = this._IsNewUser;
-                                                            let rf = new RegisterForm(isNewUserSave);                                                        
-                                                            rf.renderConditionalUserRegistration();
-                                                        }
-                                                        } href='/#'>
-              Register Here!
-            </a> 
-  
+
             <Form.Group className="mt-2 mb-3" controlId="renderLogin.loginButton">
-  
+
               <Button 
                 variant="primary" 
                 type="submit"
                 onClick={this.focusInput}
-                className="mt-2 mb-4"
+                className="mt-2"
                 id="loginBtn"
               >
                 Login
               </Button> 
               
             </Form.Group>
-  
+
+            <a className='pb-2 ps-1' href='/#'>Forgot your password?</a>         
+            <p className='d-block mb-0 mt-2 ps-1'>New to boatborrowers.com?</p>
+            <a className='d-inline-block mb-3 ms-2 ps-1' onClick={e => {   
+                                                            y++;
+                                                            e.preventDefault(); 
+                                                            console.log(this._IsNewUser); 
+                                                            this.set_IsNewUser();
+                                                            isNewUserSave = this._IsNewUser;
+                                                            let rf = new RegisterForm(isNewUserSave, y);                                                        
+                                                            rf.renderConditionalUserRegistration();
+                                                        }
+                                                        } href='/#'>
+              Register Here!
+            </a> 
+
+
           </Form>
         </body>
         </div>  
