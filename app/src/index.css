@@ -88,7 +88,7 @@ nav {
 }
 
 .navbar-collapse {
-  padding-top: 0.45em!important;
+  padding-top: 0!important;
 }
 
 #navTitle {
@@ -225,6 +225,12 @@ code {
   }
   #navbar {
     padding-top: 0rem!important;
+  }
+  #navTitle {
+    margin-top: 0.5rem!important;
+  }
+  .navbar-collapse {
+    padding-top: 0.45rem!important;
   }
 }
 
