@@ -108,7 +108,8 @@ button {
 }
 
 .registrationButtons {
-  width: 5em!important;
+  width: 6.95em!important;
+  height: 2.5em;
 }
 
 @media screen and (max-width: 576px){
