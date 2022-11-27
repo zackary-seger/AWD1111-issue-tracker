@@ -85,13 +85,13 @@ function RenderRF() {
   
         </Form.Group>      
   
-        <Form.Group className="mb-3" controlId="renderLogin.loginButton">
+        <Form.Group className="mb-2" controlId="renderLogin.loginButton">
   
           <Button 
             variant="primary" 
             type="submit"
             onClick={ FocusInput() }
-            className="d-inline-block mt-2 mb-2 me-2 registrationButtons"
+            className="d-inline-block me-2 registrationButtons"
             id="registerBtn"
           >
             Register
@@ -100,7 +100,7 @@ function RenderRF() {
           <Button 
             variant="primary" 
             href='/'
-            className="d-inline-block mb-4 registrationButtons"
+            className="d-inline-block mb-4 mt-3 registrationButtons"
             id="cancelBtn"
           >
             Cancel
@@ -139,13 +139,13 @@ function RenderRF() {
   
         </Form.Group>      
   
-        <Form.Group className="mb-3" controlId="renderLogin.loginButton">
+        <Form.Group className="mb-2" controlId="renderLogin.loginButton">
   
           <Button 
             variant="primary" 
             type="submit"
             onClick={ FocusInput() }
-            className="d-inline-block mt-2 mb-2 me-2 registrationButtons"
+            className="d-inline-block me-2 registrationButtons"
             id="registerBtn"
           >
             Register
@@ -161,7 +161,7 @@ function RenderRF() {
                               }       
                             }
                     }
-            className="d-inline-block mt-2 mb-4 registrationButtons"
+            className="d-inline-block mb-4 mt-3 registrationButtons"
             id="cancelBtn"
           >
             Cancel
