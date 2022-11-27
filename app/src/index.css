@@ -112,6 +112,10 @@ button {
   height: 2.5em;
 }
 
+#cancelBtn {
+  padding-top: 0.4em;
+}
+
 @media screen and (max-width: 576px){
   .modal-dialog {
     margin-right: 0!important;
