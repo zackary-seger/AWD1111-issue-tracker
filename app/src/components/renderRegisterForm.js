@@ -145,7 +145,7 @@ function RenderRF() {
             variant="primary" 
             type="submit"
             onClick={ FocusInput() }
-            className="d-inline-block mt-2 mb-4 me-2"
+            className="d-inline-block mt-2 mb-2 me-2 registrationButtons"
             id="registerBtn"
           >
             Register
@@ -161,7 +161,7 @@ function RenderRF() {
                               }       
                             }
                     }
-            className="d-inline-block mt-2 mb-4"
+            className="d-inline-block mt-2 mb-4 registrationButtons"
             id="cancelBtn"
           >
             Cancel
