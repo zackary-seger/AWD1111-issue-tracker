@@ -245,13 +245,13 @@ code {
   #navTitle {
     font-size: 1.25em;
   }
-  #navbar {
-    padding-top: 0!important;
-  }
 }
 
 @media screen and (max-width: 324px) {
   #navTitle {
     display: none !important;
+  }
+  #navbar {
+    padding-top: 0;
   }
 }
