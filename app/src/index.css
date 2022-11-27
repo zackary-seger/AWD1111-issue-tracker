@@ -61,6 +61,7 @@ h1 {
 }
 
 #responsive-navbar-nav {
+  padding-top: 0.45em;
   justify-content: end;
   padding-right: 2em;
   font-family: 'Poppins', sans-serif;
