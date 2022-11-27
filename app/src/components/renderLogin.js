@@ -169,9 +169,23 @@ class LoginForm extends React.Component {
 
           </Form.Group>
 
+          <Form.Group className="mt-2 mb-3" controlId="renderLogin.loginButton">
+
+            <Button 
+              variant="primary" 
+              type="submit"
+              onClick={this.focusInput}
+              className="mt-2"
+              id="loginBtn"
+            >
+              Login
+            </Button> 
+            
+          </Form.Group>
+
           <a className='pb-2 ps-1' href='/#'>Forgot your password?</a>         
           <p className='d-block mb-0 mt-2 ps-1'>New to boatborrowers.com?</p>
-          <a className='ms-2 mb-2 ps-1' onClick={e => {   
+          <a className='ms-2 mb-4 ps-1' onClick={e => {   
                                                           y++;
                                                           e.preventDefault(); 
                                                           console.log(this._IsNewUser); 
@@ -184,19 +198,6 @@ class LoginForm extends React.Component {
             Register Here!
           </a> 
 
-          <Form.Group className="mt-2 mb-3" controlId="renderLogin.loginButton">
-
-            <Button 
-              variant="primary" 
-              type="submit"
-              onClick={this.focusInput}
-              className="mt-2 mb-4"
-              id="loginBtn"
-            >
-              Login
-            </Button> 
-            
-          </Form.Group>
 
         </Form>
       </body>
