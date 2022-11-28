@@ -22,6 +22,7 @@ class UserDataService extends React.Component{
 
   async RegisterUser(udsInput){
     let resp = null;
+    console.log(this.emailInput)
 
     await axios({
       method: "put",
@@ -31,7 +32,7 @@ class UserDataService extends React.Component{
              password: `${this.passInput}`,
              firstName: `${this.firstNameInput}`,
              lastName: `${this.lastNameInput}`, 
-             role: null           
+             role: 'null'          
             },
       headers: { "Content-Type": "application/json" },
     }).catch(function (error) {
