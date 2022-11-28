@@ -680,8 +680,6 @@ router.put('/register', validBody(newUserSchema), async (req, res, next) => {
 // because the documentation does not actually speak to ow the compare() function truly works.
 
 router.put('/login', validBody(loginSchema), async (req, res, next) => {
-  
-  debugMain({ reqAuth: req.auth })
 
   try {
 
@@ -897,7 +895,7 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
     next(err);
   }
 
-}, auth(), () => { debugMain({ reqAuth: req.auth })});
+}, auth());
 
 // Update User
 
