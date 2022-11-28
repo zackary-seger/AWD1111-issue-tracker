@@ -56,6 +56,27 @@ function RenderRF() {
   }
   FocusInput = FocusInput.bind(this);
 
+  const SubmitRegistration = () => {
+
+    let emailTxt = emailInputRef;
+    let passTxt = passwordInputRef;
+    let firstNameTxt = firstNameInputRef;
+    let lastNameTxt = lastNameInputRef;
+
+    let joiObj = registerSchema.validate({email: emailTxt, password: passTxt, firstName: firstNameTxt, lastName: lastNameTxt});
+
+    let uds = new UserDataService(joiObj.value['email'], joiObj.value['password'],  joiObj.value['firstName'], joiObj.value['lastName']); 
+    
+    if (uds) {
+      uds.RegisterUser(uds).then( response => { 
+        return response;
+      }).catch( e =>{ 
+        console.log(e); 
+      }) 
+    }
+
+  } 
+
   if ( z > 1 || ( isRendered === false && isCancelled === false )) {
 
     const body = ReactDOM.createRoot(document.getElementById('body'));
@@ -179,26 +200,7 @@ function RenderRF() {
 
   } 
 
-  const SubmitRegistration = () => {
 
-    let emailTxt = emailInputRef;
-    let passTxt = passwordInputRef;
-    let firstNameTxt = firstNameInputRef;
-    let lastNameTxt = lastNameInputRef;
-
-    let joiObj = registerSchema.validate({email: emailTxt, password: passTxt, firstName: firstNameTxt, lastName: lastNameTxt});
-
-    let uds = new UserDataService(joiObj.value['email'], joiObj.value['password'],  joiObj.value['firstName'], joiObj.value['lastName']); 
-    
-    if (uds) {
-      uds.RegisterUser(uds).then( response => { 
-        return response;
-      }).catch( e =>{ 
-        console.log(e); 
-      }) 
-    }
-
-  } 
 
   isCancelledSave = isCancelled;
 }
