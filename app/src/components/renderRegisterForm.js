@@ -90,7 +90,7 @@ function RenderRF() {
           <Button 
             variant="primary" 
             type="submit"
-            onClick={ this.FocusInput() }
+            onClick={ FocusInput() }
             className="d-inline-block me-2 registrationButtons"
             id="registerBtn"
           >
@@ -145,7 +145,7 @@ function RenderRF() {
           <Button 
             variant="primary" 
             type="submit"
-            onClick={ this.FocusInput() }
+            onClick={ FocusInput() }
             className="d-inline-block me-2 registrationButtons"
             id="registerBtn"
           >
