@@ -897,7 +897,7 @@ router.put('/login', validBody(loginSchema), async (req, res, next) => {
     next(err);
   }
 
-}, auth(), () => { debugMain({ reqAuth: req.auth })});
+}, () => { debugMain({ reqAuth: req.auth })});
 
 // Update User
 
