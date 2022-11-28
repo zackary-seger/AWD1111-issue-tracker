@@ -64,15 +64,22 @@ function RenderRF() {
     let lastNameTxt = lastNameInputRef;
 
     let joiObj = registerSchema.validate({email: emailTxt, password: passTxt, firstName: firstNameTxt, lastName: lastNameTxt});
-
-    let uds = new UserDataService(joiObj.value['email'], joiObj.value['password'],  joiObj.value['firstName'], joiObj.value['lastName']); 
+    const finalObj = { email: joiObj.value.email, password: joiObj.value.password, firstName: joiObj.value.firstName, lastName: joiObj.value.lastName}
     
-    if (uds) {
-      uds.RegisterUser(uds).then( response => { 
-        return response;
-      }).catch( e =>{ 
-        console.log(e); 
-      }) 
+    if (!finalObj.email || !finalObj.password || !finalObj.firstName || !finalObj.lastName) {
+      console.log('Invalid Data.. Please Try Again..');
+    } else {
+
+      let uds = new UserDataService(joiObj.value['email'], joiObj.value['password'],  joiObj.value['firstName'], joiObj.value['lastName']); 
+    
+      if (uds) {
+        uds.RegisterUser(uds).then( response => { 
+          return response;
+        }).catch( e =>{ 
+          console.log(e); 
+        }) 
+      }
+      
     }
 
   } 
