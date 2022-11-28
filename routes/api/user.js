@@ -679,8 +679,10 @@ router.put('/register', validBody(newUserSchema), async (req, res, next) => {
 // combinations and then compares that to the password entered. I can't be sure which is true
 // because the documentation does not actually speak to ow the compare() function truly works.
 
-router.put('/login', () => { debugMain({ reqAuth: req.auth })}, validBody(loginSchema), async (req, res, next) => {
+router.put('/login', validBody(loginSchema), async (req, res, next) => {
   
+  debugMain({ reqAuth: req.auth })
+
   try {
 
     const foundUser = await dbModule.findUserByEmail(req.body.email);
