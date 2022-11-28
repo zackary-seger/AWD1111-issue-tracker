@@ -29,8 +29,9 @@ class UserDataService extends React.Component{
       url: "api/user/register",
       data: {email: `${this.emailInput}`,
              password: `${this.passInput}`,
-             firstNameInput: `${this.firstNameInput}`,
-             lastNameInput: `${this.lastNameInput}`            
+             firstName: `${this.firstNameInput}`,
+             lastName: `${this.lastNameInput}`, 
+             role: null           
             },
       headers: { "Content-Type": "application/json" },
     }).catch(function (error) {
