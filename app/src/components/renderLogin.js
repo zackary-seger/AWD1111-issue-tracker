@@ -45,11 +45,14 @@ class LoginForm extends React.Component {
 
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
-    if (x !== 1) {
-      this.focusInput.current.focus();
-    } else {
-      x++;
+    if (this.focusInput.current) {
+      if (x !== 1) {
+        this.focusInput.current.focus();
+      } else {
+        x++;
+      }
     }
+
 
   }
 
