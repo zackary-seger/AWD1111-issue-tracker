@@ -71,7 +71,7 @@ function RenderRF() {
     } else {
 
       
-      let uds = new UserDataService(emailTxt, passTxt, firstNameTxt, lastNameTxt); 
+      let uds = new UserDataService(emailTxt.current.value, passTxt.current.value, firstNameTxt.current.value, lastNameTxt.current.value); 
     
       if (uds) {
         uds.RegisterUser(uds).then( response => { 
