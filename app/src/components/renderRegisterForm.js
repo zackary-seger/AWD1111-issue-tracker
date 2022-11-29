@@ -1,5 +1,6 @@
 import React, {useState, useCallback, useEffect } from 'react' 
 
+import CreateValidator from './validate.js';
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button'; 
 import * as ReactDOM from 'react-dom/client';
@@ -55,6 +56,8 @@ function RenderRF() {
       }
   }
   FocusInput = FocusInput.bind(this);
+ 
+  const validator = CreateValidator;
 
   const SubmitRegistration = () => {
 
@@ -67,6 +70,7 @@ function RenderRF() {
       console.log('Invalid Data.. Please Try Again..');
     } else {
 
+      
       let uds = new UserDataService(emailTxt, passTxt, firstNameTxt, lastNameTxt); 
     
       if (uds) {
@@ -97,7 +101,7 @@ function RenderRF() {
         <Form.Group className="me-3" controlId="renderLogin.userCredentials">
   
           <Form.Label className='font-weight-bold ps-1'>Email Address</Form.Label>
-          <Form.Control className="mb-1" type="email" placeholder="name@example.com" controlId="emailInput" ref={ emailInputRef } />
+          <Form.Control onChange={ validator.updateEmail } className="mb-1" type="email" placeholder="name@example.com" controlId="emailInput" ref={ emailInputRef } />
   
           <Form.Label className="font-weight-bold mt-2 ps-1">Password</Form.Label>
           <Form.Control className="pb-2" type="password" controlId="passwordInput" id="passwordTxt" ref={ passwordInputRef } />
