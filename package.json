@@ -20,6 +20,7 @@
   "homepage": "https://github.com/zackary-seger/AWD1111-issue-tracker#readme",
   "dependencies": {
     "@paypal/paypal-js": "^5.1.4",
+    "react-paypal-button-v2": "^2.6.3",
     "@paypal/react-paypal-js": "^7.8.2",
     "bcrypt": "^5.1.0",
     "compression": "^1.7.4",
