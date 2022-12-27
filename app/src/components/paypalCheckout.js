@@ -1,4 +1,4 @@
-import { CLIENT_ID } from "../Config/config.js";
+import { CLIENT_ID } from "../Config/Config.js";
 import React, { useState, useEffect } from "react" ;
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
