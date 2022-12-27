@@ -2,31 +2,53 @@ import * as React from "react";
 import '../index.css';
 
 import { loadScript } from "@paypal/paypal-js";
+import '../index.css';
 
-let paypal;
+class PaypalCheckout extends React.Component {
+  
+  constructor(bool, y, props) {
+    
+    super(props);
 
-async function RenderPaypalCheckout() {
+    this.registerUser = this.registerUser.bind(this);
 
-  try {
-    paypal = await loadScript({ "client-id": "test" });
-  } catch (error) {
-    console.error("failed to load the PayPal JS SDK script", error);
+    this.emailInput = React.createRef();
+    this.passwordInput = React.createRef();
+    this.firstNameInput = React.createRef();
+    this.lastNameInput = React.createRef();
+
+    this._isNewUser = bool;
+    this._validObj = null;
+    this._resp = {};
+
+    this.focusInput = this.focusInput.bind(this);
+
   }
 
-  if (paypal) {
-      try {
-          await paypal.Buttons().render("#your-container-element");
-      } catch (error) {
-          console.error("failed to render the PayPal Buttons", error);
-      }
+  async RenderPaypalCheckout() {
+
+    loadScript({ "client-id": "test" })
+    .then((paypal) => {
+        paypal
+            .Buttons()
+            .render()
+            .catch((error) => {
+                console.error("failed to render the PayPal Buttons", error);
+            });
+    })
+    .catch((error) => {
+        console.error("failed to load the PayPal JS SDK script", error);
+    });
+
   }
 
-  // return (
-  //   <div className="">
 
-  //   </div>
-  // );
+  // Render HTML:
+  render() {
+      
+      return console.log(this._isNewUser)
 
+  }
 }
 
-export default RenderPaypalCheckout;
+export default PaypalCheckout;
