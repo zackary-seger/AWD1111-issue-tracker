@@ -47,6 +47,7 @@ const Checkout = () => {
     },[success]);
 
     return (
+      <div>
         <PayPalScriptProvider options={{ "client-id": CLIENT_ID }}>
             <div>
                 <div className="wrapper">
@@ -80,6 +81,7 @@ const Checkout = () => {
                 ) : null}
             </div>
         </PayPalScriptProvider>
+      </div>
     );
 }
 
