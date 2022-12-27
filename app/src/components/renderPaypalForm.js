@@ -1,5 +1,5 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { CLIENT_ID } from "../Config/Config.js";
 import * as ReactDOM from 'react-dom';
 import RenderNavbar from './navbar';
