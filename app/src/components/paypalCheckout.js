@@ -5,25 +5,6 @@ import { loadScript } from "@paypal/paypal-js";
 import '../index.css';
 
 class PaypalCheckout extends React.Component {
-  
-  constructor(bool, y, props) {
-    
-    super(props);
-
-    this.registerUser = this.registerUser.bind(this);
-
-    this.emailInput = React.createRef();
-    this.passwordInput = React.createRef();
-    this.firstNameInput = React.createRef();
-    this.lastNameInput = React.createRef();
-
-    this._isNewUser = bool;
-    this._validObj = null;
-    this._resp = {};
-
-    this.focusInput = this.focusInput.bind(this);
-
-  }
 
   async RenderPaypalCheckout() {
 
