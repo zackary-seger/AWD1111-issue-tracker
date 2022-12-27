@@ -12,6 +12,7 @@ class PaypalCheckout extends React.Component {
 
     try {
         paypal = await loadScript({ "client-id": "test" });
+        console.log('payPal Pass 1')
     } catch (error) {
         console.error("failed to load the PayPal JS SDK script", error);
     }
