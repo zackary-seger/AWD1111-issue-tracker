@@ -39,7 +39,8 @@
     "morgan": "^1.10.0",
     "nanoid": "^4.0.0",
     "openssl": "^2.0.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-simple-star-rating": "^5.1.7"
   },
   "devDependencies": {
     "eslint": "^8.23.1",

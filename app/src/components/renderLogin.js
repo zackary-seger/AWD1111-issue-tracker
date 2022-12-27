@@ -11,7 +11,6 @@ import '../index.css';
 import BugDataService from "../services/bugDataService";
 import RegisterForm from "./register.js";
 
-import { FaSignInAlt } from "react-icons/fa";
 import { isCancelledSave } from './renderRegisterForm.js';
 
 let x = 1;
@@ -94,7 +93,7 @@ class LoginForm extends React.Component {
   
         <body id='body' className=''>
 
-          <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
+          <h1 className="pt-3 ms-3">User Login </h1>
 
           <Form className="mt-3 ms-3 me-3" onSubmit={ this.loginUser }>
 
@@ -159,7 +158,7 @@ class LoginForm extends React.Component {
 
       <body id='body' className=''>
 
-        <h1 className="pt-3 ms-3">User Login  <FaSignInAlt id="signIn1" className="ms-2"/></h1>
+        <h1 className="pt-3 ms-3">User Login </h1>
 
         <Form className="mt-3 ms-3 me-3" onSubmit={ this.loginUser }>
 

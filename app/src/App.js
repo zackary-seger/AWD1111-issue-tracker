@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import bugList from "./components/bugList.js" 
 import UserList from "./components/userList";
 import LoginForm from "./components/renderLogin.js";
+import paypalCheckout from "./components/paypalCheckout.js"
 import RenderNavbar from './components/navbar';
 
 const TITLE = 'BoatBorrowers.com • Login';
@@ -40,6 +41,8 @@ function App() {
             <Route exact path = { ["/register"] }       />
             <Route exact path = { ["/bug/:bugId"] }     />
             <Route exact path = { ["/user/:userId"] }   />
+            
+            <Route exact path = { ["/checkout"] } component = { paypalCheckout }  />
             <Route exact path = { ["*"] }               />
 
           </Switch>
