@@ -19,7 +19,7 @@ class PaypalCheckout extends React.Component {
     
     if (paypal) {
         try {
-            await paypal.Buttons().render(document.getElementById('body'));
+            await paypal.Buttons().render("body");
         } catch (error) {
             console.error("failed to render the PayPal Buttons", error);
         }
