@@ -8,18 +8,21 @@ class PaypalCheckout extends React.Component {
 
   async RenderPaypalCheckout() {
 
-    loadScript({ "client-id": "test" })
-    .then((paypal) => {
-        paypal
-            .Buttons()
-            .render(document.getElementById('body'))
-            .catch((error) => {
-                console.error("failed to render the PayPal Buttons", error);
-            });
-    })
-    .catch((error) => {
+    let paypal;
+
+    try {
+        paypal = await loadScript({ "client-id": "test" });
+    } catch (error) {
         console.error("failed to load the PayPal JS SDK script", error);
-    });
+    }
+    
+    if (paypal) {
+        try {
+            await paypal.Buttons().render(document.getElementById('body'));
+        } catch (error) {
+            console.error("failed to render the PayPal Buttons", error);
+        }
+    }
 
   }
 }
