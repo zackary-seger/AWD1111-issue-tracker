@@ -24,12 +24,12 @@ class PaypalCheckout extends React.Component {
   }
 
 
-  // Render HTML:
-  render() {
+  // // Render HTML:
+  // render() {
       
-      return console.log(this._isNewUser)
+  //     return console.log(this._isNewUser)
 
-  }
+  // }
 }
 
 export default PaypalCheckout;
